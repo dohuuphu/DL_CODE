@@ -2,12 +2,12 @@
 <Root signature="{362A8EE5-675E-43A9-869D-06ECE80B0CB4}" version="14.0">
 	<children>
 		<folder name="Advanced" moniker="{69583268-92F3-49FA-B573-C831F5ABC27B}">
-			<folder name="NewFolder1" />
+			<child name="Script" key="{785FECD2-6A8C-4CC2-BFCB-6F8B0DCD9A24}" type="Script" typeId="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" pluginName="Script" path="Script\Script.tcScript" />
 		</folder>
-		<folder name="Script">
-			<child name="Script" key="{882A7C92-4BF7-459C-82B3-D825CD1B7839}" type="Script" typeId="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" pluginName="Script" path="..\DL.CODE_1.9.0\Script\Script.tcScript" />
-		</folder>
-		<child name="TestedApps" key="{230A8EE3-CF8E-4DBC-9002-595C4E48589B}" type="Tested Applications" typeId="{90D101C8-80C7-48D4-9055-2E451B9BCD75}" pluginName="" path="..\DL.CODE_1.9.0\TestedApps\TestedApps.tcTAs" />
+		<child name="KeywordTests" key="{9120BEC6-C61D-45F0-AEEE-69640ADD8F48}" type="Keyword Testing" typeId="{9576DAFD-0ADD-41A8-9897-C72F150AF6BB}" pluginName="Keyword Testing" path="KeywordTests\KeywordTests.tcKDT" />
+		<child name="NameMapping" key="{F0B672EC-44F3-4EE3-BE4C-E21602A973D1}" type="Name Mapping" typeId="{5DCBAC3B-D39C-497C-9BE8-744CBADD37AA}" pluginName="NameMapping" path="NameMapping\NameMapping.tcNM" />
+		<child name="Stores" key="{E421CBD0-8814-4B60-89BF-621D5EB8184E}" type="Stores" typeId="{5238AF17-5FE2-48FF-8BCC-9803A975A4F4}" pluginName="Stores" path="Stores\Stores.tcStores" />
+		<child name="TestedApps" key="{8A7FE8AB-4674-4A97-A24F-C70D828028A3}" type="Tested Applications" typeId="{90D101C8-80C7-48D4-9055-2E451B9BCD75}" pluginName="" path="TestedApps\TestedApps.tcTAs" />
 	</children>
 	<config language="{E42909F2-4390-4F5D-94B8-FABF59BABFCE}" />
 	<testItems key="{122CCE45-4F1B-45EE-BBA8-11FD1384BB8D}" version="14">

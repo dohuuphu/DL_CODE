@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{30501691-969F-4007-923F-BA4459E51E6A}" version="14.0">
+	<children>
+		<folder name="IVS Menu Button">
+			<child name="bttSaveOnDevice" key="{8B4B4EBD-3E26-4955-B2D3-F257EDB1FC7E}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="bttSaveOnDevice" ID="{8B4B4EBD-3E26-4955-B2D3-F257EDB1FC7E}" FileName="Objects\bttSaveOnDevice.tcObject" Update="False" />
+			</child>
+		</folder>
+		<folder name="Windows">
+			<child name="CommunicatingWithDevice" key="{BC399A16-7666-43A0-908C-43035540D15A}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="CommunicatingWithDevice" ID="{BC399A16-7666-43A0-908C-43035540D15A}" FileName="Objects\CommunicatingWithDevice.tcObject" Update="False" />
+			</child>
+			<child name="NetworkAutosetWindow" key="{60180FB4-1C0D-4C2C-B6A9-3DABA34370F4}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="NetworkAutosetWindow" ID="{60180FB4-1C0D-4C2C-B6A9-3DABA34370F4}" FileName="Objects\NetworkAutosetWindow.tcObject" Update="False" />
+			</child>
+			<child name="BusyIndicator" key="{2CF777AB-D46B-40DF-A389-02FB0F3D48F4}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="BusyIndicator" ID="{2CF777AB-D46B-40DF-A389-02FB0F3D48F4}" FileName="Objects\BusyIndicator.tcObject" Update="False" />
+			</child>
+		</folder>
+		<folder name="Advanced_Image Quality">
+			<folder name="M220_Polarized">
+				<child name="Polarized_SectorCheckboxBottom" key="{ADC84766-AA63-4472-B2C6-0A0DDFC0E4CE}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Polarized_SectorCheckboxBottom" ID="{ADC84766-AA63-4472-B2C6-0A0DDFC0E4CE}" FileName="Objects\Polarized_SectorCheckboxBottom.tcObject" Update="False" />
+				</child>
+				<child name="Sector_Group_Disabled" key="{17475018-6300-4D3D-AA06-D60C1C2901A4}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Sector_Group_Disabled" ID="{17475018-6300-4D3D-AA06-D60C1C2901A4}" FileName="Objects\Sector_Group_Disabled.tcObject" Update="False" />
+				</child>
+				<child name="Polarized_linkSectors_Disable" key="{CBA1F648-5E61-469B-A172-3AE596A81714}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Polarized_linkSectors_Disable" ID="{CBA1F648-5E61-469B-A172-3AE596A81714}" FileName="Objects\Polarized_linkSectors_Disable.tcObject" Update="False" />
+				</child>
+				<child name="cbbLEDGroup_Default" key="{8BC03224-5DEF-4BD5-BFC5-4BE2C3630FAA}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="cbbLEDGroup_Default" ID="{8BC03224-5DEF-4BD5-BFC5-4BE2C3630FAA}" FileName="Objects\cbbLEDGroup_Default.tcObject" Update="False" />
+				</child>
+				<child name="linkLedGroup" key="{D61EE6BC-5439-4D78-A065-7EF784F5A84C}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="linkLedGroup" ID="{D61EE6BC-5439-4D78-A065-7EF784F5A84C}" FileName="Objects\linkLedGroup.tcObject" Update="False" />
+				</child>
+				<child name="Polarized_linkSectors_Visible" key="{13223EC3-358C-4AAF-837F-9B9DFF4D8A48}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Polarized_linkSectors_Visible" ID="{13223EC3-358C-4AAF-837F-9B9DFF4D8A48}" FileName="Objects\Polarized_linkSectors_Visible.tcObject" Update="False" />
+				</child>
+				<child name="Polarized_SectorCheckboxTop" key="{2DC8B03A-E3AE-4DD0-9692-5BA4B392F066}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Polarized_SectorCheckboxTop" ID="{2DC8B03A-E3AE-4DD0-9692-5BA4B392F066}" FileName="Objects\Polarized_SectorCheckboxTop.tcObject" Update="False" />
+				</child>
+				<child name="Sector_Group_Visible" key="{45CF73DB-5C72-467B-A4E9-A59E227BBE5A}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Sector_Group_Visible" ID="{45CF73DB-5C72-467B-A4E9-A59E227BBE5A}" FileName="Objects\Sector_Group_Visible.tcObject" Update="True" />
+				</child>
+			</folder>
+			<folder name="M220_NonPolarized">
+				<child name="SectorCheckboxBottom" key="{EF8AF199-7989-4AC4-811D-9C58D3709FFC}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="SectorCheckboxBottom" ID="{EF8AF199-7989-4AC4-811D-9C58D3709FFC}" FileName="Objects\SectorCheckboxBottom.tcObject" Update="False" />
+				</child>
+				<child name="SectorCheckboxTop" key="{5AE36A4D-DACD-446F-87F4-1685145FD6B8}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="SectorCheckboxTop" ID="{5AE36A4D-DACD-446F-87F4-1685145FD6B8}" FileName="Objects\SectorCheckboxTop.tcObject" Update="False" />
+				</child>
+				<child name="linkSectorsDisabled" key="{269BA36D-8D89-4861-8B5F-33EB9E2DBDE6}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="linkSectorsDisabled" ID="{269BA36D-8D89-4861-8B5F-33EB9E2DBDE6}" FileName="Objects\linkSectorsDisabled.tcObject" Update="False" />
+				</child>
+				<child name="SectorCheckboxTop_Disabled" key="{466B4F65-D3FE-49A1-860C-C8B34F44E684}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="SectorCheckboxTop_Disabled" ID="{466B4F65-D3FE-49A1-860C-C8B34F44E684}" FileName="Objects\SectorCheckboxTop_Disabled.tcObject" Update="False" />
+				</child>
+				<child name="SectorCheckboxBottom_Disabled" key="{6A47A235-2359-4BED-BD97-5DE30A6A0C6E}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="SectorCheckboxBottom_Disabled" ID="{6A47A235-2359-4BED-BD97-5DE30A6A0C6E}" FileName="Objects\SectorCheckboxBottom_Disabled.tcObject" Update="False" />
+				</child>
+				<child name="cbb_InternalLighting_Default" key="{7363EFF4-57E5-4B92-ADF0-7CF284CC8AF3}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="cbb_InternalLighting_Default" ID="{7363EFF4-57E5-4B92-ADF0-7CF284CC8AF3}" FileName="Objects\cbb_InternalLighting_Default.tcObject" Update="False" />
+				</child>
+				<child name="linkSectorVisible" key="{D5CC8551-9313-4B9E-ACEE-90980E960625}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="linkSectorVisible" ID="{D5CC8551-9313-4B9E-ACEE-90980E960625}" FileName="Objects\linkSectorVisible.tcObject" Update="False" />
+				</child>
+				<child name="linkInternalLighting" key="{68462538-D433-4EDE-8EC8-4093FEF55299}">
+					<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="linkInternalLighting" ID="{68462538-D433-4EDE-8EC8-4093FEF55299}" FileName="Objects\linkInternalLighting.tcObject" Update="True" />
+				</child>
+			</folder>
+		</folder>
+		<folder name="WebMonitorSecuritySettings">
+			<child name="Text_EnableProtection" key="{894DA29F-0B06-417B-9F60-E6BD34CD5FD3}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Text_EnableProtection" ID="{894DA29F-0B06-417B-9F60-E6BD34CD5FD3}" FileName="Objects\Text_EnableProtection.tcObject" Update="False" />
+			</child>
+			<child name="Text_Username" key="{E8E0ADA3-71C5-4D2D-AF4E-EB30550A9F33}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Text_Username" ID="{E8E0ADA3-71C5-4D2D-AF4E-EB30550A9F33}" FileName="Objects\Text_Username.tcObject" Update="False" />
+			</child>
+			<child name="Text_Password" key="{2F7E474D-2E68-49C5-889C-0D6BCE9CD0D6}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Text_Password" ID="{2F7E474D-2E68-49C5-889C-0D6BCE9CD0D6}" FileName="Objects\Text_Password.tcObject" Update="False" />
+			</child>
+			<child name="Text_PasswordMustContainBetween8And32C" key="{561E3856-CDB2-4D9D-BBCA-EBBC318268E5}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Text_PasswordMustContainBetween8And32C" ID="{561E3856-CDB2-4D9D-BBCA-EBBC318268E5}" FileName="Objects\Text_PasswordMustContainBetween8And32C.tcObject" Update="False" />
+			</child>
+			<child name="Text_ConfirmPassword" key="{9BBFF515-4C91-4981-A365-14E23F2019B6}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Text_ConfirmPassword" ID="{9BBFF515-4C91-4981-A365-14E23F2019B6}" FileName="Objects\Text_ConfirmPassword.tcObject" Update="False" />
+			</child>
+			<child name="ButtonCancel" key="{7EF49AAC-4335-46D7-B80C-93658A937111}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ButtonCancel" ID="{7EF49AAC-4335-46D7-B80C-93658A937111}" FileName="Objects\ButtonCancel.tcObject" Update="False" />
+			</child>
+			<child name="ButtonOk" key="{B61AFEE5-4111-43B2-9832-F9472A0CFAEB}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ButtonOk" ID="{B61AFEE5-4111-43B2-9832-F9472A0CFAEB}" FileName="Objects\ButtonOk.tcObject" Update="False" />
+			</child>
+			<child name="cbEnableProtection" key="{AEC1A371-2B3A-41E5-9BFF-964894D1DCC3}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="cbEnableProtection" ID="{AEC1A371-2B3A-41E5-9BFF-964894D1DCC3}" FileName="Objects\cbEnableProtection.tcObject" Update="False" />
+			</child>
+			<child name="TxtUsername" key="{0D7CC4AF-D72A-457D-A8CC-A6469EECF589}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="TxtUsername" ID="{0D7CC4AF-D72A-457D-A8CC-A6469EECF589}" FileName="Objects\TxtUsername.tcObject" Update="False" />
+			</child>
+			<child name="TxtPasswordBox" key="{40A40A81-F6CD-4E4C-9BFE-9BB8E7FFF4AB}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="TxtPasswordBox" ID="{40A40A81-F6CD-4E4C-9BFE-9BB8E7FFF4AB}" FileName="Objects\TxtPasswordBox.tcObject" Update="False" />
+			</child>
+			<child name="TxtConfirmPasswordBox" key="{D6E654C9-53EF-468F-9BBF-579F065B74B5}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="TxtConfirmPasswordBox" ID="{D6E654C9-53EF-468F-9BBF-579F065B74B5}" FileName="Objects\TxtConfirmPasswordBox.tcObject" Update="False" />
+			</child>
+		</folder>
+		<folder name="GettingStartedScreen">
+			<child name="gtst_Border" key="{A1347D9B-95E4-4B91-B2B5-A14F144C966C}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="gtst_Border" ID="{A1347D9B-95E4-4B91-B2B5-A14F144C966C}" FileName="Objects\gtst_Border.tcObject" Update="True" />
+			</child>
+			<child name="gtst_Grid" key="{E8371086-6197-4162-B676-37479141C231}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="gtst_Grid" ID="{E8371086-6197-4162-B676-37479141C231}" FileName="Objects\gtst_Grid.tcObject" Update="False" />
+			</child>
+			<child name="gtst_TextblockDoubleClickOrDragADeviceHereToSel" key="{EA2090B1-3F10-4E67-933A-E85936EEADD0}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="gtst_TextblockDoubleClickOrDragADeviceHereToSel" ID="{EA2090B1-3F10-4E67-933A-E85936EEADD0}" FileName="Objects\gtst_TextblockDoubleClickOrDragADeviceHereToSel.tcObject" Update="False" />
+			</child>
+		</folder>
+		<folder name="Connect to Device">
+			<child name="ConWin_TextblockIpAddress" key="{B5289032-FAA1-42C4-B970-ECCB82B1E994}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_TextblockIpAddress" ID="{B5289032-FAA1-42C4-B970-ECCB82B1E994}" FileName="Objects\ConWin_TextblockIpAddress.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_TextblockAttention" key="{AD98CD44-7C12-4B20-83F8-4A4602AEDC2C}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_TextblockAttention" ID="{AD98CD44-7C12-4B20-83F8-4A4602AEDC2C}" FileName="Objects\ConWin_TextblockAttention.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_cbbConType" key="{CC07BC37-BDEE-4159-9046-C47A5D7B3A2A}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_cbbConType" ID="{CC07BC37-BDEE-4159-9046-C47A5D7B3A2A}" FileName="Objects\ConWin_cbbConType.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_ipAddress" key="{FB7C3147-6DDC-466E-9BDF-8F82B4CDA7DE}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_ipAddress" ID="{FB7C3147-6DDC-466E-9BDF-8F82B4CDA7DE}" FileName="Objects\ConWin_ipAddress.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_ButtonConnect" key="{F2E46B77-FA4E-41E3-96D2-50A4B8F573D8}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_ButtonConnect" ID="{F2E46B77-FA4E-41E3-96D2-50A4B8F573D8}" FileName="Objects\ConWin_ButtonConnect.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_ButtonCancel" key="{4568603F-7DC7-4F84-B086-1AD829EF0A39}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_ButtonCancel" ID="{4568603F-7DC7-4F84-B086-1AD829EF0A39}" FileName="Objects\ConWin_ButtonCancel.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_TextblockSerialPort" key="{E80D5F2A-8693-4838-8928-48562810881B}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_TextblockSerialPort" ID="{E80D5F2A-8693-4838-8928-48562810881B}" FileName="Objects\ConWin_TextblockSerialPort.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_TextblockSerialParity" key="{CF4D7397-A7E9-43E6-95E8-E2FC57BC0CF2}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_TextblockSerialParity" ID="{CF4D7397-A7E9-43E6-95E8-E2FC57BC0CF2}" FileName="Objects\ConWin_TextblockSerialParity.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_TextblockSerialDataBits" key="{4C85777E-21AD-41A1-8C7C-52FBF13704EB}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_TextblockSerialDataBits" ID="{4C85777E-21AD-41A1-8C7C-52FBF13704EB}" FileName="Objects\ConWin_TextblockSerialDataBits.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_TextblockSerialStopBits" key="{13778DE9-7638-4514-8DC1-2A1E47F37332}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_TextblockSerialStopBits" ID="{13778DE9-7638-4514-8DC1-2A1E47F37332}" FileName="Objects\ConWin_TextblockSerialStopBits.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_SER_MainComboBox" key="{6232EDF4-7B05-47F2-921B-5F76BBA9DFE4}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_SER_MainComboBox" ID="{6232EDF4-7B05-47F2-921B-5F76BBA9DFE4}" FileName="Objects\ConWin_SER_MainComboBox.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_ComboboxSerialParity" key="{311A96DA-22C6-4957-B042-A74CDA3403D0}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_ComboboxSerialParity" ID="{311A96DA-22C6-4957-B042-A74CDA3403D0}" FileName="Objects\ConWin_ComboboxSerialParity.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_ComboboxSerialDataBits" key="{6302BDAC-2190-4BD9-B2DB-E6DB6F1F521F}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_ComboboxSerialDataBits" ID="{6302BDAC-2190-4BD9-B2DB-E6DB6F1F521F}" FileName="Objects\ConWin_ComboboxSerialDataBits.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_ComboboxSerialStopBits" key="{736A61B9-F2F3-4724-9078-5CC00CA4F0F0}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_ComboboxSerialStopBits" ID="{736A61B9-F2F3-4724-9078-5CC00CA4F0F0}" FileName="Objects\ConWin_ComboboxSerialStopBits.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_TextblockConnectionType" key="{261D0252-C7C5-4164-A0BD-B08300ACB5B9}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_TextblockConnectionType" ID="{261D0252-C7C5-4164-A0BD-B08300ACB5B9}" FileName="Objects\ConWin_TextblockConnectionType.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_ComboboxSerialPort_Dispose" key="{13F8E17B-C4C9-4CCB-92F2-E1A05CDD5B5F}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_ComboboxSerialPort_Dispose" ID="{13F8E17B-C4C9-4CCB-92F2-E1A05CDD5B5F}" FileName="Objects\ConWin_ComboboxSerialPort_Dispose.tcObject" Update="False" />
+			</child>
+			<child name="ConWin_ComboboxSerialPort" key="{50CC7DAC-ACE1-4750-95EE-E468B2D650FB}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="ConWin_ComboboxSerialPort" ID="{50CC7DAC-ACE1-4750-95EE-E468B2D650FB}" FileName="Objects\ConWin_ComboboxSerialPort.tcObject" Update="False" />
+			</child>
+		</folder>
+		<folder name="Analysis_MatchCode">
+			<child name="Match_HyperlinkNoRead" key="{182A991B-D912-4E4E-B4E6-7152710D9FF5}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_HyperlinkNoRead" ID="{182A991B-D912-4E4E-B4E6-7152710D9FF5}" FileName="Objects\Match_HyperlinkNoRead.tcObject" Update="False" />
+			</child>
+			<child name="Match_NR_ComboBox" key="{4222A53B-6E14-4DB1-9E4F-00E818AD8532}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_NR_ComboBox" ID="{4222A53B-6E14-4DB1-9E4F-00E818AD8532}" FileName="Objects\Match_NR_ComboBox.tcObject" Update="False" />
+			</child>
+			<child name="Match_MatchCodeInput" key="{AFA7D43F-81AA-4B8C-A584-1D534DCF9270}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_MatchCodeInput" ID="{AFA7D43F-81AA-4B8C-A584-1D534DCF9270}" FileName="Objects\Match_MatchCodeInput.tcObject" Update="False" />
+			</child>
+			<child name="Match_InputComboBox" key="{ABED9D3E-B756-4266-A6DB-1E36CA9F077F}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_InputComboBox" ID="{ABED9D3E-B756-4266-A6DB-1E36CA9F077F}" FileName="Objects\Match_InputComboBox.tcObject" Update="False" />
+			</child>
+			<child name="Match_ContentexpanderMatchCodeEvents" key="{6CA50972-A73D-413D-9305-76D218D41024}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_ContentexpanderMatchCodeEvents" ID="{6CA50972-A73D-413D-9305-76D218D41024}" FileName="Objects\Match_ContentexpanderMatchCodeEvents.tcObject" Update="False" />
+			</child>
+			<child name="Match_ContentexpanderMatchCodeData" key="{DBF7E6B1-4D15-4BC5-B9AF-3BE760AD5A2B}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_ContentexpanderMatchCodeData" ID="{DBF7E6B1-4D15-4BC5-B9AF-3BE760AD5A2B}" FileName="Objects\Match_ContentexpanderMatchCodeData.tcObject" Update="False" />
+			</child>
+			<child name="Match_HyperlinkExpectedContent" key="{E3399005-7686-431F-A621-4117648E9D26}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_HyperlinkExpectedContent" ID="{E3399005-7686-431F-A621-4117648E9D26}" FileName="Objects\Match_HyperlinkExpectedContent.tcObject" Update="False" />
+			</child>
+			<child name="Match_ExpContent_rtbText" key="{1D9E3044-9DFF-4823-B270-175B2A3B2C76}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_ExpContent_rtbText" ID="{1D9E3044-9DFF-4823-B270-175B2A3B2C76}" FileName="Objects\Match_ExpContent_rtbText.tcObject" Update="False" />
+			</child>
+			<child name="Match_ExpContent_listb" key="{8BB2E624-2A08-44D4-944C-88BF18D005D5}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_ExpContent_listb" ID="{8BB2E624-2A08-44D4-944C-88BF18D005D5}" FileName="Objects\Match_ExpContent_listb.tcObject" Update="False" />
+			</child>
+			<child name="Match_ExpContent_showChildWindowButton" key="{0792343F-587A-44D5-8EBF-98C616BD0A4F}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_ExpContent_showChildWindowButton" ID="{0792343F-587A-44D5-8EBF-98C616BD0A4F}" FileName="Objects\Match_ExpContent_showChildWindowButton.tcObject" Update="False" />
+			</child>
+			<child name="Match_ExpContent_Image" key="{426F59E4-F48C-45C3-B40E-73B846423546}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_ExpContent_Image" ID="{426F59E4-F48C-45C3-B40E-73B846423546}" FileName="Objects\Match_ExpContent_Image.tcObject" Update="False" />
+			</child>
+			<child name="Match_ButtonCaptureFromDecodedImage" key="{CCFDB328-6A96-4086-993D-A4340185946E}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_ButtonCaptureFromDecodedImage" ID="{CCFDB328-6A96-4086-993D-A4340185946E}" FileName="Objects\Match_ButtonCaptureFromDecodedImage.tcObject" Update="False" />
+			</child>
+			<child name="Match_HyperlinkWildcard" key="{A2671FFF-E69A-4D1E-94C9-B98F82AD6E7A}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_HyperlinkWildcard" ID="{A2671FFF-E69A-4D1E-94C9-B98F82AD6E7A}" FileName="Objects\Match_HyperlinkWildcard.tcObject" Update="False" />
+			</child>
+			<child name="Match_Wildcard_RangeTextBox" key="{3B528285-1BF4-4840-A39C-86B56D75B916}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_Wildcard_RangeTextBox" ID="{3B528285-1BF4-4840-A39C-86B56D75B916}" FileName="Objects\Match_Wildcard_RangeTextBox.tcObject" Update="False" />
+			</child>
+			<child name="Match_HyperlinkPlaceholder" key="{5C4AE77D-DE55-4BC8-8555-1038E1D3BF93}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_HyperlinkPlaceholder" ID="{5C4AE77D-DE55-4BC8-8555-1038E1D3BF93}" FileName="Objects\Match_HyperlinkPlaceholder.tcObject" Update="False" />
+			</child>
+			<child name="Match_Placehold_RangeTextBox" key="{38D105AF-C940-4ADD-A9CA-DBB5F1B32646}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_Placehold_RangeTextBox" ID="{38D105AF-C940-4ADD-A9CA-DBB5F1B32646}" FileName="Objects\Match_Placehold_RangeTextBox.tcObject" Update="False" />
+			</child>
+			<child name="Match_msg_MatchCode_CheckBox" key="{8E75AA0D-30FD-4839-AA2E-52CBD3846C18}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_msg_MatchCode_CheckBox" ID="{8E75AA0D-30FD-4839-AA2E-52CBD3846C18}" FileName="Objects\Match_msg_MatchCode_CheckBox.tcObject" Update="False" />
+			</child>
+			<child name="Match_msg_TextblockMatchCode" key="{6FBBF006-F96E-4BA8-BFE7-23964D7623CC}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_msg_TextblockMatchCode" ID="{6FBBF006-F96E-4BA8-BFE7-23964D7623CC}" FileName="Objects\Match_msg_TextblockMatchCode.tcObject" Update="False" />
+			</child>
+			<child name="Match_msg_NoMatch_CheckBox" key="{DA306803-9DB3-4FB1-A459-C2241256748E}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_msg_NoMatch_CheckBox" ID="{DA306803-9DB3-4FB1-A459-C2241256748E}" FileName="Objects\Match_msg_NoMatch_CheckBox.tcObject" Update="False" />
+			</child>
+			<child name="Match_msg_NoMatch_TextblockMatchCode" key="{781951DD-D51B-47A1-A5C4-8F6733248665}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_msg_NoMatch_TextblockMatchCode" ID="{781951DD-D51B-47A1-A5C4-8F6733248665}" FileName="Objects\Match_msg_NoMatch_TextblockMatchCode.tcObject" Update="False" />
+			</child>
+			<child name="Match_msg_NR_CheckBox" key="{8EF18E97-5849-443D-9E8A-98D6A0B4BB96}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_msg_NR_CheckBox" ID="{8EF18E97-5849-443D-9E8A-98D6A0B4BB96}" FileName="Objects\Match_msg_NR_CheckBox.tcObject" Update="False" />
+			</child>
+			<child name="Match_msg_NR_TextblockNoRead" key="{8E43624F-DC5B-476F-90F4-E5E41AB22F8B}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_msg_NR_TextblockNoRead" ID="{8E43624F-DC5B-476F-90F4-E5E41AB22F8B}" FileName="Objects\Match_msg_NR_TextblockNoRead.tcObject" Update="True" />
+			</child>
+			<child name="Match_msg_MatchCode_CheckBox_Unchecked" key="{70F02278-7B38-420B-9C0D-EEA51721AAC0}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_msg_MatchCode_CheckBox_Unchecked" ID="{70F02278-7B38-420B-9C0D-EEA51721AAC0}" FileName="Objects\Match_msg_MatchCode_CheckBox_Unchecked.tcObject" Update="False" />
+			</child>
+			<child name="Match_msg_NoMatch_CheckBox_Checked" key="{9A458E78-DF1F-4250-82F3-5F4E547901F8}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_msg_NoMatch_CheckBox_Checked" ID="{9A458E78-DF1F-4250-82F3-5F4E547901F8}" FileName="Objects\Match_msg_NoMatch_CheckBox_Checked.tcObject" Update="True" />
+			</child>
+			<child name="Match_msg_NR_CheckBox_Checked" key="{7EF543F6-6175-4A92-8F5D-A5D1FC2A3EC9}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Match_msg_NR_CheckBox_Checked" ID="{7EF543F6-6175-4A92-8F5D-A5D1FC2A3EC9}" FileName="Objects\Match_msg_NR_CheckBox_Checked.tcObject" Update="True" />
+			</child>
+		</folder>
+		<folder name="Window_SaveAs">
+			<child name="dlgSaveAs" key="{847EE409-0CDC-4E82-85A2-6535B9EA796C}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="dlgSaveAs" ID="{847EE409-0CDC-4E82-85A2-6535B9EA796C}" FileName="Objects\dlgSaveAs.tcObject" Update="False" />
+			</child>
+			<child name="dlgOpen" key="{ACE774F8-7055-4FE4-81D4-5A1D8D3B97B7}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="dlgOpen" ID="{ACE774F8-7055-4FE4-81D4-5A1D8D3B97B7}" FileName="Objects\dlgOpen.tcObject" Update="False" />
+			</child>
+		</folder>
+		<folder name="HMP Test Tool">
+			<child name="Form1" key="{32981FD7-1AF8-43BD-A5A3-4FB52EA27771}">
+				<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="Form1" ID="{32981FD7-1AF8-43BD-A5A3-4FB52EA27771}" FileName="Objects\Form1.tcObject" Update="False" />
+			</child>
+		</folder>
+		<child name="TextblockEnableProtection1" key="{594756BE-2363-488E-BAAF-233AB81ACB92}">
+			<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="TextblockEnableProtection1" ID="{594756BE-2363-488E-BAAF-233AB81ACB92}" FileName="Objects\TextblockEnableProtection1.tcObject" Update="False" />
+		</child>
+		<child name="IpAddressControl1" key="{BFCD585B-5888-4061-B982-937631FBAE9F}">
+			<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="IpAddressControl1" ID="{BFCD585B-5888-4061-B982-937631FBAE9F}" FileName="Objects\IpAddressControl1.tcObject" Update="False" />
+		</child>
+		<child name="CodeSetting" key="{0547BEA5-73A1-4EF3-A029-5EFF277262DE}">
+			<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="CodeSetting" ID="{0547BEA5-73A1-4EF3-A029-5EFF277262DE}" FileName="Objects\CodeSetting.tcObject" Update="False" />
+		</child>
+		<child name="IpAddressControl2" key="{895912D3-2DC3-43E6-9363-63FC3CEA1135}">
+			<data signature="{5EFCFFBB-0DF6-45A2-ADB2-4FD0BF2A280B}" version="14.0" caption="IpAddressControl2" ID="{895912D3-2DC3-43E6-9363-63FC3CEA1135}" FileName="Objects\IpAddressControl2.tcObject" Update="False" />
+		</child>
+	</children>
+</Root>

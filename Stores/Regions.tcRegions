@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{DA6D7EF7-5B05-4735-AAF0-A85E47D47989}" version="14.0">
+	<children>
+		<child name="playButton" key="{E1FB6696-0484-4ABD-A6E7-AC82C502394B}">
+			<data signature="{1FD256C1-604C-48A1-9990-9A9329139EC4}" version="14.0" caption="playButton" ID="{E1FB6696-0484-4ABD-A6E7-AC82C502394B}" FileName="Regions\playButton.bmp" Update="False" />
+		</child>
+		<child name="controlToolBar1" key="{A532EC50-984E-4288-AEE7-597C34948E25}">
+			<data signature="{1FD256C1-604C-48A1-9990-9A9329139EC4}" version="14.0" caption="controlToolBar1" ID="{A532EC50-984E-4288-AEE7-597C34948E25}" FileName="Regions\controlToolBar1.bmp" Update="False" />
+		</child>
+		<child name="pauseButton" key="{2CAFF8FA-EC78-4879-BBD4-CD5D70F04CD5}">
+			<data signature="{1FD256C1-604C-48A1-9990-9A9329139EC4}" version="14.0" caption="pauseButton" ID="{2CAFF8FA-EC78-4879-BBD4-CD5D70F04CD5}" FileName="Regions\pauseButton.bmp" Update="False" />
+		</child>
+	</children>
+</Root>
