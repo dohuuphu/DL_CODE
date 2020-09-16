@@ -25,6 +25,7 @@
 			<child name="Unit1" key="{7B948C7A-2CDE-4A58-AF51-DDE7CBE2D11C}" path="Unit1.sj" />
 			<child name="lib_DataFormatting" key="{5EABFA96-65E2-4267-9937-2361CEBBD047}" path="lib_DataFormatting.sj" />
 			<child name="string" key="{A4ED01D8-A49D-4B14-B733-7C545CC939F7}" path="string.sj" />
+			<child name="lib_CheckDefault" key="{C0CE8A60-D292-4253-AD68-6EAE60B2ECF9}" path="lib_CheckDefault.sj" />
 		</folder>
 		<folder name="StressTest">
 			<child name="StressTest" key="{A2D8B5FD-1133-4922-93EB-E4947FC5BB4E}" path="StressTest.sj" />

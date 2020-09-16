@@ -28,12 +28,13 @@ var  Separato_Str = "[BS]hello";
 var  Code_Str = "[BS]Code: ";
 var  NoRead_Str = "[BS]NOREAD";
 var  End_Str = "[BS]End";
-var  FillingParternbox_Str ="[BS]_";
+var  FillingPatternbox_Str ="[BS]_";
 var  Space_Str = "[BS] ";
 var  No_Str = "[BS]NO";
 var  Read_Str = "[BS]Read";
 var  Leading_Str = "[BS]3";
 var  Trailing_Str = "[BS]4";
+
 
 // String default value
 var  STX = "<STX>";
@@ -41,3 +42,9 @@ var  CR  = "<CR>";
 var  LF  = "<LF>";
 var  da = "data";
 var SerapatorDefault = ";";
+var FillingMode_default = "Variable Length";
+var Length_default = "20";          
+var FillingPattern_default = ":";
+var Justification_default = "Left Aligned";
+var FieldType_default = "Code Content";
+var CuttingType_default = "Simple";
