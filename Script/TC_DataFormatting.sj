@@ -34,18 +34,19 @@ function Filling_TC2(){
   CheckValue_HeaderTerminator();
   // Message 1
   //Message_format(Str_CollectionMode);
+  CheckValue_HeaderTerminator();
   Sellect_Mode(Mess1_tool);
-//  clickEdittool(1);
-//  Edit_CustomString(Str_Code );
+  clickEdittool(1);
+  Edit_CustomString(Str_Code );
 //  // Message 2
-//  Click_Mess2();
-//  Sellect_Mode(Mess2_tool);
-//  clickEdittool(1);
-//  Edit_CustomString(Str_No);
-//  clickEdittool(2);  
-//  Edit_CustomString(Str_Space);
-//  clickEdittool(3);
-//  Edit_CustomString(Str_Read);
+  Click_Mess2();
+  Sellect_Mode(Mess2_tool);
+  clickEdittool(1);
+  Edit_CustomString(Str_No);
+  clickEdittool(2);  
+  Edit_CustomString(Str_Space);
+  clickEdittool(3);
+  Edit_CustomString(Str_Read);
 }
 
 function Cutting_Simple_TC(){

@@ -5,6 +5,7 @@ function Filling_TC1(){
   var Mess2_tool=[Str_CustomFieldTool,Str_GlobalStatisticsTool,Str_CustomFieldTool];
   // Message 1
   //Message_format(Str_CollectionMode);
+   CheckValue_HeaderTerminator();
   Sellect_Mode(Mess1_tool);
   //DragEdit(2,1); // [act_place, new_place]
   
