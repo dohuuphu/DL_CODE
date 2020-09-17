@@ -4,42 +4,42 @@ var DLCode = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.
 var Dataformat = DLCode.WPFObject("Shell", "DL.CODE 1.9.0.60", 1).WPFObject("Border", "", 1).WPFObject("DockPanel", "", 1).WPFObject("Grid", "", 2).WPFObject("ContentPlaceholder").WPFObject("UserControl").WPFObject("LayoutRoot").WPFObject("Border", "", 3).WPFObject("Grid", "", 1).WPFObject("TabControl", "", 1).WPFObject("StackPanel", "", 1).WPFObject("Grid", "", 1).WPFObject("Border", "", 1).WPFObject("Grid", "", 1).WPFObject("ScrollViewer", "", 1).WPFObject("PropertiesPresenter").WPFObject("UserControl").WPFObject("Grid", "", 1).WPFObject("StackPanel", "", 1);
 
 // ********************************************* Message format ****************************************************** 
-function Message_format(stt) // Check Separator box and fill string 
-{
-  if (stt == "Collection"){
-    Check_Separator();
-//************ Find Separator *********
-//    var Separator_PropArr = ["WPFControlName", "Visible"];
-//    var Separator_ValArr = ["CollectionSeparatorParamControl" , true ];
-//    var Separator = Dataformat.FindChild(Separator_PropArr, Separator_ValArr, 2000); 
-//    // Find Separetor box
-//    var SeparatorBox_PropArr = ["WPFControlName", "Visible"];
-//    var SeparatorBox_ValArr = ["rtbText" , true ];
-//    var SeparatorBox = Separator.FindChild(SeparatorBox_PropArr, SeparatorBox_ValArr, 2000);
-//  
-//    if(SeparatorBox.Exists == true){
-//          Log.Message("fill Separator");
-//          SeparatorBox.DblClick();
-//          SeparatorBox.Keys(Separato_Str);
-//    }
-//    else
-//        Log.Message("Can't find Saparator box!!!");
-    //********************* Define Custom Field ************************
-//    Edit_CustomString(stt)
-//    Edit_FillingMode_CustomField(stt);  
-  }
-  else {
-    //********************* Define Custom Field ************************
-//          Edit_CustomString(stt)
-//          Edit_FillingMode_CustomField(stt);
-//          clickEdittool(2);  
-//          Edit_FillingMode_GlobalStatistic(stt);
-//          clickEdittool(3);
-//          Edit_CustomString("End");
-  }
-// Counting_Edit_CustomString = 0;
-
-}
+//function Message_format(stt) // Check Separator box and fill string 
+//{
+//  if (stt == "Collection"){
+//    Check_Separator();
+////************ Find Separator *********
+////    var Separator_PropArr = ["WPFControlName", "Visible"];
+////    var Separator_ValArr = ["CollectionSeparatorParamControl" , true ];
+////    var Separator = Dataformat.FindChild(Separator_PropArr, Separator_ValArr, 2000); 
+////    // Find Separetor box
+////    var SeparatorBox_PropArr = ["WPFControlName", "Visible"];
+////    var SeparatorBox_ValArr = ["rtbText" , true ];
+////    var SeparatorBox = Separator.FindChild(SeparatorBox_PropArr, SeparatorBox_ValArr, 2000);
+////  
+////    if(SeparatorBox.Exists == true){
+////          Log.Message("fill Separator");
+////          SeparatorBox.DblClick();
+////          SeparatorBox.Keys(Separato_Str);
+////    }
+////    else
+////        Log.Message("Can't find Saparator box!!!");
+//    //********************* Define Custom Field ************************
+////    Edit_CustomString(stt)
+////    Edit_FillingMode_CustomField(stt);  
+//  }
+//  else {
+//    //********************* Define Custom Field ************************
+////          Edit_CustomString(stt)
+////          Edit_FillingMode_CustomField(stt);
+////          clickEdittool(2);  
+////          Edit_FillingMode_GlobalStatistic(stt);
+////          clickEdittool(3);
+////          Edit_CustomString("End");
+//  }
+//// Counting_Edit_CustomString = 0;
+//
+//}
 
 function Check_Separator(){
   var output=0;
@@ -418,8 +418,9 @@ function Sellect_Mode(Select_arr){
 
 function Check_NumbToolEdit(){
   Sys.Process("DL.CODE").Refresh();
+  var FieldEditControl = DLCode.FindChild("WPFControlName","FieldEditingControl",200);
   var NumbToolEdit = aqObject.GetPropertyValue(FieldEditControl,"ChildCount");
-  //Log.Message("default tool number: " + NumbToolEdit);
+  Log.Message("default tool number: " + (NumbToolEdit-1));
   if(NumbToolEdit > 1)                                       // defaut exists 1child: AdornerLayer
   {
     initialization_FieldEditControl_Var(NumbToolEdit-1);
@@ -435,6 +436,12 @@ function Click_Mess2(){
   var OutputMessage = DLCode.FindChild("WPFControlName","AbstractTaskTreeControl",200);
   var Message2 = OutputMessage.WPFObject("TreeViewItem", "", 4).WPFObject("TreeViewItem", "", 2).WPFObject("TreeViewItem", "", 2);
   Message2.Click();
+  Counting_Edit_CustomString = 0;
+}
+function Click_Mess1(){
+  var OutputMessage = DLCode.FindChild("WPFControlName","AbstractTaskTreeControl",200);
+  var Message1 = OutputMessage.WPFObject("TreeViewItem", "", 4).WPFObject("TreeViewItem", "", 2).WPFObject("TreeViewItem", "", 1);
+  Message1.Click();
   Counting_Edit_CustomString = 0;
 }
 

@@ -143,6 +143,9 @@
 		<folder name="PHU_TEST">
 			<child name="Check_property_in_menubar" key="{6BB7BA57-C5E9-4FA8-B939-77A730175660}" path="Check_property_in_menubar.sj" />
 		</folder>
+		<folder name="NewFolder1">
+			<child name="lib_Auto_Setup" key="{42EFD61A-C87D-4C83-AEF6-9B0FC44A4B25}" path="lib_Auto_Setup.sj" />
+		</folder>
 		<child name="test" key="{72400113-7D99-42EB-9F97-CD971C8187E2}" path="test.sj" />
 		<child name="OnOverlappingWindow" key="{84EF08A6-42C4-4AD8-952E-1DF9C6807F5D}" path="OnOverlappingWindow.sj" />
 		<child name="test_input_string" key="{F8F545A9-CEAB-4A7A-ACD2-56305C4C9454}" path="test_input_string.sj" />
