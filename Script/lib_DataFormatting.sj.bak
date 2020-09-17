@@ -438,6 +438,12 @@ function Click_Mess2(){
   Message2.Click();
   Counting_Edit_CustomString = 0;
 }
+function Click_Mess1(){
+  var OutputMessage = DLCode.FindChild("WPFControlName","AbstractTaskTreeControl",200);
+  var Message1 = OutputMessage.WPFObject("TreeViewItem", "", 4).WPFObject("TreeViewItem", "", 2).WPFObject("TreeViewItem", "", 1);
+  Message1.Click();
+  Counting_Edit_CustomString = 0;
+}
 
 //**************************************** Field Edit Control ********************************************
 var Edit = [];

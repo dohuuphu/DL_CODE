@@ -238,19 +238,19 @@ TextCode = aqConvert.VarToStr(TextCode)
 //         Log.Message("Filling Pattern is" + aqString.GetLength(Pattern) + " character(s) long.");
       }
 
-Log.Message("Filling Pattern is "+Pattern )
-Log.Message("Filling Pattern is " + aqString.GetLength(Pattern) + " character(s) long.");
-Log.Message("CustomString is "+CustomString )
-Log.Message("CustomString is " + aqString.GetLength(CustomString) + " character(s) long.");
+//Log.Message("Filling Pattern is "+Pattern )
+//Log.Message("Filling Pattern is " + aqString.GetLength(Pattern) + " character(s) long.");
+//Log.Message("CustomString is "+CustomString )
+//Log.Message("CustomString is " + aqString.GetLength(CustomString) + " character(s) long.");
 CustomStringTextCode= CustomString + Pattern
-Log.Message("CustomStringTextCode is "+CustomStringTextCode )
+//Log.Message("CustomStringTextCode is "+CustomStringTextCode )
 CustomStringTextCode = aqString.GetLength(CustomStringTextCode)
-Log.Message("CustomStringTextCode is " + CustomStringTextCode + " character(s) long.");
-Log.Message(CustomStringTextCode)
+//Log.Message("CustomStringTextCode is " + CustomStringTextCode + " character(s) long.");
+//Log.Message(CustomStringTextCode)
 if (CustomStringTextCode == LengthNum)
-   Log.Message("Right!!!!!!" )
+   Log.Message("Output Format is ***CORRECT***!!!!!!" )
 else 
-Log.Message("Fail!!!!!!" )
+Log.Message("Output Format is ***NOT CORRECT***!!!!!!" )
 
 
 }

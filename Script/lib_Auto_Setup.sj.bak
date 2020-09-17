@@ -231,26 +231,26 @@ CustomStringLength = aqString.GetLength(FillingPattern)
 TextCode = aqConvert.VarToStr(TextCode)
  for (var i=0; i<TextCodeLength; i++)
      {
-      if (TextCode[i] == "*")
-         Pattern= Pattern + "*";
+      if (TextCode[i] == FillingPattern)
+         Pattern= Pattern + FillingPattern;
          Pattern2= FillingPattern
          //Log.Message("Filling Pattern is"+  Pattern )
 //         Log.Message("Filling Pattern is" + aqString.GetLength(Pattern) + " character(s) long.");
       }
 
-Log.Message("Filling Pattern is "+Pattern )
-Log.Message("Filling Pattern is " + aqString.GetLength(Pattern) + " character(s) long.");
-Log.Message("CustomString is "+CustomString )
-Log.Message("CustomString is " + aqString.GetLength(CustomString) + " character(s) long.");
-CustomStringTextCode= CustomString + Pattern
-Log.Message("CustomStringTextCode is "+CustomStringTextCode )
+//Log.Message("Filling Pattern is "+Pattern )
+//Log.Message("Filling Pattern is " + aqString.GetLength(Pattern) + " character(s) long.");
+//Log.Message("CustomString is "+CustomString )
+//Log.Message("CustomString is " + aqString.GetLength(CustomString) + " character(s) long.");
+//CustomStringTextCode= CustomString + Pattern
+//Log.Message("CustomStringTextCode is "+CustomStringTextCode )
 CustomStringTextCode = aqString.GetLength(CustomStringTextCode)
-Log.Message("CustomStringTextCode is " + CustomStringTextCode + " character(s) long.");
-Log.Message(CustomStringTextCode)
+//Log.Message("CustomStringTextCode is " + CustomStringTextCode + " character(s) long.");
+//Log.Message(CustomStringTextCode)
 if (CustomStringTextCode == LengthNum)
-   Log.Message("Right!!!!!!" )
+   Log.Message("Output Format is ***CORRECT***!!!!!!" )
 else 
-Log.Message("Fail!!!!!!" )
+Log.Message("Output Format is ***NOT CORRECT***!!!!!!" )
 
 
 }
