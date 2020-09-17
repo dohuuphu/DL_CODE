@@ -11,10 +11,10 @@ function Filling_TC1(){
   //DragEdit(2,1); // [act_place, new_place]
   
   clickEdittool(1);
+  Check_Default_CustomField(1);          // POSSITION :1
   Edit_CustomString(Str_Code );
-  Check_Default_FillingMode_Custom();
   Edit_FillingMode_CustomField();
-  Check_Default_FillingMode_Custom_Expand();
+  Check_Default_FillingMode_Custom_Expand(1);   // POSSITION :1
   Edit_FillingPattern_CustomField();
   Edit_FieldJustification_CustomField()
   
@@ -22,14 +22,17 @@ function Filling_TC1(){
  // Edit_CustomString(Str_Code );
  
   // Message 2
-//  Click_Mess2();
-//  Sellect_Mode((Mess2_tool))
-//  clickEdittool(1);
-//  Edit_CustomString(Str_Noread);
-//  clickEdittool(2);  
-//  Edit_FillingMode_GlobalStatistic();
-//  clickEdittool(3);
-//  Edit_CustomString(Str_End);
+  Click_Mess2();
+  Sellect_Mode((Mess2_tool))
+  clickEdittool(1);
+  Edit_CustomString(Str_Noread);
+  clickEdittool(2); 
+  Check_Default_GlobalStatisticsField(2);                // POSSITION :2
+  Edit_FillingMode_GlobalStatistic();
+  Check_Default_FillingMode_GlobalStatistics_Expand(2);  // POSSITION :2
+  Edit_FillingPattern_GlobalStatistic();
+  clickEdittool(3);
+  Edit_CustomString(Str_End);
 
 }
 
@@ -42,6 +45,7 @@ function Filling_TC2(){
   Check_Value_HeaderTerminator();
   Sellect_Mode(Mess1_tool);
   clickEdittool(1);
+  Check_Default_CustomField(1);          // POSSITION :1
   Edit_CustomString(Str_Code );
 //  // Message 2
   Click_Mess2();
@@ -83,5 +87,5 @@ function Cutting_Pattern_TC(){
 }
 
 function test(){
-  Edit_FillingMode_CodeRelated();
+  Check_Default_CustomField(1);
 }

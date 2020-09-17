@@ -76,18 +76,18 @@ function Check_Separator(){
 
 
 // *********************************************Lib Custom Field*****************************************************
-var Customfield_arr=[];
-function initializated_Customfield_arr(){
-  for(var y =1; y < Customfield_arr.length;y++)                  // Remove Element from Customfield_arr array            
+var EditToolField_arr=[];
+function initializated_EditToolField_arr(){
+  for(var y =1; y < EditToolField_arr.length;y++)                  // Remove Element from Customfield_arr array            
   {
-    Customfield_arr[y]= null;
+    EditToolField_arr[y]= null;
   } 
    
   for (var i=1; i<=10; i++)                                      // create 10 path for Customfield will be exist (can change whatever you want)
   {
-    Customfield_arr[i] = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", "+i+")",2000); 
+    EditToolField_arr[i] = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", "+i+")",2000); 
   }
-  //Log.Message("custonfile 1: "+Customfield_arr[1].FullName);
+  //Log.Message("custonfile 1: "+EditToolField_arr[1].FullName);
 }
 
 
@@ -106,8 +106,8 @@ function Setup_Customtool_place(){                     // arrange the arr
       pos++;
       
       place[pos]=Get_Customtool_place[y];
-      Log.Message("Get_Customtool_place= "+ Get_Customtool_place[y]);
-      Log.Message("Place arr "+ pos+"= " + place);
+      //Log.Message("Get_Customtool_place= "+ Get_Customtool_place[y]);
+      //Log.Message("Place arr "+ pos+"= " + place);
     }
   }
 }
@@ -116,12 +116,12 @@ var Counting_Edit_CustomString = 0;
 
 function Edit_CustomString(str){
   Counting_Edit_CustomString ++;                                              // count number EditCustomstring was called
-  Setup_Customtool_place() 
-  initializated_Customfield_arr()
-  Log.Message("Counting_Edit_CustomString= " + Counting_Edit_CustomString);
+  Setup_Customtool_place();
+  initializated_EditToolField_arr();
+  //Log.Message("Counting_Edit_CustomString= " + Counting_Edit_CustomString);
   var position = place[Counting_Edit_CustomString];
-  Log.Message("positon= " + position);
-  var CustomField = Customfield_arr[position] ;
+  //Log.Message("positon= " + position);
+  var CustomField = EditToolField_arr[position] ;
   //Log.Message(CustomField.FullName);
 
   var CustomStringbox = CustomField.FindChild("WPFControlName","rtbText", 2000);  // find CustomString box
@@ -217,16 +217,16 @@ function Edit_FillingMode_GlobalStatistic(){
   var FillingModebox = FillingMode.FindChild(FillingModebox_PropArr,FillingModebox_ValArr,2000);
   //Log.Message(FillingModebox.FullName);
   if(FillingModebox.Exists == true){
-    // CHECK FILLING MODE GlobalStatistic DEFAULT VALUE
-    var FillingMode_box = FillingModebox.Child(0);
-    var FillingMode_Val = aqObject.GetPropertyValue(FillingMode_box, "Text");
-    Log.Message(FillingMode_box.FullName);
-    if(FillingMode_Val == FillingMode_default) Log.Message("FILLING MODE GlobalStatistic DEFAULT VALUE IS ***CORRECT*** !!!!!!!!!");
-    else Log.Message("FILLING MODE GlobalStatistic DEFAULT VALUE IS ***NOT CORRECT*** !!!!!!!!!");
+//    // CHECK FILLING MODE GlobalStatistic DEFAULT VALUE
+//    var FillingMode_box = FillingModebox.Child(0);
+//    var FillingMode_Val = aqObject.GetPropertyValue(FillingMode_box, "Text");
+//    Log.Message(FillingMode_box.FullName);
+//    if(FillingMode_Val == FillingMode_default) Log.Message("FILLING MODE GlobalStatistic DEFAULT VALUE IS ***CORRECT*** !!!!!!!!!");
+//    else Log.Message("FILLING MODE GlobalStatistic DEFAULT VALUE IS ***NOT CORRECT*** !!!!!!!!!");
     
     Log.Message("Filling mode is changing...");
     FillingModebox.ClickItem(1); // change to Fixed length
-    Edit_FillingPattern_GlobalStatistic();
+    
     
   }
   else
@@ -241,16 +241,16 @@ function Edit_FillingPattern_GlobalStatistic(){
   var FillingPatternbox_ValArr = ["rtbText" , true ];
   var FillingPatternbox = FillingPattern.FindChild(FillingPatternbox_PropArr, FillingPatternbox_ValArr, 2000);
   if(FillingPattern.Exists == true){
-    // CHECK LENGTH DEFAULT VALUE
-    var Length_box = GlobalStatistic.FindChild("ClrFullClassName","Microsoft.Windows.Controls.WatermarkTextBox",200);
-    var Length_val = aqObject.GetPropertyValue(Length_box, "Text");
-    if(Length_val == Length_default) Log.Message("LENGTH DEFAULT VALUE IS ***CORRECT*** !!!!!!!!!");
-    else Log.Message("LENGTH DEFAULT VALUE IS ***NOT CORRECT*** !!!!!!!!!");
-    // CHECK FILLING PATTERN DEFAULT VALUE
-    var Pattern = FillingPatternbox.FindChild("ClrFullClassName", "System.Windows.Documents.Run", 200);
-    var Pattern_Val = aqObject.GetPropertyValue(Pattern, "Text");
-    if(Pattern_Val == FillingPattern_default) Log.Message("FILLING PATTERN DEFAULT VALUE IS ***CORRECT*** !!!!!!!!!");
-    else Log.Message("FILLING PATTERN DEFAULT VALUE IS ***NOT CORRECT*** !!!!!!!!!");
+//    // CHECK LENGTH DEFAULT VALUE
+//    var Length_box = GlobalStatistic.FindChild("ClrFullClassName","Microsoft.Windows.Controls.WatermarkTextBox",200);
+//    var Length_val = aqObject.GetPropertyValue(Length_box, "Text");
+//    if(Length_val == Length_default) Log.Message("LENGTH DEFAULT VALUE IS ***CORRECT*** !!!!!!!!!");
+//    else Log.Message("LENGTH DEFAULT VALUE IS ***NOT CORRECT*** !!!!!!!!!");
+//    // CHECK FILLING PATTERN DEFAULT VALUE
+//    var Pattern = FillingPatternbox.FindChild("ClrFullClassName", "System.Windows.Documents.Run", 200);
+//    var Pattern_Val = aqObject.GetPropertyValue(Pattern, "Text");
+//    if(Pattern_Val == FillingPattern_default) Log.Message("FILLING PATTERN DEFAULT VALUE IS ***CORRECT*** !!!!!!!!!");
+//    else Log.Message("FILLING PATTERN DEFAULT VALUE IS ***NOT CORRECT*** !!!!!!!!!");
     
     Log.Message("Filling pattern");
     FillingPatternbox.DblClick();
@@ -411,7 +411,7 @@ function Sellect_Mode(Select_arr){
     if(Select_arr[i] == "DiagnosticsTool") {DiagnosticsTool.Click(); count++;}
   }
   //count= Custom_count+count;
-  Log.Message("new tool number: " + count);
+  //Log.Message("new tool number: " + count);
   initialization_FieldEditControl_Var(count);
   
 }
@@ -419,7 +419,7 @@ function Sellect_Mode(Select_arr){
 function Check_NumbToolEdit(){
   Sys.Process("DL.CODE").Refresh();
   var NumbToolEdit = aqObject.GetPropertyValue(FieldEditControl,"ChildCount");
-  Log.Message("default tool number: " + NumbToolEdit);
+  //Log.Message("default tool number: " + NumbToolEdit);
   if(NumbToolEdit > 1)                                       // defaut exists 1child: AdornerLayer
   {
     initialization_FieldEditControl_Var(NumbToolEdit-1);
