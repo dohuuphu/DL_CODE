@@ -1,7 +1,13 @@
 ﻿function Test6()
 {
-  //Clicks the 'MSTaskListWClass' object.
-  Aliases.explorer.wndShell_TrayWnd.ReBarWindow32.MSTaskSwWClass.MSTaskListWClass.Click(381, 78);
-  //Clicks the 'ComboBox' object.
-  Aliases.DL_CODE.HwndSource_Shell25.Shell.DockPanel.Grid.Border.TabControl.Grid.Border.ItemsControl.ComboBox.Click(404, 27);
+  var DLCode = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60");
+ var dataformat = Sys.Process("DL.CODE").FindChild("ClrFullClassName", "System.Windows.Controls.DockPanel", 2000);  
+ //var dataformat = dataformat.FindChild("Name", "WPFObject(\"Grid\", \"\", 2)", 2000);
+ //var dataformat = dataformat.FindChild("Name", "WPFObject(\"Border\", \"\", 3)", 2000);
+ //var dataformat = dataformat.FindChild("Name", "WPFObject(\"TabControl\", \"\", 1)", 2000);
+ var a = ["Name","ClrFullClassName" ];
+ var b = ["WPFObject(\"UserControl\")", "IVS_UI.Views.PropertyViews.OutputMessagePropertiesView"];
+  dataformat =dataformat.FindChild(a, b, 2000);
+ 
+ Log.Message(dataformat.FullName);
 }

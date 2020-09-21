@@ -1,9 +1,14 @@
 ﻿//USEUNIT string
+//USEUNIT lib_deviceInfo
 var Dataformat,DLCode;
 var FieldEditControl;
 function Initization_DLcode(){
- DLCode = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60");
- Dataformat = DLCode.WPFObject("Shell", "DL.CODE 1.9.0.60", 1).WPFObject("Border", "", 1).WPFObject("DockPanel", "", 1).WPFObject("Grid", "", 2).WPFObject("ContentPlaceholder").WPFObject("UserControl").WPFObject("LayoutRoot").WPFObject("Border", "", 3).WPFObject("Grid", "", 1).WPFObject("TabControl", "", 1).WPFObject("StackPanel", "", 1).WPFObject("Grid", "", 1).WPFObject("Border", "", 1).WPFObject("Grid", "", 1).WPFObject("ScrollViewer", "", 1).WPFObject("PropertiesPresenter").WPFObject("UserControl").WPFObject("Grid", "", 1).WPFObject("StackPanel", "", 1);
+ DLCode = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", const_firmware);
+// Dataformat = DLCode.WPFObject("Shell", "DL.CODE 1.9.0.60", 1).WPFObject("Border", "", 1).WPFObject("DockPanel", "", 1).WPFObject("Grid", "", 2).WPFObject("ContentPlaceholder").WPFObject("UserControl").WPFObject("LayoutRoot").WPFObject("Border", "", 3).WPFObject("Grid", "", 1).WPFObject("TabControl", "", 1).WPFObject("StackPanel", "", 1).WPFObject("Grid", "", 1).WPFObject("Border", "", 1).WPFObject("Grid", "", 1).WPFObject("ScrollViewer", "", 1).WPFObject("PropertiesPresenter").WPFObject("UserControl").WPFObject("Grid", "", 1).WPFObject("StackPanel", "", 1);
+ var a = ["Name","ClrFullClassName" ];
+ var b = ["WPFObject(\"UserControl\")", "IVS_UI.Views.PropertyViews.OutputMessagePropertiesView"];
+ Dataformat =DLCode.FindChild(a, b, 2000).Child(0).WPFObject("StackPanel", "", 1);
+ Log.Message(Dataformat.FullName);
  var FieldEditControl = DLCode.FindChild("WPFControlName","FieldEditingControl",200);
 
 }
@@ -48,35 +53,20 @@ function Initization_DLcode(){
 
 function Check_Separator(){
   var output=0;
-  var Separator_PropArr = ["WPFControlName", "Visible"];
-    var Separator_ValArr = ["CollectionSeparatorParamControl" , true ];
-    var Separator = Dataformat.FindChild(Separator_PropArr, Separator_ValArr, 2000); 
-    // Find Separetor box
-    var SeparatorBox_PropArr = ["WPFControlName", "Visible"];
-    var SeparatorBox_ValArr = ["rtbText" , true ];
-    var SeparatorBox = Separator.FindChild(SeparatorBox_PropArr, SeparatorBox_ValArr, 2000);
-  
-    if(SeparatorBox.Visible == true){
-          Log.Message("Separator is Exist");
-          //Check default value
-          var prop = ["ClrFullClassName","WPFControlText"];
-          var val  = ["System.Windows.Documents.Run", SerapatorDefault];
-          var SeparatorText = SeparatorBox.FindChild(prop, val, 200);
-          var SeparatorVal = aqObject.GetPropertyValue(SeparatorText,"Text");
-          if (SeparatorVal == SerapatorDefault)
-          {
-            Log.Message(" Separator DEFAULT VALUE IS ***CORRECT*** !!!!!!!!!");
-          }
-          else Log.Message(" Separator DEFAULT VALUE IS ***NOT CORRECT ***!!!!!!!!!");
-          // Edit Separator 
-          SeparatorBox.DblClick();
-          SeparatorBox.Keys(Separato_Str);
-          output = 1;
-    }
-    else
-        Log.Message("Can't find Saparator box!!!");
+  var Separator = Dataformat.FindChild("WPFControlName", "CollectionSeparatorParamControl", 2000);  
+  if(Separator.Exists == true){
+    if(Separator.Visible == true){
+      var SeparatorBox = Separator.FindChild("WPFControlName", "rtbText", 2000);
+      var SeparatorVal= Separator.FindChild("ClrFullClassName", "System.Windows.Documents.Paragraph", 2000).Child(0);
+      aqObject.CheckProperty(SeparatorVal,"Text", cmpEqual, SerapatorDefault);
+      // Edit Separator 
+      SeparatorBox.DblClick();
+      SeparatorBox.Keys(Separato_Str);
+      output = 1;
+     }
+  }
     return output;              // return 0: Separator box does NOT Exist
-                                //        1: Separator box does Exist
+                               //        1: Separator box does Exist
 }
 
 
@@ -98,40 +88,40 @@ function initializated_EditToolField_arr(){
 
 
 // ************************************ setup Customtool_place **********************************
-var place=[];
-function Setup_Customtool_place(){                     // arrange the arr
-  var pos=0;
-  for(var i =0; i < place.length;i++)                  // Remove Element from Place array            
-  {
-    place[i]= null;
-  } 
-  for(var y =0; y < Get_Customtool_place.length; y++ )
-  {
-    if(Get_Customtool_place[y]!= null){     
-      pos++;
-      
-      place[pos]=Get_Customtool_place[y];
-      //Log.Message("Get_Customtool_place= "+ Get_Customtool_place[y]);
-      //Log.Message("Place arr "+ pos+"= " + place);
-    }
-  }
-}
+//var place=[];
+//function Setup_Customtool_place(){                     // arrange the arr
+//  var pos=0;
+//  for(var i =0; i < place.length;i++)                  // Remove Element from Place array            
+//  {
+//    place[i]= null;
+//  } 
+//  for(var y =0; y < Get_Customtool_place.length; y++ )
+//  {
+//    if(Get_Customtool_place[y]!= null){     
+//      pos++;
+//      
+//      place[pos]=Get_Customtool_place[y];
+//      //Log.Message("Get_Customtool_place= "+ Get_Customtool_place[y]);
+//      //Log.Message("Place arr "+ pos+"= " + place);
+//    }
+//  }
+//}
 //************ Find Custom Field *********
 var Counting_Edit_CustomString = 0;
 
-function Edit_CustomString(str){
-  Counting_Edit_CustomString ++;                                              // count number EditCustomstring was called
-  Setup_Customtool_place();
+function Edit_CustomString(pos,str){
+  //Counting_Edit_CustomString ++;                                              // count number EditCustomstring was called
+  //Setup_Customtool_place();
   initializated_EditToolField_arr();
-  //Log.Message("Counting_Edit_CustomString= " + Counting_Edit_CustomString);
-  var position = place[Counting_Edit_CustomString];
+ // Log.Message("Counting_Edit_CustomString= " + Counting_Edit_CustomString);
+  //var position = place[Counting_Edit_CustomString];
   //Log.Message("positon= " + position);
-  var CustomField = EditToolField_arr[position] ;
+  var CustomField = EditToolField_arr[pos] ;
   //Log.Message(CustomField.FullName);
 
   var CustomStringbox = CustomField.FindChild("WPFControlName","rtbText", 2000);  // find CustomString box
   if(CustomStringbox.Exists == true){
-     Log.Message("Fill CustomString");
+     //Log.Message("Fill CustomString");
      CustomStringbox.DblClick();
      if (str == "Code:") CustomStringbox.Keys(Code_Str);
      if (str == "NoRead") CustomStringbox.Keys(NoRead_Str);
@@ -147,14 +137,16 @@ function Edit_CustomString(str){
 }
 
 //************ Edit Filling Mode *********   
-function Edit_FillingMode_CustomField(stt){
-  var CustomField = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
+function Edit_FillingMode_CustomField(pos){
+  initializated_EditToolField_arr();
+  var CustomField = EditToolField_arr[pos];
+  //var CustomField = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
   var FillingMode_PropArr = ["Name", "ChildCount"];
   var FillingMode_ValArr = ["WPFObject(\"ComboBox\", \"\", 1)" , "1" ];    
   var FillingMode = CustomField.FindChild(FillingMode_PropArr,FillingMode_ValArr,2000);
 
   if(FillingMode.Exists == true){
-    Log.Message("Filling mode is changing...");
+    //Log.Message("Filling mode is changing...");
     FillingMode.ClickItem(1); // change to Fixed length
     //Edit_FillingPattern_CustomField();
 //    if(stt == "Right Aligned")
@@ -164,15 +156,17 @@ function Edit_FillingMode_CustomField(stt){
       Log.Message("Can't change to Fixed length");
 }
 //************ Edit Filling Pattern *********
-function Edit_FillingPattern_CustomField(){  
-  var CustomField = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
+function Edit_FillingPattern_CustomField(pos){  
+  initializated_EditToolField_arr();
+  var CustomField = EditToolField_arr[pos];
+//  var CustomField = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
   var FillingPattern = CustomField.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",2);
   var FillingPatternbox_PropArr = ["WPFControlName", "Visible"];
   var FillingPatternbox_ValArr = ["rtbText" , true ];
   var FillingPatternbox = FillingPattern.FindChild(FillingPatternbox_PropArr, FillingPatternbox_ValArr, 2000);
 
   if(FillingPattern.Exists == true){
-    Log.Message("Edit Filling pattern");
+    //Log.Message("Edit Filling pattern");
     FillingPatternbox.DblClick();
     FillingPatternbox.Keys(FillingPatternbox_Str);
     }
@@ -180,26 +174,27 @@ function Edit_FillingPattern_CustomField(){
     Log.Message("Can't find FillingPattern Box");
 }
 //************ Edit Field Justification *********
-function Edit_FieldJustification_CustomField(){  
-  //if (stt == "Success"){
-      var CustomField = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
-      var FieldJustification = CustomField.FindChild("Name","WPFObject(\"ParamControl\", \"\", 4)",200);
-      var FieldJustificationbox = FieldJustification.FindChild("Name","WPFObject(\"ComboBox\", \"\", 1)",200);
-      if(FieldJustificationbox.Exists == true){   
-        Log.Message("Field Justificationbox is changing to Right Aligned");
-        FieldJustificationbox.ClickItem(1); // change to Right Aligned
-       }
-        else Log.Message("Can't find FieldJustification Box");
-        
-    //}
+function Edit_FieldJustification_CustomField(pos){  
+  initializated_EditToolField_arr();
+  var CustomField = EditToolField_arr[pos];
+ // var CustomField = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
+  var FieldJustification = CustomField.FindChild("Name","WPFObject(\"ParamControl\", \"\", 4)",200);
+  var FieldJustificationbox = FieldJustification.FindChild("Name","WPFObject(\"ComboBox\", \"\", 1)",200);
+  if(FieldJustificationbox.Exists == true){   
+    //Log.Message("Field Justificationbox is changing to Right Aligned");
+    FieldJustificationbox.ClickItem(1); // change to Right Aligned
+    }
+    else Log.Message("Can't find FieldJustification Box");
 }
 
 
 
 // *********************************************Global Statistics Field*****************************************************
 
-function Edit_FillingMode_GlobalStatistic(){
-  var GlobalStatistic = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 2)",2000); 
+function Edit_FillingMode_GlobalStatistic(pos){
+  initializated_EditToolField_arr();
+  var GlobalStatistic = EditToolField_arr[pos];
+  //var GlobalStatistic = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 2)",2000); 
   var FillingMode = GlobalStatistic.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",3);
   var FillingModebox_PropArr = ["Name", "ChildCount"];
   var FillingModebox_ValArr = ["WPFObject(\"ComboBox\", \"\", 1)" , "1" ];    
@@ -214,8 +209,10 @@ function Edit_FillingMode_GlobalStatistic(){
 }
 
 //************ Edit Filling Pattern *********
-function Edit_FillingPattern_GlobalStatistic(){  
-  var GlobalStatistic = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 2)",2000); 
+function Edit_FillingPattern_GlobalStatistic(pos){  
+  initializated_EditToolField_arr();
+  var GlobalStatistic = EditToolField_arr[pos];
+  //var GlobalStatistic = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 2)",2000); 
   var FillingPattern = GlobalStatistic.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",2);
   var FillingPatternbox_PropArr = ["WPFControlName", "Visible"];
   var FillingPatternbox_ValArr = ["rtbText" , true ];
@@ -231,15 +228,16 @@ function Edit_FillingPattern_GlobalStatistic(){
 
 //************ Edit Field Justification *********
 function Edit_FieldJustification_GlobalStatistic(stt){  
- // if (stt == "Success"){
-      var GlobalStatistic = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 2)",2000); 
-      var FieldJustification = GlobalStatistic.FindChild("Name","WPFObject(\"ParamControl\", \"\", 4)",200);
-      var FieldJustificationbox = FieldJustification.FindChild("Name","WPFObject(\"ComboBox\", \"\", 1)",200);
-      if(FieldJustificationbox.Exists == true){
-        Log.Message("Field Justificationbox is changing to Right Aligned");
-        FieldJustificationbox.ClickItem(1); // change to Right Aligned
-        }
-    //}
+  initializated_EditToolField_arr();
+  var GlobalStatistic = EditToolField_arr[pos];
+ // var GlobalStatistic = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 2)",2000); 
+  var FieldJustification = GlobalStatistic.FindChild("Name","WPFObject(\"ParamControl\", \"\", 4)",200);
+  var FieldJustificationbox = FieldJustification.FindChild("Name","WPFObject(\"ComboBox\", \"\", 1)",200);
+  if(FieldJustificationbox.Exists == true){
+    Log.Message("Field Justificationbox is changing to Right Aligned");
+    FieldJustificationbox.ClickItem(1); // change to Right Aligned
+  }
+
 }
 
 // ********************************************* Code Related Field *****************************************************
@@ -336,13 +334,14 @@ var Get_Customtool_place = [];
 function Sellect_Mode(Select_arr){
   Check_NumbToolEdit();
   count = 0;
-  for(var y =0; y < Get_Customtool_place.length; y++)                  // Remove Element from Get_Customtool_place array            
-  {
-    Get_Customtool_place[y]= null;
-  } 
+//  for(var y =0; y < Get_Customtool_place.length; y++)                  // Remove Element from Get_Customtool_place array            
+//  {
+//    Get_Customtool_place[y]= null;
+//  } 
  // Custom_count = 0;
   //var Custom_count = 0;
   var Separato_Exist = Check_Separator();
+  //Log.Message("asd "+Separato_Exist);
   var ControlToolBar = DLCode.FindChild("WPFControlName","controlToolBar",200);
   
   if(Separato_Exist == 1) 
@@ -374,8 +373,8 @@ function Sellect_Mode(Select_arr){
     if(Select_arr[i] == "CustomFieldTool") {
       CustomFieldTool.Click(); 
       count++;
-      var sample = count;
-      Get_Customtool_place[sample] = sample;
+//      var sample = count;
+//      Get_Customtool_place[sample] = sample;
     }
     if(Select_arr[i] == "DiagnosticsTool") {DiagnosticsTool.Click(); count++;}
   }
@@ -389,7 +388,7 @@ function Check_NumbToolEdit(){
   Sys.Process("DL.CODE").Refresh();
   var FieldEditControl = DLCode.FindChild("WPFControlName","FieldEditingControl",200);
   var NumbToolEdit = aqObject.GetPropertyValue(FieldEditControl,"ChildCount");
-  Log.Message("default tool number: " + (NumbToolEdit-1));
+  //Log.Message("default tool number: " + (NumbToolEdit-1));
   if(NumbToolEdit > 1)                                       // defaut exists 1child: AdornerLayer
   {
     initialization_FieldEditControl_Var(NumbToolEdit-1);
@@ -419,6 +418,7 @@ var Edit = [];
 //var FieldEditControl = DLCode.FindChild("WPFControlName","FieldEditingControl",200);
 
 function initialization_FieldEditControl_Var(Num_item){
+  var FieldEditControl = DLCode.FindChild("WPFControlName","FieldEditingControl",200);
   for(var y =1; y <= Edit.length;y++)                  // Remove Element from array            
   {
     Edit[i]= null;
