@@ -1,7 +1,12 @@
 ﻿//USEUNIT string
+var Dataformat,DLCode;
+var FieldEditControl;
+function Initization_DLcode(){
+ DLCode = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60");
+ Dataformat = DLCode.WPFObject("Shell", "DL.CODE 1.9.0.60", 1).WPFObject("Border", "", 1).WPFObject("DockPanel", "", 1).WPFObject("Grid", "", 2).WPFObject("ContentPlaceholder").WPFObject("UserControl").WPFObject("LayoutRoot").WPFObject("Border", "", 3).WPFObject("Grid", "", 1).WPFObject("TabControl", "", 1).WPFObject("StackPanel", "", 1).WPFObject("Grid", "", 1).WPFObject("Border", "", 1).WPFObject("Grid", "", 1).WPFObject("ScrollViewer", "", 1).WPFObject("PropertiesPresenter").WPFObject("UserControl").WPFObject("Grid", "", 1).WPFObject("StackPanel", "", 1);
+ var FieldEditControl = DLCode.FindChild("WPFControlName","FieldEditingControl",200);
 
-var DLCode = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60");
-var Dataformat = DLCode.WPFObject("Shell", "DL.CODE 1.9.0.60", 1).WPFObject("Border", "", 1).WPFObject("DockPanel", "", 1).WPFObject("Grid", "", 2).WPFObject("ContentPlaceholder").WPFObject("UserControl").WPFObject("LayoutRoot").WPFObject("Border", "", 3).WPFObject("Grid", "", 1).WPFObject("TabControl", "", 1).WPFObject("StackPanel", "", 1).WPFObject("Grid", "", 1).WPFObject("Border", "", 1).WPFObject("Grid", "", 1).WPFObject("ScrollViewer", "", 1).WPFObject("PropertiesPresenter").WPFObject("UserControl").WPFObject("Grid", "", 1).WPFObject("StackPanel", "", 1);
+}
 
 // ********************************************* Message format ****************************************************** 
 //function Message_format(stt) // Check Separator box and fill string 
@@ -411,9 +416,10 @@ function Click_Mess1(){
 
 //**************************************** Field Edit Control ********************************************
 var Edit = [];
-var FieldEditControl = DLCode.FindChild("WPFControlName","FieldEditingControl",200);
+//var FieldEditControl = DLCode.FindChild("WPFControlName","FieldEditingControl",200);
 
 function initialization_FieldEditControl_Var(Num_item){
+  var FieldEditControl = DLCode.FindChild("WPFControlName","FieldEditingControl",200);
   for(var y =1; y <= Edit.length;y++)                  // Remove Element from array            
   {
     Edit[i]= null;

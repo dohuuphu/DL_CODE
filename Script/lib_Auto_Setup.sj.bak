@@ -36,7 +36,7 @@ function clickDataFortmating_Collection()
   FormattingObj = Sys.Process("DL.CODE").FindChild(arrPro, arrVal, 1000);
   FormattingObj = FormattingObj.Parent;
   FormattingObj.Click();
-
+Initization_DLcode();
 
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,6 +87,7 @@ var ChildCount = path.ChildCount;
   FormattingObj = Sys.Process("DL.CODE").FindChild(arrPro, arrVal, 1000);
   FormattingObj = FormattingObj.Parent;
   FormattingObj.Click();
+ 
 
 }
 
@@ -242,7 +243,7 @@ TextCode = aqConvert.VarToStr(TextCode)
 //Log.Message("Filling Pattern is " + aqString.GetLength(Pattern) + " character(s) long.");
 //Log.Message("CustomString is "+CustomString )
 //Log.Message("CustomString is " + aqString.GetLength(CustomString) + " character(s) long.");
-//CustomStringTextCode= CustomString + Pattern
+CustomStringTextCode= CustomString + Pattern
 //Log.Message("CustomStringTextCode is "+CustomStringTextCode )
 CustomStringTextCode = aqString.GetLength(CustomStringTextCode)
 //Log.Message("CustomStringTextCode is " + CustomStringTextCode + " character(s) long.");

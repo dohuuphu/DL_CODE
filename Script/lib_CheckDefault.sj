@@ -4,7 +4,9 @@
 
 // ************* Check Header Terminator************
 function Check_Value_HeaderTerminator(){
+  Dataformat.Refresh();
   var Header = Dataformat.WPFObject("ParamControl", "", 2);
+  
   var HeaderBox = Header.FindChild("WPFControlText","<STX>" ,200);
   var HeaderVal = aqObject.GetPropertyValue(HeaderBox,"Text");
   if (HeaderVal == STX)

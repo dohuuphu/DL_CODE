@@ -4,7 +4,9 @@
 
 // ************* Check Header Terminator************
 function Check_Value_HeaderTerminator(){
+  Sys.Process("DL.CODE").Refresh();
   var Header = Dataformat.WPFObject("ParamControl", "", 2);
+  
   var HeaderBox = Header.FindChild("WPFControlText","<STX>" ,200);
   var HeaderVal = aqObject.GetPropertyValue(HeaderBox,"Text");
   if (HeaderVal == STX)
@@ -37,7 +39,6 @@ function Check_Default_CustomField(pos){           // Full
   // CHECK CUSTOM STRING DEFAULT VALUE
   var CustomString = CustomField.FindChild("Name","WPFObject(\"ContentControl\", \"\", 1)",4);
   var CustomString_box = CustomString.FindChild("ClrFullClassName","System.Windows.Documents.InlineUIContainer",20).Child(0);
-  Log.Message(CustomString_box.FullName);
   var CustomString_Val = aqObject.GetPropertyValue(CustomString_box, "Text");
   if(CustomString_Val == CustomString_CustomField_default) Log.Message("CUSTOM STRING CustomField DEFAULT VALUE IS ***CORRECT*** !!!!!!!!!");
   else Log.Message("CUSTOM STRING CustomField DEFAULT VALUE IS ***NOT CORRECT*** !!!!!!!!!");

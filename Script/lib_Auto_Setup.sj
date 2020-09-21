@@ -36,7 +36,7 @@ function clickDataFortmating_Collection()
   FormattingObj = Sys.Process("DL.CODE").FindChild(arrPro, arrVal, 1000);
   FormattingObj = FormattingObj.Parent;
   FormattingObj.Click();
-
+  Initization_DLcode();
 
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,6 +87,7 @@ var ChildCount = path.ChildCount;
   FormattingObj = Sys.Process("DL.CODE").FindChild(arrPro, arrVal, 1000);
   FormattingObj = FormattingObj.Parent;
   FormattingObj.Click();
+  Initization_DLcode();
 
 }
 
