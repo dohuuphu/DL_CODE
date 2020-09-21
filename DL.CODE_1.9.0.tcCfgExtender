@@ -204,7 +204,7 @@
 					<Node name="9">
 						<Node name="editor">
 							<Node name="{fdf3932b-fcdb-4512-87e9-fa5e5d91def4}">
-								<Prp name="key" type="S" value="{1399463F-6B82-4219-9C8D-5672BBF073AD}"/>
+								<Prp name="key" type="S" value="{D8D71F83-2FED-4DDD-93C4-9F0C3EB4C807}"/>
 							</Node>
 							<Prp name="editor" type="S" value="{4256A99E-2067-4980-AAE6-2BB4ED77B26F}"/>
 							<Prp name="focused" type="S" value="{1399463F-6B82-4219-9C8D-5672BBF073AD}"/>
@@ -3337,6 +3337,36 @@
 						<Prp name="top" type="I" value="0"/>
 					</Node>
 					<Node name="{d47c132a-b777-48d5-b91a-09911debc983}">
+						<Node name="0">
+							<Prp name="bottom" type="I" value="5"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="0"/>
+						</Node>
+						<Node name="1">
+							<Prp name="bottom" type="I" value="80"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="6"/>
+						</Node>
+						<Node name="2">
+							<Prp name="bottom" type="I" value="109"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="82"/>
+						</Node>
+						<Node name="3">
+							<Prp name="bottom" type="I" value="186"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="111"/>
+						</Node>
+						<Node name="4">
+							<Prp name="bottom" type="I" value="229"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="188"/>
+						</Node>
+						<Node name="5">
+							<Prp name="bottom" type="I" value="241"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="230"/>
+						</Node>
 						<Prp name="bottom" type="I" value="241"/>
 						<Prp name="collapsed" type="B" value="0"/>
 						<Prp name="top" type="I" value="0"/>
@@ -3723,7 +3753,14 @@
 								<Node name="lib_common"/>
 								<Node name="lib_config"/>
 								<Node name="lib_feature"/>
-								<Node name="lib_testcase"/>
+								<Node name="lib_testcase">
+									<Node name="gettingstarted">
+										<Node name="gui">
+											<Node name="menubar"/>
+										</Node>
+									</Node>
+								</Node>
+								<Node name="m320andother"/>
 								<Node name="newfolder1"/>
 								<Node name="other feature"/>
 								<Node name="phu_test"/>

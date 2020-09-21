@@ -8,7 +8,6 @@ function Initization_DLcode(){
  var a = ["Name","ClrFullClassName" ];
  var b = ["WPFObject(\"UserControl\")", "IVS_UI.Views.PropertyViews.OutputMessagePropertiesView"];
  Dataformat =DLCode.FindChild(a, b, 2000).Child(0).WPFObject("StackPanel", "", 1);
- Log.Message(Dataformat.FullName);
  var FieldEditControl = DLCode.FindChild("WPFControlName","FieldEditingControl",200);
 
 }
@@ -78,7 +77,7 @@ function initializated_EditToolField_arr(){
     EditToolField_arr[y]= null;
   } 
    
-  for (var i=1; i<=10; i++)                                      // create 10 path for Customfield will be exist (can change whatever you want)
+  for (var i=1; i<= count; i++)                                      // create 10 path for Customfield will be exist (can change whatever you want)
   {
     EditToolField_arr[i] = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", "+i+")",2000); 
   }
@@ -201,7 +200,7 @@ function Edit_FillingMode_GlobalStatistic(pos){
   var FillingModebox = FillingMode.FindChild(FillingModebox_PropArr,FillingModebox_ValArr,2000);
   //Log.Message(FillingModebox.FullName);
   if(FillingModebox.Exists == true){ 
-    Log.Message("Filling mode is changing...");
+    //Log.Message("Filling mode is changing...");
     FillingModebox.ClickItem(1); // change to Fixed length 
   }
   else
@@ -218,7 +217,7 @@ function Edit_FillingPattern_GlobalStatistic(pos){
   var FillingPatternbox_ValArr = ["rtbText" , true ];
   var FillingPatternbox = FillingPattern.FindChild(FillingPatternbox_PropArr, FillingPatternbox_ValArr, 2000);
   if(FillingPattern.Exists == true){    
-    Log.Message("Filling pattern");
+    //Log.Message("Filling pattern");
     FillingPatternbox.DblClick();
     FillingPatternbox.Keys(FillingPatternbox_Str);
     }
