@@ -151,8 +151,6 @@ function Edit_FillingPattern_CustomField(pos,Str){
   initializated_EditToolField_arr();
   var CustomField = EditToolField_arr[pos];
 //  var CustomField = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000);
-  
-
   if(CustomField.Exists == true){
     //Log.Message("Edit Filling pattern");
     var FillingPattern = CustomField.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",2);
@@ -169,8 +167,7 @@ function Edit_FillingPattern_CustomField(pos,Str){
 function Edit_FieldJustification_CustomField(pos){  
   initializated_EditToolField_arr();
   var CustomField = EditToolField_arr[pos];
- // var CustomField = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
-  
+ // var CustomField = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000);  
   if(CustomField.Exists == true){   
     //Log.Message("Field Justificationbox is changing to Right Aligned");
     var FieldJustification = CustomField.FindChild("Name","WPFObject(\"ParamControl\", \"\", 4)",200);
@@ -183,13 +180,10 @@ function Edit_FieldJustification_CustomField(pos){
 
 
 // *********************************************Global Statistics Field*****************************************************
-
 function Edit_FillingMode_GlobalStatistic(pos){
   initializated_EditToolField_arr();
   var GlobalStatistic = EditToolField_arr[pos];
   //var GlobalStatistic = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 2)",2000); 
-  
-  //Log.Message(FillingModebox.FullName);
   if(GlobalStatistic.Exists == true){ 
     //Log.Message("Filling mode is changing...");
     var FillingMode = GlobalStatistic.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",3);
@@ -207,7 +201,6 @@ function Edit_FillingPattern_GlobalStatistic(pos,Str){
   initializated_EditToolField_arr();
   var GlobalStatistic = EditToolField_arr[pos];
   //var GlobalStatistic = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 2)",2000); 
- 
   if(GlobalStatistic.Exists == true){    
     //Log.Message("Filling pattern");
     var FillingPattern = GlobalStatistic.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",2);
@@ -387,7 +380,7 @@ function Check_NumbToolEdit(){
   Sys.Process("DL.CODE").Refresh();
   var FieldEditControl = DLCode.FindChild("WPFControlName","FieldEditingControl",200);
   var NumbToolEdit = aqObject.GetPropertyValue(FieldEditControl,"ChildCount");
-  //Log.Message("default tool number: " + (NumbToolEdit-1));
+  Log.Message("default tool number: " + (NumbToolEdit-1));
   if(NumbToolEdit > 1)                                       // defaut exists 1child: AdornerLayer
   {
     initialization_FieldEditControl_Var(NumbToolEdit-1);

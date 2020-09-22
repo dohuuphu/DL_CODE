@@ -155,20 +155,16 @@ function Click_PlayButton(){
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+ 
 function Compare_Code()
 {
-//PropTextCode = new Array("ClrFullClassName");
-//ValuesTextCode = new Array("System.Windows.Controls.TextBlock");
-//var TextCode = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60").WPFObject("Shell", "DL.CODE 1.9.0.60", 1).WPFObject("Border", "", 1).WPFObject("DockPanel", "", 1).WPFObject("Grid", "", 2).WPFObject("ContentPlaceholder").WPFObject("UserControl").WPFObject("LayoutRoot").WPFObject("CentralBorder").WPFObject("Grid", "", 1).WPFObject("BottomBorder").WPFObject("BottomTabControl").WPFObject("Terminal", "", 1).WPFObject("MainScrollViewer").FindChild(PropTextCode, ValuesTextCode, 1000)
- var arrPro = ["ClrFullClassName" , "WPFControlText"];
-      var arrVal = ["System.Windows.Controls.TabItem", "Console"];
-      var consoleTab  = Sys.Process("DL.CODE").FindChild(arrPro, arrVal, 2000) ; 
-      Log.Message(consoleTab.FullName);  
-      if (consoleTab.Exists)
+    var arrPro = ["ClrFullClassName" , "WPFControlText"];
+    var arrVal = ["System.Windows.Controls.TabItem", "Console"];
+    var consoleTab  = Sys.Process("DL.CODE").FindChild(arrPro, arrVal, 2000) ;  
+    if (consoleTab.Exists)
       {
         if (consoleTab.IsSelected == false)
-             Click_Console();
+             TC_DataFormatting.Click_Console();
         if (consoleTab.IsSelected == true)
         {
              var itemControlPro = ["ClrFullClassName"];  
@@ -179,7 +175,7 @@ function Compare_Code()
                { 
                  var ChildCount = itemControlObj.childCount;
                  ChildCount = aqConvert.VarToStr(ChildCount)
-                 Log.Message("ChildCount is "+ChildCount);
+                 Log.Message("ChildCount is "+ ChildCount);
   //                       var ProContentPresenter = ["Name"];
   //                       var ValContentPresenter = ["WPFObject(\"ContentPresenter\", \"\","+ChildCount+")"];
                  var ProContentPresenter = ["ClrFullClassName","WPFControlOrdinalNo"];
@@ -197,28 +193,162 @@ function Compare_Code()
                        Log.Message(TextBlockCode.FullName)
                        Log.Message(TextBlockCode.Text)
                      }
-                      else Log.Message("noooo1"); 
-                     
                   }
-                   else Log.Message("noooo2"); 
-                } 
-                 else Log.Message("noooo3"); 
-          }  
-            else Log.Message("noooo4");     
-      }
-    
-
+              } 
+        }       
+    }
 
              //Get Data Was Set In DataFormatting
-//Get Header
-Header= Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60").WPFObject("Shell", "DL.CODE 1.9.0.60", 1).WPFObject("Border", "", 1).WPFObject("DockPanel", "", 1).WPFObject("Grid", "", 2).WPFObject("ContentPlaceholder").WPFObject("UserControl").WPFObject("LayoutRoot").WPFObject("Border", "", 3).WPFObject("Grid", "", 1).WPFObject("TabControl", "", 1).WPFObject("StackPanel", "", 1).WPFObject("Grid", "", 1).WPFObject("Border", "", 1).WPFObject("Grid", "", 1).WPFObject("ScrollViewer", "", 1).WPFObject("PropertiesPresenter").WPFObject("UserControl").WPFObject("Grid", "", 1).WPFObject("StackPanel", "", 1).WPFObject("ParamControl", "", 2).WPFObject("Grid", "", 1).WPFObject("ContentControl", "", 1).WPFObject("ContentControl", "", 1).WPFObject("AsciiTable", "", 1).WPFObject("Grid", "", 1).WPFObject("rtbText").WPFObject("FlowDocument", "", 1).WPFObject("Paragraph", "", 1).WPFObject("InlineUIContainer", "", 1).WPFObject("TextBlock", "<STX>", 1)
 
-//Get Data CustomString
-var CustomString = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60").WPFObject("Shell", "DL.CODE 1.9.0.60", 1).WPFObject("Border", "", 1).WPFObject("DockPanel", "", 1).WPFObject("Grid", "", 2).WPFObject("ContentPlaceholder").WPFObject("UserControl").WPFObject("LayoutRoot").WPFObject("Border", "", 3).WPFObject("Grid", "", 1).WPFObject("TabControl", "", 1).WPFObject("StackPanel", "", 1).WPFObject("Grid", "", 1).WPFObject("Border", "", 1).WPFObject("Grid", "", 1).WPFObject("ScrollViewer", "", 1).WPFObject("PropertiesPresenter").WPFObject("UserControl").WPFObject("Grid", "", 1).WPFObject("StackPanel", "", 1).WPFObject("ItemsControl", "", 1).WPFObject("ContentPresenter", "", 1).WPFObject("ContentExpander", "", 1).WPFObject("test").WPFObject("ContentControl", "", 1).WPFObject("StackPanel", "", 1).WPFObject("ParamControl", "", 1).WPFObject("Grid", "", 1).WPFObject("ContentControl", "", 1).WPFObject("ContentControl", "", 1).WPFObject("AsciiTable", "", 1).WPFObject("Grid", "", 1).WPFObject("rtbText").WPFObject("FlowDocument", "", 1).WPFObject("Paragraph", "", 1)
-//Get Data LengthNum
-var LengthNum = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60").WPFObject("Shell", "DL.CODE 1.9.0.60", 1).WPFObject("Border", "", 1).WPFObject("DockPanel", "", 1).WPFObject("Grid", "", 2).WPFObject("ContentPlaceholder").WPFObject("UserControl").WPFObject("LayoutRoot").WPFObject("Border", "", 3).WPFObject("Grid", "", 1).WPFObject("TabControl", "", 1).WPFObject("StackPanel", "", 1).WPFObject("Grid", "", 1).WPFObject("Border", "", 1).WPFObject("Grid", "", 1).WPFObject("ScrollViewer", "", 1).WPFObject("PropertiesPresenter").WPFObject("UserControl").WPFObject("Grid", "", 1).WPFObject("StackPanel", "", 1).WPFObject("ItemsControl", "", 1).WPFObject("ContentPresenter", "", 1).WPFObject("ContentExpander", "", 1).WPFObject("test").WPFObject("StackPanel", "", 1).WPFObject("ParamControl", "", 2).WPFObject("Grid", "", 1).WPFObject("ContentControl", "", 1).WPFObject("ContentControl", "", 1).WPFObject("ExplicitUpdateIntegerUpDown", "", 1).WPFObject("Spinner").WPFObject("TextBox")
-//Get Data FillingPattern
-var FillingPattern = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60").WPFObject("Shell", "DL.CODE 1.9.0.60", 1).WPFObject("Border", "", 1).WPFObject("DockPanel", "", 1).WPFObject("Grid", "", 2).WPFObject("ContentPlaceholder").WPFObject("UserControl").WPFObject("LayoutRoot").WPFObject("Border", "", 3).WPFObject("Grid", "", 1).WPFObject("TabControl", "", 1).WPFObject("StackPanel", "", 1).WPFObject("Grid", "", 1).WPFObject("Border", "", 1).WPFObject("Grid", "", 1).WPFObject("ScrollViewer", "", 1).WPFObject("PropertiesPresenter").WPFObject("UserControl").WPFObject("Grid", "", 1).WPFObject("StackPanel", "", 1).WPFObject("ItemsControl", "", 1).WPFObject("ContentPresenter", "", 1).WPFObject("ContentExpander", "", 1).WPFObject("test").WPFObject("StackPanel", "", 1).WPFObject("ParamControl", "", 3).WPFObject("Grid", "", 1).WPFObject("ContentControl", "", 1).WPFObject("ContentControl", "", 1).WPFObject("AsciiTable", "", 1).WPFObject("Grid", "", 1).WPFObject("rtbText").WPFObject("FlowDocument", "", 1).WPFObject("Paragraph", "", 1)
+var ProHeaderC1 = ["ClrFullClassName"];
+var ValHeaderC1 = ["IVS_UI.Views.PropertyViews.OutputMessagePropertiesView"];
+var HeaderC1 = Sys.Process("DL.CODE").FindChild(ProHeaderC1, ValHeaderC1, 2000);
+if (HeaderC1.Exists)
+{
+  //Log.Message(HeaderC1.FullName)
+var ProHeaderC2 = ["ClrFullClassName"];
+var ValHeaderC2 = ["System.Windows.Controls.StackPanel"];
+var HeaderC2 = HeaderC1.FindChild(ProHeaderC2, ValHeaderC2, 2000);
+if (HeaderC2.Exists)
+{
+//Log.Message(HeaderC2.FullName)
+  var ProHeaderC3 = ["ClrFullClassName","WPFControlOrdinalNo"];
+  var ValHeaderC3 = ["IVSControls.Controls.PropertyViewControls.ParamControl",2];
+  var HeaderC3 = HeaderC2.FindChild(ProHeaderC3, ValHeaderC3, 2000);
+  if (HeaderC3.Exists)
+  {
+    //Log.Message(HeaderC3.FullName)
+    var ProHeaderC4 = ["ClrFullClassName"];
+    var ValHeaderC4 = ["IVSControls.Controls.NonterminalSymbol.AsciiTable"];
+    var HeaderC4 = HeaderC3.FindChild(ProHeaderC4, ValHeaderC4, 2000);
+      if (HeaderC4.Exists)
+    {
+      //Log.Message(HeaderC4.FullName)
+      var ProHeaderC5 = ["ClrFullClassName"];
+      var ValHeaderC5 = ["System.Windows.Documents.FlowDocument"];
+      var HeaderC5 = HeaderC4.FindChild(ProHeaderC5, ValHeaderC5, 2000);
+      if (HeaderC5.Exists)
+      {
+        Log.Message(HeaderC5.FullName)
+        var ProHeader = ["ClrFullClassName"];
+        var ValHeader = ["System.Windows.Controls.TextBlock"];
+        var Header = HeaderC5.FindChild(ProHeader, ValHeader, 2000);
+        if (Header.Exists)
+        {
+          Log.Message(Header.FullName)
+          Log.Message(Header.Text)
+                
+        }
+      }
+    }
+  }
+      
+}
+}
+
+    var ProItemsControl = ["ClrFullClassName","ScrollViewer_VerticalScrollBarVisibility"];
+    var ValItemsControl = ["System.Windows.Controls.ItemsControl","Disabled"];
+    var ItemsControl = Sys.Process("DL.CODE").FindChild(ProItemsControl, ValItemsControl, 2000);
+    if (ItemsControl.Exists)
+    {
+        //Log.Message(ItemsControl.FullName)
+        var ProContentControl = ["ClrFullClassName","WPFControlOrdinalNo"];
+        var ValContentControl = ["System.Windows.Controls.ContentControl",1];
+        var ContentControl = ItemsControl.FindChild(ProContentControl, ValContentControl, 2000);
+        if (ContentControl.Exists)
+        {
+          //Log.Message(ContentControl.FullName)
+          var ProParagraph = ["ClrFullClassName"];
+          var ValParagraph = ["System.Windows.Documents.Paragraph"];
+          var CustomString = ContentControl.FindChild(ProParagraph, ValParagraph, 2000);
+          if (CustomString.Exists)
+          {
+            Log.Message(CustomString.FullName)
+            Log.Message(CustomString.WPFControlText)
+      
+          }
+      
+        }
+      
+    }
+
+    var ProItemsControl = ["ClrFullClassName","ScrollViewer_VerticalScrollBarVisibility"];
+    var ValItemsControl = ["System.Windows.Controls.ItemsControl","Disabled"];
+    var ItemsControl = Sys.Process("DL.CODE").FindChild(ProItemsControl, ValItemsControl, 2000);
+    if (ItemsControl.Exists)
+    {
+      //Log.Message(ItemsControl.FullName)
+      //Log.Message("ContentControl "+ContentControl.FullName)
+      var ProStackPanel = ["ClrFullClassName"];
+      var ValStackPanel = ["System.Windows.Controls.StackPanel"];
+      var StackPanel = ItemsControl.FindChild(ProStackPanel, ValStackPanel, 2000);
+      if (StackPanel.Exists)
+      {
+        Log.Message("StackPanel "+StackPanel.FullName)
+        var ProParamControl = ["ClrFullClassName","WPFControlOrdinalNo"];
+        var ValParamControl = ["IVSControls.Controls.PropertyViewControls.ParamControl",2];
+        var ParamControl = StackPanel.FindChild(ProParamControl, ValParamControl, 2000);
+        if (ParamControl.Exists)
+        {
+          Log.Message("ParamControl "+ParamControl.FullName)
+          var ProContentControl = ["ClrFullClassName"];
+          var ValContentControl = ["System.Windows.Controls.ContentControl"];
+          var ContentControl = ParamControl.FindChild(ProContentControl, ValContentControl, 2000);
+            if (ContentControl.Exists)
+            {
+              Log.Message("ContentControl "+ContentControl.FullName)
+              var ProWatermarkTextBox = ["ClrFullClassName"];
+              var ValWatermarkTextBox = ["Microsoft.Windows.Controls.WatermarkTextBox"];
+              var LengthNum = ContentControl.FindChild(ProWatermarkTextBox, ValWatermarkTextBox, 2000);
+                if (LengthNum.Exists)
+              {
+                Log.Message("LengthNum "+LengthNum.FullName)
+                Log.Message(LengthNum.Text)
+      
+              }     
+            }
+        }
+      }
+    }
+
+    var ProItemsControl = ["ClrFullClassName","ScrollViewer_VerticalScrollBarVisibility"];
+    var ValItemsControl = ["System.Windows.Controls.ItemsControl","Disabled"];
+    var ItemsControl = Sys.Process("DL.CODE").FindChild(ProItemsControl, ValItemsControl, 2000);
+    if (ItemsControl.Exists)
+    {
+      //Log.Message(ItemsControl.FullName)
+      //Log.Message("ContentControl "+ContentControl.FullName)
+      var ProStackPanel = ["ClrFullClassName"];
+      var ValStackPanel = ["System.Windows.Controls.StackPanel"];
+      var StackPanel = ItemsControl.FindChild(ProStackPanel, ValStackPanel, 2000);
+      if (StackPanel.Exists)
+      {
+        Log.Message("StackPanel "+StackPanel.FullName)
+        var ProParamControl = ["ClrFullClassName","WPFControlOrdinalNo"];
+        var ValParamControl = ["IVSControls.Controls.PropertyViewControls.ParamControl",3];
+        var ParamControl = StackPanel.FindChild(ProParamControl, ValParamControl, 2000);
+        if (ParamControl.Exists)
+        {
+          Log.Message("ParamControl "+ParamControl.FullName)
+          var ProContentControl = ["ClrFullClassName"];
+          var ValContentControl = ["System.Windows.Controls.ContentControl"];
+          var ContentControl = ParamControl.FindChild(ProContentControl, ValContentControl, 2000);
+            if (ContentControl.Exists)
+            {
+              Log.Message("ContentControl "+ContentControl.FullName)
+              var ProParagraph = ["ClrFullClassName"];
+              var ValParagraph = ["System.Windows.Documents.Paragraph"];
+              var FillingPattern = ContentControl.FindChild(ProParagraph, ValParagraph, 2000);
+                if (FillingPattern.Exists)
+              {
+                Log.Message(FillingPattern.FullName)
+                Log.Message(FillingPattern.WPFControlText)
+      
+              }    
+            }
+        }
+      }
+    }
 
 
 
@@ -254,23 +384,11 @@ Log.Message("The FillingPattern is " + aqString.GetLength(FillingPattern) + " ch
 
 
 TextBlockCode =TextBlockCode.Text
-Log.Message("The TextBlockCode is"+  TextBlockCode.FullName);
+Log.Message("The TextBlockCode is"+  TextBlockCode);
 //Log.Message("The TextBlockCode 1 is"+  TextBlockCode[1]);
 
 Log.Message("The TextBlockCode is "+ aqString.GetLength(TextBlockCode) + " character(s) long.");
-//ReadCode=31666249588376;
-//Log.Message("The Code is " + aqString.GetLength(ReadCode) + " character(s) long.");
-//Log.Message(ReadCode); 
 
-
-//if (TextBlockCode.Exists )
-//  {    //Log.Message("fgdkjfhdj :"+St2.IsFocused);
-//       TextBlockCode.Click();
-//     Log.Message(TextBlockCode.Text);
-//  } var TextBlockCode ="<STX>CODE****************31666249588376";//get from Device
-//var TextOnlyCode ="CODE****************";//get from Device
-//var CustomString = "CODE" //get from Device
-//var FillingPattern="*";//get from Device
 var Pattern="";
 TextBlockCodeLength = aqString.GetLength(TextBlockCode)
 //Log.Message(TextBlockCode)
@@ -309,7 +427,7 @@ var FieldJustificationDefaul = "Left Aligned"
 var FieldJustificationDefaulR = "Right Aligned"
 PropLeftRight = new Array("ClrFullClassName","WPFControlText");
 ValuesLeftRight = new Array("System.Windows.Controls.TextBlock","Left Aligned");
-var FieldJustification = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60").FindChild(PropLeftRight, ValuesLeftRight, 1000)
+var FieldJustification = Sys.Process("DL.CODE").FindChild(PropLeftRight, ValuesLeftRight, 1000)
 //TextBlockCode.Click(); 
   if (FieldJustification.Exists== true)
     {
@@ -348,7 +466,7 @@ var FieldJustification = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "
   {
          PropLeftRight = new Array("ClrFullClassName","WPFControlText");
          ValuesLeftRight = new Array("System.Windows.Controls.TextBlock","Right Aligned");
-         var FieldJustificationR = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60").FindChild(PropLeftRight, ValuesLeftRight, 1000)
+         var FieldJustificationR = Sys.Process("DL.CODE").FindChild(PropLeftRight, ValuesLeftRight, 1000)
          FieldJustificationR= FieldJustificationR.WPFControlText
          FieldJustificationR = aqConvert.VarToStr(FieldJustificationR)
          Log.Message("FieldJustification " + FieldJustificationR)
@@ -383,7 +501,6 @@ var FieldJustification = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "
 }
 
 
- 
 
 
 
