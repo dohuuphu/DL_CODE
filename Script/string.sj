@@ -10,28 +10,30 @@ var  Str_CustomFieldTool = "CustomFieldTool";
 var  Str_DiagnosticsTool = "DiagnosticsTool";
 var  Str_CollectionMode = "Collection";
 var  Str_CombinationMode = "Combination";
+var  Str_RightAligned = "Right";
+var  Str_LeftAligned = "Left";
 var Cutting_Simple = 0;
 var Cutting_Pattern = 1;
 var Cutting_Generic = 2;
 
 //
-var  Str_Code = "Code:";
+var  Str_Code = "Code: ";
 var  Str_Noread = "NoRead";
 var  Str_End = "End";
 var  Str_Right_Align = "Right Aligned";
-var  Str_Space = "Space";
+var  Str_Space = " ";
 var  Str_No = "No";
 var  Str_Read = "Read";
 
-// input box tex
+// input box text
 var  Separato_Str = "[BS]hello";
 var  Code_Str = "[BS]Code: ";
-var  NoRead_Str = "[BS]NOREAD";
+var  NoRead_Str = "[BS]NoRead";
 var  End_Str = "[BS]End";
 var  FillingPattern_Str ="[BS]_";
-var  FillingPattern_dot_Str ="[BS]_";
+var  FillingPattern_dot_Str ="[BS].";
 var  Space_Str = "[BS] ";
-var  No_Str = "[BS]NO";
+var  No_Str = "[BS]No";
 var  Read_Str = "[BS]Read";
 var  Leading_Str = "[BS]3";
 var  Trailing_Str = "[BS]4";

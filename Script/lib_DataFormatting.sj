@@ -1,6 +1,7 @@
 ﻿//USEUNIT string
 //USEUNIT lib_deviceInfo
-var Dataformat,DLCode;
+var Dataformat;
+var DLCode=Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", const_firmware);
 var FieldEditControl;
 function Initization_DLcode(){
  DLCode = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", const_firmware);
@@ -116,18 +117,22 @@ function Edit_CustomString(pos,str){
   //var position = place[Counting_Edit_CustomString];
   //Log.Message("positon= " + position);
   var CustomField = EditToolField_arr[pos] ; 
+  var Input_val="";
   if(CustomField.Exists == true){
      var CustomStringbox = CustomField.FindChild("WPFControlName","rtbText", 2000);  // find CustomString box
      CustomStringbox.DblClick();
-     if (str == "Code:") CustomStringbox.Keys(Code_Str);
-     if (str == "NoRead") CustomStringbox.Keys(NoRead_Str);
-     if (str == "End") CustomStringbox.Keys(End_Str);
-     if (str == "Space") CustomStringbox.Keys(Space_Str);
-     if (str == "No") CustomStringbox.Keys(No_Str);
-     if (str == "Read") CustomStringbox.Keys(Read_Str);
+     if (str == Str_Code) {CustomStringbox.Keys(Code_Str); Input_val=Str_Code;}
+     if (str == Str_Noread) {CustomStringbox.Keys(NoRead_Str); Input_val=Str_Noread;}
+     if (str == Str_End) {CustomStringbox.Keys(End_Str); Input_val=Str_End;}
+     if (str == Str_Space) {CustomStringbox.Keys(Space_Str); Input_val=Str_Space;}
+     if (str == Str_No) {CustomStringbox.Keys(No_Str); Input_val=Str_No;}
+     if (str == Str_Read) {CustomStringbox.Keys(Read_Str); Input_val=Str_Read;}
   }
   else
       Log.Error("Can't find CustomField");
+  ////Check input value
+  var CustomString_Val = CustomStringbox.FindChild("Name","WPFObject(\"Paragraph\", \"\", 1)",4);
+  aqObject.CheckProperty(CustomString_Val,"WPFControlText", cmpEqual, Input_val);
 
   
 }
@@ -162,9 +167,16 @@ function Edit_FillingPattern_CustomField(pos,Str){
     }
   else
     Log.Error("Can't find CustomField");
+  //Check input value
+  var FillingPattern_Val = FillingPatternbox.FindChild("Name","WPFObject(\"Paragraph\", \"\", 1)",4);
+  var lenght = aqString.GetLength(FillingPattern_Val.WPFControlText);
+  var Input_Val = Str.slice(4,4+lenght);
+  //Log.Message("dasdgajghfd: " + Input_Val);
+  aqObject.CheckProperty(FillingPattern_Val,"WPFControlText", cmpEqual, Input_Val);
+  
 }
 //************ Edit Field Justification *********
-function Edit_FieldJustification_CustomField(pos){  
+function Edit_FieldJustification_CustomField(pos,stt){  
   initializated_EditToolField_arr();
   var CustomField = EditToolField_arr[pos];
  // var CustomField = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000);  
@@ -172,7 +184,8 @@ function Edit_FieldJustification_CustomField(pos){
     //Log.Message("Field Justificationbox is changing to Right Aligned");
     var FieldJustification = CustomField.FindChild("Name","WPFObject(\"ParamControl\", \"\", 4)",200);
     var FieldJustificationbox = FieldJustification.FindChild("Name","WPFObject(\"ComboBox\", \"\", 1)",200);
-    FieldJustificationbox.ClickItem(1); // change to Right Aligned
+    if(stt == "Right") FieldJustificationbox.ClickItem(1); // change to Right Aligned
+    if(stt == "Left") FieldJustificationbox.ClickItem(0); // change to Right Aligned
     }
     else Log.Error("Can't find CustomField");
 }
@@ -231,43 +244,25 @@ function Edit_FieldJustification_GlobalStatistic(stt){
 }
 
 // ********************************************* Code Related Field *****************************************************
-function Edit_FillingMode_CodeRelated(stt){ //stt
+function Edit_FillingMode_CodeRelated(pos){ //stt
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+  //var CodeRelated = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000);
+  if(CodeRelated.Exists == true){
+    var FillingMode = CodeRelated.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",3);
+    var FillingModebox_PropArr = ["Name", "ChildCount"];
+    var FillingModebox_ValArr = ["WPFObject(\"ComboBox\", \"\", 1)" , "1" ];    
+    var FillingModebox = FillingMode.FindChild(FillingModebox_PropArr,FillingModebox_ValArr,2000);
+    FillingModebox.ClickItem(1); // change to Fixed length  
+  }
+  else
+      Log.Error("Can't find Code_Related");
+}
+
+function Edit_FillingPattern_CodeRelated(pos,Str){  
   initializated_EditToolField_arr();
   var CodeRelated = EditToolField_arr[pos];
   //var CodeRelated = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
-  var FillingMode = CodeRelated.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",3);
-  var FillingModebox_PropArr = ["Name", "ChildCount"];
-  var FillingModebox_ValArr = ["WPFObject(\"ComboBox\", \"\", 1)" , "1" ];    
-  var FillingModebox = FillingMode.FindChild(FillingModebox_PropArr,FillingModebox_ValArr,2000);
-  
-  // CHECK FIELD TYPE DEFAULT VALUE
-  var FieldType = CodeRelated.FindChild("Name","WPFObject(\"ContentControl\", \"\", 1)",6);
-  var FieldType_Prop_arr = ["ClrFullClassName","WPFControlText"];
-  var FieldType_Val_arr  =["System.Windows.Controls.TextBlock","Code Content"];
-  var FieldType_box = FieldType.FindChild(FieldType_Prop_arr,FieldType_Val_arr,200);
- // Log.Message(FieldType.FullName);
-  var FieldType_Val = aqObject.GetPropertyValue(FieldType_box, "Text");
-  if(FieldType_Val == FieldType_default) Log.Message("FIELD TYPE DEFAULT VALUE IS ***CORRECT*** !!!!!!!!!");
-  else Log.Message("FIELD TYPE DEFAULT VALUE IS ***NOT CORRECT*** !!!!!!!!!");
- // CHECK FILLING MODE DEFAULT VALUE
-  var FillingMode_check = FillingModebox.Child(0);
-  var FillingMode_Val = aqObject.GetPropertyValue(FillingMode_check, "Text");
-  if(FillingMode_Val == FillingMode_default) Log.Message("FILLING MODE CODE DEFAULT VALUE IS ***CORRECT*** !!!!!!!!!");
-  else Log.Message("FILLING MODE DEFAULT VALUE IS ***NOT CORRECT*** !!!!!!!!!");
- 
-  
-  if(FillingModebox.Exists == true){
-    Log.Message("Filling mode is changing...");
-    FillingModebox.ClickItem(1); // change to Fixed length
-    Edit_FillingPattern_CodeRelated(stt);
-    
-  }
-  else
-      Log.Message("Can't change to Fixed length");
-}
-
-function Edit_FillingPattern_CodeRelated(stt){  
-  var CodeRelated = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
   var FillingPattern = CodeRelated.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",2);
   var FillingPatternbox_PropArr = ["WPFControlName", "Visible"];
   var FillingPatternbox_ValArr = ["rtbText" , true ];
@@ -275,22 +270,24 @@ function Edit_FillingPattern_CodeRelated(stt){
   if(FillingPattern.Exists == true){
     Log.Message("Filling pattern");
     FillingPatternbox.DblClick();
-    FillingPatternbox.Keys(FillingPatternbox_Str);
-    if(stt == 0 ){                                //Cutting_Simple mode
-      Change_CuttingPattern(stt);
-      Remove();     
-    }
-    if(stt == 1 ){                                //Cutting_Pattern mode
-      Change_CuttingPattern(stt);
-          
-    }
+    FillingPatternbox.Keys(Str);
+//    if(stt == 0 ){                                //Cutting_Simple mode
+//      Change_CuttingPattern(pos,stt);
+//      Remove();     
+//    }
+//    if(stt == 1 ){                                //Cutting_Pattern mode
+//      Change_CuttingPattern(pos,stt);
+//          
+//    }
     }
   else
     Log.Message("Can't find FillingPattern Box");
 }
 
-function Remove(){
-  var CodeRelated = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
+function Remove_Lead_Trail(pos){
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+  //var CodeRelated = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
   var CuttingPattern_Field = CodeRelated.WPFObject("ContentExpander", "", 1).WPFObject("test").WPFObject("ContentControl", "", 2);
   var Remove_Leading = CuttingPattern_Field.FindChild("Name","WPFObject(\ParamControl\", \"\", 1)",200); 
   var Leading_box = Remove_Leading.FindChild("WPFControlName","TextBox",200); 
@@ -305,7 +302,9 @@ function Remove(){
   Trailing_box.Keys(Trailing_Str);
 }
 
-function Change_CuttingPattern(numb){ //numb
+function Change_CuttingPattern(pos,numb){ //numb
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
   var CodeRelated = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
   var CuttingPattern_Field = CodeRelated.WPFObject("ContentExpander", "", 1).WPFObject("test").WPFObject("ContentControl", "", 2);
   var CuttingType = CuttingPattern_Field.WPFObject("StackPanel", "", 1).WPFObject("Grid", "", 1).WPFObject("cuttingModeComboBox");

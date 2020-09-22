@@ -10,4 +10,10 @@
   dataformat =DLCode.FindChild(a, b, 2000);
  
  Log.Message(dataformat.FullName);
+ var a="";
+ var b="+";
+for(var i=0; i<3;i++){
+    a=a+b;
+    Log.Message(a);
+    }
 }

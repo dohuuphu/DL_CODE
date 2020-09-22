@@ -22,7 +22,7 @@ function Check_Value_HeaderTerminator(){
   
 }
 
-// ************* Check CUSTOM FIELD************
+// ********************************************** Check CUSTOM FIELD*****************************************************************
 function Check_Default_CustomField(pos){           // Full
   //var CustomField = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
   initializated_EditToolField_arr();
@@ -78,7 +78,7 @@ function Check_Default_FillingMode_Custom_Expand(pos){     // Full
       
 }
 
-// *************CHECK Global Statistics Field************
+// ************************************CHECK Global Statistics Field******************************************
 
 function Check_Default_GlobalStatisticsField(pos){          // Full
     //var GlobalStatistic = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 2)",2000); 
@@ -144,3 +144,82 @@ function Check_Default_FillingMode_GlobalStatistics_Expand(pos){      //Full
     else Log.Message("Can't find GlobalStatistic");
 }
     
+//***************************CHECK DEFAULT CODE RELATED*************************************
+function Edit_FillingMode_CodeRelated(pos){ //stt
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+  //var CodeRelated = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000);
+  if(CodeRelated.Exists == true){ 
+  var FillingMode = CodeRelated.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",3);
+  var FillingModebox_PropArr = ["Name", "ChildCount"];
+  var FillingModebox_ValArr = ["WPFObject(\"ComboBox\", \"\", 1)" , "1" ];    
+  var FillingModebox = FillingMode.FindChild(FillingModebox_PropArr,FillingModebox_ValArr,2000);
+  
+  // CHECK FIELD TYPE DEFAULT VALUE
+  var FieldType = CodeRelated.FindChild("Name","WPFObject(\"ContentControl\", \"\", 1)",6);
+  var FieldType_Prop_arr = ["ClrFullClassName","WPFControlText"];
+  var FieldType_Val_arr  =["System.Windows.Controls.TextBlock","Code Content"];
+  var FieldType_box = FieldType.FindChild(FieldType_Prop_arr,FieldType_Val_arr,200);
+  var FieldType_Val = aqObject.GetPropertyValue(FieldType_box, "Text");
+  if(FieldType_Val == FieldType_default) Log.Message("FIELD TYPE DEFAULT VALUE IS ***CORRECT*** !!!!!!!!!");
+  else Log.Message("FIELD TYPE DEFAULT VALUE IS ***NOT CORRECT*** !!!!!!!!!");
+ // CHECK FILLING MODE DEFAULT VALUE
+  var FillingMode_check = FillingModebox.Child(0);
+  var FillingMode_Val = aqObject.GetPropertyValue(FillingMode_check, "Text");
+  if(FillingMode_Val == FillingMode_default) Log.Message("FILLING MODE CODE DEFAULT VALUE IS ***CORRECT*** !!!!!!!!!");
+  else Log.Message("FILLING MODE DEFAULT VALUE IS ***NOT CORRECT*** !!!!!!!!!");
+ }
+  
+  if(FillingModebox.Exists == true){
+    Log.Message("Filling mode is changing...");
+    FillingModebox.ClickItem(1); // change to Fixed length
+
+    
+  }
+  else
+      Log.Message("Can't change to Fixed length");
+}
+
+function Check_Default_CodeRelated_Field(pos){          // Full
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+  //var CodeRelated = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000);
+  if(CodeRelated.Exists == true){ 
+      // CHECK CODE FIELD TYPE DEFAULT VALUE
+    var FieldType = CodeRelated.FindChild("Name","WPFObject(\"ContentControl\", \"\", 1)",6);
+    var FieldType_Prop_arr = ["ClrFullClassName","WPFControlText"];
+    var FieldType_Val_arr  =["System.Windows.Controls.TextBlock","Code Content"];
+    var FieldType_box = FieldType.FindChild(FieldType_Prop_arr,FieldType_Val_arr,200);
+    var FieldType_Val = aqObject.GetPropertyValue(FieldType_box, "Text");
+    aqObject.CheckProperty(FieldType_box,"Text", cmpEqual, FieldType_default);
+      
+      // CHECK FILLING MODE DEFAULT VALUE
+    var FillingMode = CodeRelated.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",3);
+    var FillingModebox_PropArr = ["Name", "ChildCount"];
+    var FillingModebox_ValArr = ["WPFObject(\"ComboBox\", \"\", 1)" , "1" ];    
+    var FillingModebox = FillingMode.FindChild(FillingModebox_PropArr,FillingModebox_ValArr,2000).Child(0);
+    aqObject.CheckProperty(FillingModebox,"Text", cmpEqual, FillingMode_default);
+    
+      // CHECK CUTTING PATTERN TYPE DEFAULT VALUE
+    var CuttingPattern_Field = CodeRelated.WPFObject("ContentExpander", "", 1).WPFObject("test").WPFObject("ContentControl", "", 2);
+    var CuttingType = CuttingPattern_Field.WPFObject("StackPanel", "", 1).WPFObject("Grid", "", 1).WPFObject("cuttingModeComboBox");
+    var CuttingType_box = CuttingType.Child(0);
+//    var CuttingType_val = aqObject.GetPropertyValue(CuttingType_box,"Text");
+//    if(CuttingType_val == CuttingType_default) Log.Message("CUTTING PATTERN TYPE DEFAULT VALUE IS ***CORRECT*** !!!!!!!!!");
+//    else Log.Message("CUTTING PATTERN TYPE DEFAULT VALUE IS ***NOT CORRECT*** !!!!!!!!!");
+     aqObject.CheckProperty(CuttingType_box,"Text", cmpEqual, CuttingType_default);
+      
+//      // CHECK CUTTING MODE DEFAULT VALUE
+//      var CuttingMode = GlobalStatistic.FindChild("Name","WPFObject(\"ContentControl\", \"\", 2)",4);
+//      var CuttingMode_box = CuttingMode.FindChild("ClrFullClassName","System.Windows.Controls.ComboBox",6).Child(0);
+//      aqObject.CheckProperty(CuttingMode_box,"Text", cmpEqual, CuttingMode_default);
+//
+//      // CHECK CUSTOM STRING DEFAULT VALUE
+//      var CustomString = GlobalStatistic.FindChild("Name","WPFObject(\"ContentControl\", \"\", 2)",4);
+//      var CustomString_box = CustomString.FindChild("ClrFullClassName","IVSControls.Controls.RangeTextBox",10);
+//      aqObject.CheckProperty(CustomString_box,"Text", cmpEqual, CustomString_GlobalStatistics_default);
+     
+      }
+    else  Log.Error("Can't find GlobalStatistic ");
+     
+}

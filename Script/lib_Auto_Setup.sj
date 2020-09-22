@@ -93,7 +93,7 @@ function Click_Play_Pause(){
   pauseBtn = Sys.Process("DL.CODE").FindChild("ToolTip.Text", "Pause", 1000);
   if(playBtn.Exists) playBtn.Click();   
   else Log.Message("Can't find Play button");
-  delay(10000);
+  delay(5000);
   if(pauseBtn.Exists) pauseBtn.Click(); 
   else Log.Message("Can't find Play button");
 }
