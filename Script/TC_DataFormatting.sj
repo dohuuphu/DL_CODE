@@ -5,9 +5,9 @@
 function Filling_TC1(){
   var Mess1_tool=[Str_CustomFieldTool,Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool,Str_CustomFieldTool,Str_CustomFieldTool];
-   clickDataFortmating_Collection();
+   //clickDataFortmating_Collection();
   // Message 1
-  //clickDataFortmating_Default();
+  clickDataFortmating_Default();
   Check_Value_HeaderTerminator();
   Sellect_Mode(Mess1_tool);
   clickEdittool(1);

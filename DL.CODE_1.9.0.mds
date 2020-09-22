@@ -747,6 +747,19 @@
 				</testParameters>
 				<children />
 			</testItem>
+			<testItem name="Group1" key="{EF17F079-26CB-4E7D-8371-D9B1D1FEDE9E}" group="True" enabled="False" testMoniker="" count="1" timeout="0" stopOnError="3" stopOnException="2" description="" tmsData="" testCase="True">
+				<testParameters />
+				<children>
+					<testItem name="FillingMode TC1" key="{23D87D5E-BE39-423C-9101-B5EE7E2DA0D5}" group="False" enabled="True" testMoniker="{E1250892-5F0D-4DA0-B77F-122E219EF5ED}Filling_TC1" count="1" timeout="0" stopOnError="3" stopOnException="2" description="" tmsData="" testCase="False">
+						<testParameters />
+						<children />
+					</testItem>
+					<testItem name="FillingMode TC2" key="{B9E676B2-55C9-4434-AF21-53F0AAF879A8}" group="False" enabled="False" testMoniker="{E1250892-5F0D-4DA0-B77F-122E219EF5ED}Filling_TC2" count="1" timeout="0" stopOnError="3" stopOnException="2" description="" tmsData="" testCase="False">
+						<testParameters />
+						<children />
+					</testItem>
+				</children>
+			</testItem>
 		</children>
 	</testItems>
 	<variables key="{E97B4105-ADCB-4072-8CE6-02712564A9CA}">

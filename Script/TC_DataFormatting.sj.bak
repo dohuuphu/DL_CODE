@@ -5,16 +5,16 @@
 function Filling_TC1(){
   var Mess1_tool=[Str_CustomFieldTool,Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool,Str_CustomFieldTool,Str_CustomFieldTool];
-   clickDataFortmating_Collection();
+   //clickDataFortmating_Collection();
   // Message 1
-  //Message_format(Str_CollectionMode);
-  //clickDataFortmating_Default();
-//  Check_Value_HeaderTerminator();
-//  Sellect_Mode(Mess1_tool);
-//  clickEdittool(1);
-//  Check_Default_CustomField(1);          // POSSITION :1
-//  Edit_CustomString(1,Str_Code);
-//  // Message 2
+  clickDataFortmating_Default();
+  Check_Value_HeaderTerminator();
+  Sellect_Mode(Mess1_tool);
+  clickEdittool(1);
+  Check_Default_CustomField(1);          // POSSITION :1
+  Edit_CustomString(1,Str_Code);
+  
+  // Message 2
   Click_Mess2();
   Sellect_Mode(Mess2_tool);
   clickEdittool(1);
@@ -55,7 +55,7 @@ function Filling_TC2(){
   clickEdittool(3);
   Edit_CustomString(3,Str_End);
 
-  Click_Console();
+  //Click_Console();
   Click_PlayButton();
   Click_Mess1();
   Compare_Code();
