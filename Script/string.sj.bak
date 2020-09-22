@@ -51,4 +51,4 @@ var CuttingType_default = "Simple";
 var CuttingMode_default = "Do not cut string";
 var CustomString_GlobalStatistics_default = ";"
 var CustomString_CustomField_default = "<Space>"
-var FillingMode_defaultGlobalFieldType_default = "Total Number of Reading Phases";
+var GlobalFieldType_default = "Total Number of Reading Phases";

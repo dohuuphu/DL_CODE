@@ -1443,6 +1443,33 @@
 				<Prp name="relpath" type="S" value="9_22_2020_8_48 AM_42_471\Description.tcLog"/>
 				<Prp name="status" type="I" value="1"/>
 			</Node>
+			<Node name="log idx=0158">
+				<Prp name="caption" type="S" value=""/>
+				<Prp name="datetime" type="D" value="44096.3820943866"/>
+				<Prp name="description" type="S" value=""/>
+				<Prp name="key" type="S" value="{5A01E072-B1CA-46A9-B7B7-AD75949AB8B7}"/>
+				<Prp name="nameofroot" type="S" value="Script Test Log [TC_DataFormatting\Filling_TC1]"/>
+				<Prp name="relpath" type="S" value="9_22_2020_9_10 AM_12_955\Description.tcLog"/>
+				<Prp name="status" type="I" value="2"/>
+			</Node>
+			<Node name="log idx=0159">
+				<Prp name="caption" type="S" value=""/>
+				<Prp name="datetime" type="D" value="44096.3823568866"/>
+				<Prp name="description" type="S" value=""/>
+				<Prp name="key" type="S" value="{BDA34AAA-6BB6-4D64-A497-6E36F7981BDD}"/>
+				<Prp name="nameofroot" type="S" value="Script Test Log [TC_DataFormatting\Filling_TC1]"/>
+				<Prp name="relpath" type="S" value="9_22_2020_9_10 AM_35_635\Description.tcLog"/>
+				<Prp name="status" type="I" value="2"/>
+			</Node>
+			<Node name="log idx=0160">
+				<Prp name="caption" type="S" value=""/>
+				<Prp name="datetime" type="D" value="44096.3831973264"/>
+				<Prp name="description" type="S" value=""/>
+				<Prp name="key" type="S" value="{5C2FB981-C93B-4A8D-9E65-CA22EDFC463F}"/>
+				<Prp name="nameofroot" type="S" value="Script Test Log [TC_DataFormatting\Filling_TC2]"/>
+				<Prp name="relpath" type="S" value="9_22_2020_9_11 AM_48_249\Description.tcLog"/>
+				<Prp name="status" type="I" value="2"/>
+			</Node>
 		</Node>
 		<Prp name="signature" type="S" value="{681DCC69-A39F-4C4D-8E7D-B2D9362FAF4F}"/>
 		<Prp name="version" type="S" value="11.0"/>

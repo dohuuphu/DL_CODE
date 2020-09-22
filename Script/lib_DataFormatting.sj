@@ -147,7 +147,7 @@ function Edit_FillingMode_CustomField(pos){
       Log.Error("Can't find CustomField");
 }
 //************ Edit Filling Pattern *********
-function Edit_FillingPattern_CustomField(pos){  
+function Edit_FillingPattern_CustomField(pos,Str){  
   initializated_EditToolField_arr();
   var CustomField = EditToolField_arr[pos];
 //  var CustomField = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000);
@@ -160,7 +160,7 @@ function Edit_FillingPattern_CustomField(pos){
     var FillingPatternbox_ValArr = ["rtbText" , true ];
     var FillingPatternbox = FillingPattern.FindChild(FillingPatternbox_PropArr, FillingPatternbox_ValArr, 2000);
     FillingPatternbox.DblClick();
-    FillingPatternbox.Keys(FillingPatternbox_Str);
+    FillingPatternbox.Keys(Str);
     }
   else
     Log.Error("Can't find CustomField");
@@ -203,7 +203,7 @@ function Edit_FillingMode_GlobalStatistic(pos){
 }
 
 //************ Edit Filling Pattern *********
-function Edit_FillingPattern_GlobalStatistic(pos){  
+function Edit_FillingPattern_GlobalStatistic(pos,Str){  
   initializated_EditToolField_arr();
   var GlobalStatistic = EditToolField_arr[pos];
   //var GlobalStatistic = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 2)",2000); 
@@ -215,7 +215,7 @@ function Edit_FillingPattern_GlobalStatistic(pos){
     var FillingPatternbox_ValArr = ["rtbText" , true ];
     var FillingPatternbox = FillingPattern.FindChild(FillingPatternbox_PropArr, FillingPatternbox_ValArr, 2000);
     FillingPatternbox.DblClick();
-    FillingPatternbox.Keys(FillingPatternbox_Str);
+    FillingPatternbox.Keys(Str);
     }
   else
     Log.Error("Can't find Global_Statistic");

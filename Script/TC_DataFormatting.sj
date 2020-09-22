@@ -39,7 +39,7 @@ function Filling_TC2(){
   Edit_CustomString(1,Str_Code );
   Edit_FillingMode_CustomField(1);
   Check_Default_FillingMode_Custom_Expand(1);   // POSSITION :1
-  Edit_FillingPattern_CustomField(1);
+  Edit_FillingPattern_CustomField(1,FillingPattern_Str);
   Edit_FieldJustification_CustomField(1)
  
   // Message 2
@@ -51,7 +51,7 @@ function Filling_TC2(){
   Check_Default_GlobalStatisticsField(2);                // POSSITION :2
   Edit_FillingMode_GlobalStatistic(2);
   Check_Default_FillingMode_GlobalStatistics_Expand(2);  // POSSITION :2
-  Edit_FillingPattern_GlobalStatistic(2);
+  Edit_FillingPattern_GlobalStatistic(2,FillingPattern_Str);
   clickEdittool(3);
   Edit_CustomString(3,Str_End);
 
@@ -64,10 +64,13 @@ function Filling_TC2(){
 
 
 function Cutting_Simple_TC(){
-  var Mess1_tool=[Str_CodeRelatedTool];
+  var Mess1_tool=[Str_CustomFieldTool,Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool];
   // Message 1
   Sellect_Mode((Mess1_tool));
+  clickEdittool(1);
+  Edit_FillingMode_CustomField(1);
+  Edit_FillingPattern_CustomField(1,FillingPattern_dot_Str);
   Edit_FillingMode_CodeRelated(Cutting_Simple);
   // Message 2
   Click_Mess2();

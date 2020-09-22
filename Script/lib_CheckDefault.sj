@@ -80,7 +80,7 @@ function Check_Default_FillingMode_Custom_Expand(pos){     // Full
 
 // *************CHECK Global Statistics Field************
 
-function Check_Default_GlobalStatisticsField(pos){          // POSSITION :2
+function Check_Default_GlobalStatisticsField(pos){          // Full
     //var GlobalStatistic = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 2)",2000); 
     initializated_EditToolField_arr();
     var GlobalStatistic = EditToolField_arr[pos];
