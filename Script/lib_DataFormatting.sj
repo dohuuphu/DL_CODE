@@ -380,8 +380,8 @@ function Check_NumbToolEdit(){
   Sys.Process("DL.CODE").Refresh();
   var FieldEditControl = DLCode.FindChild("WPFControlName","FieldEditingControl",200);
   var NumbToolEdit = aqObject.GetPropertyValue(FieldEditControl,"ChildCount");
-  Log.Message("default tool number: " + (NumbToolEdit-1));
-  if(NumbToolEdit > 1)                                       // defaut exists 1child: AdornerLayer
+  //Log.Message("default tool number: " + (NumbToolEdit-1));
+  while(NumbToolEdit > 1)                                       // defaut exists 1child: AdornerLayer
   {
     initialization_FieldEditControl_Var(NumbToolEdit-1);
     for(var i =1; i <= NumbToolEdit-1; i++)                  // Remove tool edit default            
@@ -389,7 +389,10 @@ function Check_NumbToolEdit(){
       Edit[i].Click();
       Sys.Desktop.Keys( "[Del]");
     }
-  }   
+    Sys.Process("DL.CODE").Refresh();
+    NumbToolEdit = aqObject.GetPropertyValue(FieldEditControl,"ChildCount");  // Check all Edit tool was removed
+    //Log.Message("last default tool number: " + (NumbToolEdit-1));
+  }  
 }
 
 function Click_Mess2(){

@@ -61,8 +61,7 @@ function clickDataFortmating_Default()
         }  
         //lib_common.terminateUI();
         aqTestCase.End();
-var Result = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60").WPFObject("Shell", "DL.CODE 1.9.0.60", 1).WPFObject("Border", "", 1).WPFObject("DockPanel", "", 1).WPFObject("Grid", "", 2).WPFObject("ContentPlaceholder").WPFObject("UserControl").WPFObject("LayoutRoot").WPFObject("CentralBorder").WPFObject("Grid", "", 1).WPFObject("BottomBorder").WPFObject("BottomTabControl").WPFObject("BottomTabItem2");
-Result.Click(); 
+        Result_Click();
 
 var path =Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60").WPFObject("Shell", "DL.CODE 1.9.0.60", 1).WPFObject("Border", "", 1).WPFObject("DockPanel", "", 1).WPFObject("Grid", "", 2).WPFObject("ContentPlaceholder").WPFObject("UserControl").WPFObject("LayoutRoot").WPFObject("CentralBorder").WPFObject("Grid", "", 1).WPFObject("BottomBorder").WPFObject("BottomTabControl").WPFObject("StatisticResult", "", 1).WPFObject("Grid", "", 1).WPFObject("ScrollViewer", "", 1).WPFObject("StackPanel", "", 1).WPFObject("Expander", "Code Settings", 2).WPFObject("Border", "", 1).WPFObject("DataGrid", "", 1).WPFObject("DataGridRow", "", 1).WPFObject("DataGridCell", "", 3).WPFObject("ContentPresenter", "", 1).WPFObject("ItemsControl", "", 1);
 
@@ -89,66 +88,92 @@ var ChildCount = path.ChildCount;
   Initization_DLcode();
 
 }
-
-//function CompareTextA()
-//{
-//
-//var TextCode ="<STX>CODE****************31666249588376";//get from Device
-//var TextOnlyCode ="CODE****************";//get from Device
-//var CustomString = "CODE" //get from Device
-//var FillingPattern="*";//get from Device
-//var Pattern="";
-//TextCodeLength = aqString.GetLength(TextCode)
-//Log.Message(TextCode)
-//Log.Message("Text Code is " +TextCodeLength + " character(s) long.")
-//FillingPatternLength = aqString.GetLength(FillingPattern)
-//CustomStringLength = aqString.GetLength(FillingPattern)
-// for (var i=0; i<TextCodeLength; i++)
-//     {
-//      if (TextCode[i] == FillingPattern)
-//         Pattern= Pattern + FillingPattern
-//         Pattern2= FillingPattern
-////         Log.Message("Filling Pattern is"+Pattern )
-////         Log.Message("Filling Pattern is" + aqString.GetLength(Pattern) + " character(s) long.");
-//      }
-//
-//Log.Message("Filling Pattern is "+Pattern )
-//Log.Message("Filling Pattern is " + aqString.GetLength(Pattern) + " character(s) long.");
-//Log.Message("CustomString is "+CustomString )
-//Log.Message("CustomString is " + aqString.GetLength(CustomString) + " character(s) long.");
-//CustomStringTextCode= CustomString + Pattern
-//Log.Message("CustomStringTextCode is "+CustomStringTextCode )
-//CustomStringTextCode = aqString.GetLength(CustomStringTextCode)
-//Log.Message("CustomStringTextCode is " + CustomStringTextCode + " character(s) long.");
-//if (CustomStringTextCode==20 && Pattern2==FillingPattern && CustomStringTextCode == TextOnlyCode )
-//   Log.Message("Right!!!!!!" )
-//else 
-//Log.Message("Fail!!!!!!" )
-//}
-
-function Click_Console(){
-  var Console= Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60").WPFObject("Shell", "DL.CODE 1.9.0.60", 1).WPFObject("Border", "", 1).WPFObject("DockPanel", "", 1).WPFObject("Grid", "", 2).WPFObject("ContentPlaceholder").WPFObject("UserControl").WPFObject("LayoutRoot").WPFObject("CentralBorder").WPFObject("Grid", "", 1).WPFObject("BottomBorder").WPFObject("BottomTabControl").WPFObject("BottomTabItem4").WPFObject("TextBlock", "Console", 1)
-  Console.Click();  
+function Click_Play_Pause(){
+  playBtn = Sys.Process("DL.CODE").FindChild("ToolTip.Text", "Play", 1000);
+  pauseBtn = Sys.Process("DL.CODE").FindChild("ToolTip.Text", "Pause", 1000);
+  if(playBtn.Exists) playBtn.Click();   
+  else Log.Message("Can't find Play button");
+  delay(10000);
+  if(pauseBtn.Exists) pauseBtn.Click(); 
+  else Log.Message("Can't find Play button");
 }
 
-function Click_PlayButton(){
-  var PropPlay = new Array("ClrClassName","ToolTip.WPFControlText");
-  var ValuesPlay = new Array("Button","Play");
-  var Play = Sys.Process("DL.CODE").FindChild(PropPlay, ValuesPlay, 1000)
-  //CLICK PLAY
-  if (Play.Exists)
-    {  //Log.Message("fgdkjfhdj :"+PlayPause.IsFocused);
-       Play.Click();  
+function Click_Console()
+{
+    var ProCentralBorder = ["ClrFullClassName","WPFControlName"];
+    var ValCentralBorder = ["System.Windows.Controls.Border","CentralBorder"];
+    var CentralBorder = Sys.Process("DL.CODE").FindChild(ProCentralBorder, ValCentralBorder, 2000);
+    if (CentralBorder.Exists)
+    {
+      //Log.Message(CentralBorder.FullName)
+      var ProBottomBorder = ["ClrFullClassName","WPFControlName"];
+      var ValBottomBorder = ["System.Windows.Controls.Grid","BottomBorder"];
+      var BottomBorder = Sys.Process("DL.CODE").FindChild(ProBottomBorder, ValBottomBorder, 2000);
+      if (BottomBorder.Exists)
+      {
+        //Log.Message(BottomBorder.FullName)
+        var ProBottomTabItem4 = ["ClrFullClassName","WPFControlText"];
+        var ValBottomTabItem4 = ["System.Windows.Controls.TabItem","Console"];
+        var BottomTabItem4 = Sys.Process("DL.CODE").FindChild(ProBottomTabItem4, ValBottomTabItem4, 2000);
+        if (BottomTabItem4.Exists)
+        {
+         //Log.Message(BottomTabItem4.FullName)
+         BottomTabItem4.Click();
+        }
+      }
     }
-  // Click PAUSE
-  Delay(10000);
-  var PropPause = new Array("ClrClassName","ToolTip.WPFControlText");
-  var ValuesPause = new Array("Button","Pause");
-  var Pause1 = Sys.Process("DL.CODE").FindChild(PropPause, ValuesPause, 1000)
-  if (Pause1.Exists)
-     {  //Log.Message("fgdkjfhdj :"+PlayPause.IsFocused);
-        Pause1.Click();  
-     }
+}
+
+
+function Result_Click()
+{
+    var ProCentralBorder = ["ClrFullClassName","WPFControlName"];
+    var ValCentralBorder = ["System.Windows.Controls.Border","CentralBorder"];
+    var CentralBorder = Sys.Process("DL.CODE").FindChild(ProCentralBorder, ValCentralBorder, 2000);
+    if (CentralBorder.Exists)
+    {
+      //Log.Message(CentralBorder.FullName)
+      var ProBottomBorder = ["ClrFullClassName","WPFControlName"];
+      var ValBottomBorder = ["System.Windows.Controls.Grid","BottomBorder"];
+      var BottomBorder = CentralBorder.FindChild(ProBottomBorder, ValBottomBorder, 2000);
+      if (BottomBorder.Exists)
+      {
+        //Log.Message(BottomBorder.FullName)
+        var ProBottomTabItem4 = ["ClrFullClassName","WPFControlText"];
+        var ValBottomTabItem4 = ["System.Windows.Controls.TabItem","Result"];
+        var Result = BottomBorder.FindChild(ProBottomTabItem4, ValBottomTabItem4, 2000);
+        if (Result.Exists)
+        {
+         //Log.Message(BottomTabItem4.FullName)
+         Result.Click();
+        }
+      }
+    }
+}
+function Events_Click()
+{
+    var ProCentralBorder = ["ClrFullClassName","WPFControlName"];
+    var ValCentralBorder = ["System.Windows.Controls.Border","CentralBorder"];
+    var CentralBorder = Sys.Process("DL.CODE").FindChild(ProCentralBorder, ValCentralBorder, 2000);
+    if (CentralBorder.Exists)
+    {
+      //Log.Message(CentralBorder.FullName)
+      var ProBottomBorder = ["ClrFullClassName","WPFControlName"];
+      var ValBottomBorder = ["System.Windows.Controls.Grid","BottomBorder"];
+      var BottomBorder = CentralBorder.FindChild(ProBottomBorder, ValBottomBorder, 2000);
+      if (BottomBorder.Exists)
+      {
+        //Log.Message(BottomBorder.FullName)
+        var ProBottomTabItem4 = ["ClrFullClassName","WPFControlText"];
+        var ValBottomTabItem4 = ["System.Windows.Controls.TabItem","Events"];
+        var EventsClick = BottomBorder.FindChild(ProBottomTabItem4, ValBottomTabItem4, 2000);
+        if (EventsClick.Exists)
+        {
+         //Log.Message(BottomTabItem4.FullName)
+         EventsClick.Click();
+        }
+      }
+    }
 }
 
 
@@ -170,7 +195,7 @@ function Compare_Code()
              var itemControlPro = ["ClrFullClassName"];  
              var itemControlVal = ["System.Windows.Controls.ItemsControl"];
              var itemControlObj = consoleTab.Parent.FindChild(itemControlPro, itemControlVal, 2000);
-             Log.Message(itemControlObj.FullName);
+             //Log.Message(itemControlObj.FullName);
              if (itemControlObj.Exists)
                { 
                  var ChildCount = itemControlObj.childCount;
@@ -184,13 +209,13 @@ function Compare_Code()
                  if (ContentPresenter.Exists)
                   {
                      //ShowCode = ShowCode.Text
-                     Log.Message(ContentPresenter.FullName)
+                     //Log.Message(ContentPresenter.FullName)
                      var ProTextBlockCode = ["ClrFullClassName","WPFControlOrdinalNo"];
                      var ValTextBlockCode = ["System.Windows.Controls.TextBlock",2];
                      var TextBlockCode = itemControlObj.Parent.FindChild(ProTextBlockCode, ValTextBlockCode, 2000);
                      if (TextBlockCode.Exists)
                      {
-                       Log.Message(TextBlockCode.FullName)
+                      // Log.Message(TextBlockCode.FullName)
                        Log.Message(TextBlockCode.Text)
                      }
                   }
@@ -229,13 +254,13 @@ if (HeaderC2.Exists)
       var HeaderC5 = HeaderC4.FindChild(ProHeaderC5, ValHeaderC5, 2000);
       if (HeaderC5.Exists)
       {
-        Log.Message(HeaderC5.FullName)
+        //Log.Message(HeaderC5.FullName)
         var ProHeader = ["ClrFullClassName"];
         var ValHeader = ["System.Windows.Controls.TextBlock"];
         var Header = HeaderC5.FindChild(ProHeader, ValHeader, 2000);
         if (Header.Exists)
         {
-          Log.Message(Header.FullName)
+          //Log.Message(Header.FullName)
           Log.Message(Header.Text)
                 
         }
@@ -263,7 +288,7 @@ if (HeaderC2.Exists)
           var CustomString = ContentControl.FindChild(ProParagraph, ValParagraph, 2000);
           if (CustomString.Exists)
           {
-            Log.Message(CustomString.FullName)
+            //Log.Message(CustomString.FullName)
             Log.Message(CustomString.WPFControlText)
       
           }
@@ -284,25 +309,25 @@ if (HeaderC2.Exists)
       var StackPanel = ItemsControl.FindChild(ProStackPanel, ValStackPanel, 2000);
       if (StackPanel.Exists)
       {
-        Log.Message("StackPanel "+StackPanel.FullName)
+        //Log.Message("StackPanel "+StackPanel.FullName)
         var ProParamControl = ["ClrFullClassName","WPFControlOrdinalNo"];
         var ValParamControl = ["IVSControls.Controls.PropertyViewControls.ParamControl",2];
         var ParamControl = StackPanel.FindChild(ProParamControl, ValParamControl, 2000);
         if (ParamControl.Exists)
         {
-          Log.Message("ParamControl "+ParamControl.FullName)
+          //Log.Message("ParamControl "+ParamControl.FullName)
           var ProContentControl = ["ClrFullClassName"];
           var ValContentControl = ["System.Windows.Controls.ContentControl"];
           var ContentControl = ParamControl.FindChild(ProContentControl, ValContentControl, 2000);
             if (ContentControl.Exists)
             {
-              Log.Message("ContentControl "+ContentControl.FullName)
+              //Log.Message("ContentControl "+ContentControl.FullName)
               var ProWatermarkTextBox = ["ClrFullClassName"];
               var ValWatermarkTextBox = ["Microsoft.Windows.Controls.WatermarkTextBox"];
               var LengthNum = ContentControl.FindChild(ProWatermarkTextBox, ValWatermarkTextBox, 2000);
                 if (LengthNum.Exists)
               {
-                Log.Message("LengthNum "+LengthNum.FullName)
+                //Log.Message("LengthNum "+LengthNum.FullName)
                 Log.Message(LengthNum.Text)
       
               }     
@@ -323,25 +348,25 @@ if (HeaderC2.Exists)
       var StackPanel = ItemsControl.FindChild(ProStackPanel, ValStackPanel, 2000);
       if (StackPanel.Exists)
       {
-        Log.Message("StackPanel "+StackPanel.FullName)
+        //Log.Message("StackPanel "+StackPanel.FullName)
         var ProParamControl = ["ClrFullClassName","WPFControlOrdinalNo"];
         var ValParamControl = ["IVSControls.Controls.PropertyViewControls.ParamControl",3];
         var ParamControl = StackPanel.FindChild(ProParamControl, ValParamControl, 2000);
         if (ParamControl.Exists)
         {
-          Log.Message("ParamControl "+ParamControl.FullName)
+          //Log.Message("ParamControl "+ParamControl.FullName)
           var ProContentControl = ["ClrFullClassName"];
           var ValContentControl = ["System.Windows.Controls.ContentControl"];
           var ContentControl = ParamControl.FindChild(ProContentControl, ValContentControl, 2000);
             if (ContentControl.Exists)
             {
-              Log.Message("ContentControl "+ContentControl.FullName)
+              //Log.Message("ContentControl "+ContentControl.FullName)
               var ProParagraph = ["ClrFullClassName"];
               var ValParagraph = ["System.Windows.Documents.Paragraph"];
               var FillingPattern = ContentControl.FindChild(ProParagraph, ValParagraph, 2000);
                 if (FillingPattern.Exists)
               {
-                Log.Message(FillingPattern.FullName)
+               // Log.Message(FillingPattern.FullName)
                 Log.Message(FillingPattern.WPFControlText)
       
               }    
@@ -485,7 +510,7 @@ var FieldJustification = Sys.Process("DL.CODE").FindChild(PropLeftRight, ValuesL
                       else 
                       Check = 1
             }
-            Log.Message("Check is " + Check) 
+           // Log.Message("Check is " + Check) 
             if ( Check ==0 )
              Log.Message("Field Justification Right Correct")
 

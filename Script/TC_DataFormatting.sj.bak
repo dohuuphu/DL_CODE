@@ -58,7 +58,7 @@ function Filling_TC2(){
   Click_Console();
   Click_PlayButton();
   Click_Mess1();
-  Compare_Code2();
+  Compare_Code();
 }
 
 

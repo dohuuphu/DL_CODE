@@ -56,7 +56,7 @@ function Filling_TC2(){
   Edit_CustomString(3,Str_End);
 
   Click_Console();
-  Click_PlayButton();
+  Click_Play_Pause();
   Click_Mess1();
   Compare_Code();
 }
