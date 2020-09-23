@@ -257,9 +257,10 @@ function Edit_FieldJustification_GlobalStatistic(stt){
 function Edit_FillingMode_CodeRelated(pos){ //stt
   initializated_EditToolField_arr();
   var CodeRelated = EditToolField_arr[pos];
+
   //var CodeRelated = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000);
   if(CodeRelated.Exists == true){
-    var FillingMode = CodeRelated.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",3);
+    var FillingMode = CodeRelated.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",3).WPFObject("ParamControl", "", 1);
     var FillingModebox_PropArr = ["Name", "ChildCount"];
     var FillingModebox_ValArr = ["WPFObject(\"ComboBox\", \"\", 1)" , "1" ];    
     var FillingModebox = FillingMode.FindChild(FillingModebox_PropArr,FillingModebox_ValArr,2000);

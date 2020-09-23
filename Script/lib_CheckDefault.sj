@@ -153,7 +153,7 @@ function Check_Default_FillingMode_GlobalStatistics_Expand(pos){      //Full
 }
     
 //***************************CHECK DEFAULT CODE RELATED*************************************
-function Check_Default_CodeRelated_Field(pos){          // Full
+function Check_Default_CodeRelated_Field(pos, str){          // Full
   initializated_EditToolField_arr();
   var CodeRelated = EditToolField_arr[pos];
   //var CodeRelated = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000);
@@ -165,9 +165,20 @@ function Check_Default_CodeRelated_Field(pos){          // Full
     var FieldType_box = FieldType.FindChild(FieldType_Prop_arr,FieldType_Val_arr,200);
     var FieldType_Val = aqObject.GetPropertyValue(FieldType_box, "Text");
     aqObject.CheckProperty(FieldType_box,"Text", cmpEqual, FieldType_default);
+    if(str == Str_CombinationMode){
+      // CHECK LOCAL NO READ DEFAULT VALUE
+      var LocalNoRead= FieldType.FindChild("Name","WPFObject(\"ParamControl\", \"\", 4)",6);
+      var LocalNoRead_Box = LocalNoRead.FindChild("Name","WPFObject(\"InlineUIContainer\", \"\", 1)",200).Child(0);
+      aqObject.CheckProperty(LocalNoRead_Box,"Text", cmpEqual, LocalNoRead_default);
+      // CHECK LOCAL MULTIPLE READ DEFAULT VALUE
+      var LocalMultipleRead= FieldType.FindChild("Name","WPFObject(\"ParamControl\", \"\", 5)",6);
+      var LocalMultipleRead_Box = LocalMultipleRead.FindChild("Name","WPFObject(\"Paragraph\", \"\", 1)",200);
+      aqObject.CheckProperty(LocalMultipleRead_Box,"WPFControlText", cmpEqual, LocalMultipleRead_default);
+    }
+    
       
       // CHECK FILLING MODE DEFAULT VALUE
-    var FillingMode = CodeRelated.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",3);
+    var FillingMode = CodeRelated.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",3).WPFObject("ParamControl", "", 1);
     var FillingModebox_PropArr = ["Name", "ChildCount"];
     var FillingModebox_ValArr = ["WPFObject(\"ComboBox\", \"\", 1)" , "1" ];    
     var FillingModebox = FillingMode.FindChild(FillingModebox_PropArr,FillingModebox_ValArr,2000).Child(0);

@@ -24,6 +24,7 @@ var  Str_Right_Align = "Right Aligned";
 var  Str_Space = " ";
 var  Str_No = "No";
 var  Str_Read = "Read";
+var  Str_LocalNoRead="Local No Read";
 
 // input box text
 var  Separato_Str = "[BS]hello";
@@ -56,3 +57,5 @@ var CustomString_GlobalStatistics_default = ";"
 var CustomString_CustomField_default = "<Space>"
 var GlobalFieldType_default = "Total Number of Reading Phases";
 var Remove_default = "0";
+var LocalNoRead_default = "<CAN>";
+var LocalMultipleRead_default = "?";
