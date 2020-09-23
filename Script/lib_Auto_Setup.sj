@@ -15,6 +15,7 @@
 //USEUNIT simulator_common
 //USEUNIT lib_QuickSetup
 //USEUNIT lib_DataFormatting
+//USEUNIT string
 function clickDataFortmating_Collection()
 {
 
@@ -528,6 +529,28 @@ var FieldJustification = Sys.Process("DL.CODE").FindChild(PropLeftRight, ValuesL
 }
 
 
+
+function Compare_Cutting_PatternType(){
+  var result = "937400028";
+  var test = "37";
+  test_length = aqString.GetLength(test);
+  var result_length = aqString.GetLength(result);
+  var length = aqString.GetLength(PatternString_Str)
+  
+  var patternString = PatternString_Str.slice(4,4+length); // string "p"
+  var patternString_length = aqString.GetLength(patternString);
+  
+//  if(mode ==  Str_KeepAfter){
+//    for(i=0; i<result_length; i++){
+//      //for(y=0; y < patternString_length; y++ )
+//      if
+//      
+//    }
+      var a = result.indexOf(test);
+      Log.Message(a);
+      var last_result = result.slice(a+test_length,result_length)
+      Log.Message("last_result: " + last_result);
+}
 
 
 
