@@ -478,7 +478,8 @@ var FieldJustification = Sys.Process("DL.CODE").FindChild(PropLeftRight, ValuesL
 
   else 
   
-  Log.Message("Field Justification Left Not Correct")
+  Log.Warning("Field Justification Was set Left but Show Right")
+  Check = 0;
   
 
    }
@@ -516,7 +517,8 @@ var FieldJustification = Sys.Process("DL.CODE").FindChild(PropLeftRight, ValuesL
 
             else 
              {
-              Log.Message("Field Justification Right Not Correct")
+              Log.Warning("Field Justification Was set Right but Show Left")
+              Check = 0;
              }
 
            }
