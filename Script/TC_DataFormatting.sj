@@ -5,9 +5,9 @@
 function Filling_TC1(){
   var Mess1_tool=[Str_CustomFieldTool,Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool,Str_CustomFieldTool,Str_CustomFieldTool];
-   clickDataFortmating_Collection();
+  // clickDataFortmating_Collection();
   // Message 1
-  //clickDataFortmating_Default();
+  clickDataFortmating_Default();
   Check_Value_HeaderTerminator();
   Sellect_Mode(Mess1_tool);
   clickEdittool(1);
@@ -30,6 +30,7 @@ function Filling_TC2(){
   var Mess2_tool=[Str_CustomFieldTool,Str_GlobalStatisticsTool,Str_CustomFieldTool];
   // Message 1
    clickDataFortmating_Collection();
+   Check_Default_Separator();
    Check_Value_HeaderTerminator();
    Sellect_Mode(Mess1_tool);
   //DragEdit(2,1); // [act_place, new_place]
@@ -81,6 +82,7 @@ function Cutting_Simple_TC(){
   clickEdittool(2);
   Check_Default_CodeRelated_Field(2)
   Edit_FillingMode_CodeRelated(2);
+  Check_Default_FillingMode_CodeRelated_Expand(2);
   Edit_FillingPattern_CodeRelated(2,FillingPattern_Str);
   Remove_Lead_Trail(2);
   // Message 2

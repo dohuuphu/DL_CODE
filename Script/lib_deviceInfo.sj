@@ -10,9 +10,9 @@ var const_SerialDevice_SerialNumber   = "123456789";
 //ONLINE DEVICE WHICH YOU WANT TO CONNECT
 var const_arr_DeviceModel = ["M120"  , "M210N" , "M220", "M300N", "M320" , "M410N", "M450N"];
 var const_Device_SerialNumber         = "123456789"; //serial number
-var const_Device_IP_Adress            = "10.84.30.167";
+var const_Device_IP_Adress            = "10.84.30.86";
 var const_isPPI_device                = true;
-var const_Device_Model                = const_arr_DeviceModel[4]; 
+var const_Device_Model                = const_arr_DeviceModel[3]; 
 
 
 //BACKUP RESTORE

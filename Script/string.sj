@@ -55,3 +55,4 @@ var CuttingMode_default = "Do not cut string";
 var CustomString_GlobalStatistics_default = ";"
 var CustomString_CustomField_default = "<Space>"
 var GlobalFieldType_default = "Total Number of Reading Phases";
+var Remove_default = "0";

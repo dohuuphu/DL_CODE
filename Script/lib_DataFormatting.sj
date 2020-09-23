@@ -1,7 +1,7 @@
 ﻿//USEUNIT string
 //USEUNIT lib_deviceInfo
 var Dataformat;
-var DLCode=Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", const_firmware);
+//var DLCode=Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", const_firmware);
 var FieldEditControl;
 function Initization_DLcode(){
  DLCode = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", const_firmware);
@@ -17,7 +17,7 @@ function Initization_DLcode(){
 //function Message_format(stt) // Check Separator box and fill string 
 //{
 //  if (stt == "Collection"){
-//    Check_Separator();
+//    Check_Exist_Separator();
 ////************ Find Separator *********
 ////    var Separator_PropArr = ["WPFControlName", "Visible"];
 ////    var Separator_ValArr = ["CollectionSeparatorParamControl" , true ];
@@ -50,20 +50,30 @@ function Initization_DLcode(){
 //// Counting_Edit_CustomString = 0;
 //
 //}
-
-function Check_Separator(){
+ var default_input="";
+function Check_Exist_Separator(str){
   var output=0;
+  //var default_input="";
   var Separator = Dataformat.FindChild("WPFControlName", "CollectionSeparatorParamControl", 2000);  
   if(Separator.Exists == true){
     if(Separator.Visible == true){
-      var SeparatorBox = Separator.FindChild("WPFControlName", "rtbText", 2000);
-      var SeparatorVal= Separator.FindChild("ClrFullClassName", "System.Windows.Documents.Paragraph", 2000).Child(0);
-      aqObject.CheckProperty(SeparatorVal,"Text", cmpEqual, SerapatorDefault);
-      // Edit Separator 
-      SeparatorBox.DblClick();
-      SeparatorBox.Keys(Separato_Str);
-      output = 1;
-     }
+      Sys.Process("DL.CODE").Refresh();
+     var SeparatorBox = Separator.FindChild("WPFControlName", "rtbText", 2000);
+     var SeparatorVal= Separator.FindChild("ClrFullClassName", "System.Windows.Documents.Paragraph", 2000);
+//     Log.Message(SeparatorVal.FullName);
+//     Log.Message("SeparatorVal.Text: " + SeparatorVal.WPFControlText);
+        if(SeparatorVal.WPFControlText != default_input){
+           SeparatorBox.DblClick();
+           SeparatorBox.Keys(str);
+           //Check input value
+           var SeparatorVal= Separator.FindChild("ClrFullClassName", "System.Windows.Documents.Paragraph", 2000).Child(0);
+           var length = aqString.GetLength(str)
+           default_input = str.slice(4,4+length);
+           //Log.Message("default_input " + default_input);
+           aqObject.CheckProperty(SeparatorVal,"WPFControlText", cmpEqual, default_input);
+           }     
+        output = 1;    
+     }      
   }
     return output;              // return 0: Separator box does NOT Exist
                                //        1: Separator box does Exist
@@ -263,12 +273,13 @@ function Edit_FillingPattern_CodeRelated(pos,Str){
   initializated_EditToolField_arr();
   var CodeRelated = EditToolField_arr[pos];
   //var CodeRelated = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
-  var FillingPattern = CodeRelated.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",2);
-  var FillingPatternbox_PropArr = ["WPFControlName", "Visible"];
-  var FillingPatternbox_ValArr = ["rtbText" , true ];
-  var FillingPatternbox = FillingPattern.FindChild(FillingPatternbox_PropArr, FillingPatternbox_ValArr, 2000);
-  if(FillingPattern.Exists == true){
-    Log.Message("Filling pattern");
+  
+  if(CodeRelated.Exists == true){
+    var FillingPattern = CodeRelated.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",2);
+    var FillingPatternbox_PropArr = ["WPFControlName", "Visible"];
+    var FillingPatternbox_ValArr = ["rtbText" , true ];
+    var FillingPatternbox = FillingPattern.FindChild(FillingPatternbox_PropArr, FillingPatternbox_ValArr, 2000);
+    
     FillingPatternbox.DblClick();
     FillingPatternbox.Keys(Str);
 //    if(stt == 0 ){                                //Cutting_Simple mode
@@ -281,7 +292,7 @@ function Edit_FillingPattern_CodeRelated(pos,Str){
 //    }
     }
   else
-    Log.Message("Can't find FillingPattern Box");
+    Log.Error("Can't find Code Related ");
 }
 
 function Remove_Lead_Trail(pos){
@@ -298,8 +309,17 @@ function Remove_Lead_Trail(pos){
   
   Leading_box.DblClick();
   Leading_box.Keys(Leading_Str);
+   ////Check input value
+  var lenght = aqString.GetLength(Leading_Str);
+  var Input_val = Leading_Str.slice(4,4+lenght);
+  aqObject.CheckProperty(Leading_box,"Text", cmpEqual, Input_val);
+  
   Trailing_box.DblClick();
   Trailing_box.Keys(Trailing_Str);
+  ////Check input value
+  lenght = aqString.GetLength(Trailing_Str);
+  Input_val = Trailing_Str.slice(4,4+lenght);
+  aqObject.CheckProperty(Trailing_box,"Text", cmpEqual, Input_val);
 }
 
 function Change_CuttingPattern(pos,numb){ //numb
@@ -331,7 +351,7 @@ function Sellect_Mode(Select_arr){
 //  } 
  // Custom_count = 0;
   //var Custom_count = 0;
-  var Separato_Exist = Check_Separator();
+  var Separato_Exist = Check_Exist_Separator(Separato_Str);
   //Log.Message("asd "+Separato_Exist);
   var ControlToolBar = DLCode.FindChild("WPFControlName","controlToolBar",200);
   
