@@ -48,6 +48,8 @@ function Filling_TC2(){
   Sellect_Mode(Mess2_tool);
   clickEdittool(1);
   Edit_CustomString(1,Str_Noread);
+  Edit_FillingMode_CustomField(1);
+  Edit_FillingPattern_CustomField(1,FillingPattern_Str);
   clickEdittool(2); 
   Check_Default_GlobalStatisticsField(2);                // POSSITION :2
   Edit_FillingMode_GlobalStatistic(2);
