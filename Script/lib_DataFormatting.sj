@@ -326,20 +326,60 @@ function Remove_Lead_Trail(pos){
 function Change_CuttingPattern(pos,numb){ //numb
   initializated_EditToolField_arr();
   var CodeRelated = EditToolField_arr[pos];
-  var CodeRelated = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
+  //var CodeRelated = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
   var CuttingPattern_Field = CodeRelated.WPFObject("ContentExpander", "", 1).WPFObject("test").WPFObject("ContentControl", "", 2);
   var CuttingType = CuttingPattern_Field.WPFObject("StackPanel", "", 1).WPFObject("Grid", "", 1).WPFObject("cuttingModeComboBox");
   // CHECK CUTTING PATTERN TYPE DEFAULT VALUE
   var CuttingType_box = CuttingType.Child(0);
   var CuttingType_val = aqObject.GetPropertyValue(CuttingType_box,"Text");
-  if(CuttingType_val == CuttingType_default) Log.Message("CUTTING PATTERN TYPE DEFAULT VALUE IS ***CORRECT*** !!!!!!!!!");
-  else Log.Message("CUTTING PATTERN TYPE DEFAULT VALUE IS ***NOT CORRECT*** !!!!!!!!!");
+//  if(CuttingType_val == CuttingType_default) Log.Message("CUTTING PATTERN TYPE DEFAULT VALUE IS ***CORRECT*** !!!!!!!!!");
+//  else Log.Message("CUTTING PATTERN TYPE DEFAULT VALUE IS ***NOT CORRECT*** !!!!!!!!!");
+  if(CodeRelated.Exists){
+    if(numb == 0) CuttingType.ClickItem(0); // Simple is default value
+    if(numb == 1) CuttingType.ClickItem(1);
+    if(numb == 2) CuttingType.ClickItem(2);
+  }
+  else Log.Error("Can't find Code Related ");
   
-  if(numb == 0) CuttingType.ClickItem(0);
-  if(numb == 1) CuttingType.ClickItem(1);
-  if(numb == 2) CuttingType.ClickItem(2);
 }
 
+
+function Change_CuttingPattern_Mode(pos,str){
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+  var CodeRelated = CodeRelated.FindChild("Name","WPFObject(\"ContentControl\", \"\", 2)",200); 
+  if(CodeRelated.Exists == true){ 
+    var PatternCuttingMode = CodeRelated.FindChild("Name","WPFObject(\ParamControl\", \"\", 3)",200); 
+    var PatternCuttingMode_box = PatternCuttingMode.FindChild("Name","WPFObject(\"ContentControl\", \"\", 1)",200); 
+    var PatternCuttingMode_val = PatternCuttingMode_box.FindChild("ClrFullClassName","System.Windows.Controls.ComboBox",200); 
+    if(str == Str_KeepBefore) PatternCuttingMode_val.ClickItem(0);               // KeepBefore
+    if(str == Str_KeepAfter) PatternCuttingMode_val.ClickItem(1);                // KeepAfter
+    if(str == Str_KeepMiddle) PatternCuttingMode_val.ClickItem(2);               // KeepMiddle 
+  }
+ else Log.Error("Can't find Code Related ");
+
+}
+
+function Edit_Pattern_String(pos,str){
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+  var CodeRelated = CodeRelated.FindChild("Name","WPFObject(\"ContentControl\", \"\", 2)",200); 
+  var PatternString = CodeRelated.FindChild("Name","WPFObject(\ParamControl\", \"\", 4)",200); 
+  var PatternString_box = PatternString.FindChild("Name","WPFObject(\"rtbText\")",200); 
+  
+
+  if(CodeRelated.Exists){
+   PatternString_box.DblClick();
+   PatternString_box.Keys(str);
+   ////Check input value
+   var PatternString_val = PatternString.FindChild("ClrFullClassName","System.Windows.Documents.Paragraph",200); 
+   var lenght = aqString.GetLength(str);
+   var Input_val = str.slice(4,(4+lenght));
+   aqObject.CheckProperty(PatternString_val,"WPFControlText", cmpEqual, Input_val);
+  }
+  else Log.Error("Can't find Code Related ");
+  
+}
 /////////////////////////////////////////////////////////////////////////////////////////////////
 var count = 0;
 var Get_Customtool_place = [];

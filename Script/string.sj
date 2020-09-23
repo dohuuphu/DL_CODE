@@ -25,6 +25,9 @@ var  Str_Space = " ";
 var  Str_No = "No";
 var  Str_Read = "Read";
 var  Str_LocalNoRead="Local No Read";
+var  Str_KeepBefore = "KeepBefore";
+var  Str_KeepAfter = "KeepAfter";
+var  Str_KeepMiddle = "KeepMiddle";
 
 // input box text
 var  Separato_Str = "[BS]hello";
@@ -36,8 +39,9 @@ var  FillingPattern_dot_Str ="[BS].";
 var  Space_Str = "[BS] ";
 var  No_Str = "[BS]No";
 var  Read_Str = "[BS]Read";
-var  Leading_Str = "[BS]3";
-var  Trailing_Str = "[BS]4";
+var  Leading_Str = "[BS]1";
+var  Trailing_Str = "[BS]2";
+var  PatternString_Str = "[BS]P"
 
 
 // String default value
@@ -59,3 +63,6 @@ var GlobalFieldType_default = "Total Number of Reading Phases";
 var Remove_default = "0";
 var LocalNoRead_default = "<CAN>";
 var LocalMultipleRead_default = "?";
+var PatternCuttingMode_default = "Keep Before";
+var PatternString_default = "<CAN>";
+var CustomString_CodeRelated_default = ";"

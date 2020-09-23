@@ -2,6 +2,8 @@
 //USEUNIT lib_CheckDefault
 //USEUNIT lib_Auto_Setup
 
+
+//***************************** FILLING TEST_CASE 1 *****************************************
 function Filling_TC1(){
   var Mess1_tool=[Str_CustomFieldTool,Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool,Str_CustomFieldTool,Str_CustomFieldTool];
@@ -10,9 +12,12 @@ function Filling_TC1(){
   clickDataFortmating_Default();
   Check_Value_HeaderTerminator();
   Sellect_Mode(Mess1_tool);
+  
   clickEdittool(1);
   Check_Default_CustomField(1);          // POSSITION :1
   Edit_CustomString(1,Str_Code);
+  clickEdittool(2);
+  Check_Default_CodeRelated_Field(2,Str_CombinationMode);    //          Str_CollectionMode or Str_CombinationMode
   
   // Message 2
   Click_Mess2();
@@ -25,6 +30,8 @@ function Filling_TC1(){
   Edit_CustomString(3,Str_Read);
 }
 
+
+//***************************** FILLING TEST_CASE 2 *****************************************
 function Filling_TC2(){
   var Mess1_tool=[Str_CustomFieldTool,Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool,Str_GlobalStatisticsTool,Str_CustomFieldTool];
@@ -69,11 +76,11 @@ function Filling_TC2(){
 }
 
 
-
+//***************************** CUTTING SIMPLE TEST_CASE *****************************************
 function Cutting_Simple_TC(){
   var Mess1_tool=[Str_CustomFieldTool,Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool];
-  //clickDataFortmating_Collection();
+  clickDataFortmating_Collection();
   // Message 1
   Sellect_Mode((Mess1_tool));
   clickEdittool(1);
@@ -81,12 +88,14 @@ function Cutting_Simple_TC(){
   Edit_FillingMode_CustomField(1);
   Check_Default_FillingMode_Custom_Expand(1);
   Edit_FillingPattern_CustomField(1,FillingPattern_dot_Str);
+  
   clickEdittool(2);
   Check_Default_CodeRelated_Field(2,Str_CollectionMode)     //          Str_CollectionMode or Str_CombinationMode
   Edit_FillingMode_CodeRelated(2);
   Check_Default_FillingMode_CodeRelated_Expand(2);
   Edit_FillingPattern_CodeRelated(2,FillingPattern_Str);
   Remove_Lead_Trail(2);
+  
   // Message 2
   Click_Mess2();
   Sellect_Mode(Mess2_tool);
@@ -94,20 +103,68 @@ function Cutting_Simple_TC(){
   Edit_CustomString(1,Str_Noread);
 }
 
+
+//***************************** CUTTING PATTERN TEST_CASE *****************************************
 function Cutting_Pattern_TC(){
-  var Mess1_tool=[Str_CodeRelatedTool];
+  var Mess1_tool=[Str_CustomFieldTool,Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool];
-  //clickDataFortmating_Collection();
-  // Message 
-  Check_Value_HeaderTerminator();
+  clickDataFortmating_Collection();
+  // Message 1
   Sellect_Mode((Mess1_tool));
-  Edit_FillingMode_CodeRelated(Cutting_Simple);
+  clickEdittool(1);
+  Check_Default_CustomField(1); 
+  Edit_FillingMode_CustomField(1);
+  Check_Default_FillingMode_Custom_Expand(1);
+  Edit_FillingPattern_CustomField(1,FillingPattern_dot_Str);
+  
+  clickEdittool(2);
+  Check_Default_CodeRelated_Field(2,Str_CollectionMode)     //          Str_CollectionMode or Str_CombinationMode
+  Edit_FillingMode_CodeRelated(2);
+  Check_Default_FillingMode_CodeRelated_Expand(2);
+  Edit_FillingPattern_CodeRelated(2,FillingPattern_Str);
+  Change_CuttingPattern(2,Cutting_Pattern); 
+  Check_Default_CuttingPatternType_CodeRelated_Expand(2);            // Cutting_Simple = 0; Cutting_Pattern = 1; Cutting_Generic = 2
+  Change_CuttingPattern_Mode(2,Str_KeepAfter)                                  //Str_KeepBefore; Str_KeepAfter; Str_KeepMiddle 
+  Edit_Pattern_String(2,PatternString_Str);                              
+                                                           
+
   // Message 2
   Click_Mess2();
-  Check_Value_HeaderTerminator();
+  //Check_Value_HeaderTerminator();
   Sellect_Mode(Mess2_tool);
   clickEdittool(1);
-  Edit_CustomString(Str_Noread);
+  Edit_CustomString(1,Str_Noread);
+}
+
+//***************************** CUTTING GENERIC TEST_CASE *****************************************
+function Cutting_Generic_TC(){
+  var Mess1_tool=[Str_CustomFieldTool,Str_CodeRelatedTool];
+  var Mess2_tool=[Str_CustomFieldTool];
+  clickDataFortmating_Collection();
+  // Message 1
+  Sellect_Mode((Mess1_tool));
+  clickEdittool(1);
+  Check_Default_CustomField(1); 
+  Edit_FillingMode_CustomField(1);
+  Check_Default_FillingMode_Custom_Expand(1);
+  Edit_FillingPattern_CustomField(1,FillingPattern_dot_Str);
+  
+  clickEdittool(2);
+  Check_Default_CodeRelated_Field(2,Str_CollectionMode)     //          Str_CollectionMode or Str_CombinationMode
+  Edit_FillingMode_CodeRelated(2);
+  Check_Default_FillingMode_CodeRelated_Expand(2);
+  Edit_FillingPattern_CodeRelated(2,FillingPattern_Str);
+  Change_CuttingPattern(2,Cutting_Generic);                                    // Cutting_Simple; Cutting_Pattern ; Cutting_Generic 
+  Check_Default_CuttingPatternType_CodeRelated_Expand(2,Cutting_Generic);        // Cutting_Simple; Cutting_Pattern; Cutting_Generic 
+                             
+                                                           
+
+  // Message 2
+  Click_Mess2();
+//  Check_Value_HeaderTerminator();
+  Sellect_Mode(Mess2_tool);
+  clickEdittool(1);
+  Edit_CustomString(1,Str_Noread);
 }
 
 function test(){

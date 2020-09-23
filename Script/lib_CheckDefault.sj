@@ -184,7 +184,7 @@ function Check_Default_CodeRelated_Field(pos, str){          // Full
     var FillingModebox = FillingMode.FindChild(FillingModebox_PropArr,FillingModebox_ValArr,2000).Child(0);
     aqObject.CheckProperty(FillingModebox,"Text", cmpEqual, FillingMode_default);
     
-      // CHECK CUTTING PATTERN TYPE DEFAULT VALUE
+      // CHECK CUTTING PATTERN TYPE (SIMPLE) DEFAULT VALUE
     var CuttingPattern_Field = CodeRelated.WPFObject("ContentExpander", "", 1).WPFObject("test").WPFObject("ContentControl", "", 2);
     var CuttingType = CuttingPattern_Field.WPFObject("StackPanel", "", 1).WPFObject("Grid", "", 1).WPFObject("cuttingModeComboBox");
     var CuttingType_box = CuttingType.Child(0);
@@ -214,8 +214,7 @@ function Check_Default_FillingMode_CodeRelated_Expand(pos){    //Full
     var FillingMode_Expand = CodeRelated.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",2);
     var Length_box = FillingMode_Expand.FindChild("ClrFullClassName","Microsoft.Windows.Controls.WatermarkTextBox",200);
     aqObject.CheckProperty(Length_box,"Text", cmpEqual, Length_default);
-    // CHECK FILLING PATTERN DEFAULT VALUE  
-   
+    // CHECK FILLING PATTERN DEFAULT VALUE   
     var FillingPatternbox = FillingMode_Expand.FindChild("Name", "WPFObject(\"Paragraph\", \"\", 1)", 2000);
     aqObject.CheckProperty(FillingPatternbox,"WPFControlText", cmpEqual, FillingPattern_default);
     // CHECK FieldJustification DEFAULT VALUE
@@ -226,3 +225,65 @@ function Check_Default_FillingMode_CodeRelated_Expand(pos){    //Full
     }
     else Log.Error("Can't find Code Related");
 }
+
+function Check_Default_CuttingPatternType_CodeRelated_Expand(pos,str){  
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+  var CodeRelated = CodeRelated.FindChild("Name","WPFObject(\"ContentControl\", \"\", 2)",200); 
+  
+  if(CodeRelated.Exists == true){ 
+    if(str == Cutting_Pattern ){
+      // CHECK  MODE (PATTERN) DEFAULT VALUE
+      var PatternCuttingMode = CodeRelated.FindChild("Name","WPFObject(\ParamControl\", \"\", 3)",200); 
+      var PatternCuttingMode_box = PatternCuttingMode.FindChild("Name","WPFObject(\"ContentControl\", \"\", 1)",200); 
+      var PatternCuttingMode_val = PatternCuttingMode_box.FindChild("ClrFullClassName","System.Windows.Controls.TextBlock",200);
+      aqObject.CheckProperty(PatternCuttingMode_val,"WPFControlText", cmpEqual, PatternCuttingMode_default);
+      // CHECK PATTERN STRING (PATTERN) DEFAULT VALUE
+      var PatternString = CodeRelated.FindChild("Name","WPFObject(\ParamControl\", \"\", 4)",200); 
+      var PatternString_box = PatternString.FindChild("Name","WPFObject(\"rtbText\")",200); 
+      var PatternString_val = PatternString_box.FindChild("ClrFullClassName","System.Windows.Controls.TextBlock",200); 
+      aqObject.CheckProperty(PatternString_val,"WPFControlText", cmpEqual, PatternString_default);
+    }
+
+    if(str == Cutting_Generic ){
+      // CHECK  MODE (GENERIC) DEFAULT VALUE
+      var PatternCuttingMode = CodeRelated.FindChild("Name","WPFObject(\ParamControl\", \"\", 5)",200); 
+      var PatternCuttingMode_box = PatternCuttingMode.FindChild("Name","WPFObject(\"ContentControl\", \"\", 1)",200); 
+      var PatternCuttingMode_val = PatternCuttingMode_box.FindChild("ClrFullClassName","System.Windows.Controls.TextBlock",200);
+      aqObject.CheckProperty(PatternCuttingMode_val,"WPFControlText", cmpEqual, CuttingMode_default);
+      // CHECK  STRING (GENERIC) DEFAULT VALUE
+      var PatternString = CodeRelated.FindChild("Name","WPFObject(\ParamControl\", \"\", 6)",200); 
+      var PatternString_val = PatternString.FindChild("Name","WPFObject(\"RangeTextBox\", \"\", 1)",200); 
+      aqObject.CheckProperty(PatternString_val,"Text", cmpEqual, CustomString_CodeRelated_default);
+    }
+    
+   }
+   else Log.Error("Can't find Code Related");
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
