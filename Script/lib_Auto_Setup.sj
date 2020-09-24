@@ -26,8 +26,8 @@ function clickDataFortmating_Collection()
   var GoodReadSetup = Sys.Process("DL.CODE").FindChild(arrPro, arrVal, 1000);
   GoodReadSetup = GoodReadSetup.Parent;
   GoodReadSetup.Click();
-  var CodeCollection= Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60").WPFObject("Shell", "DL.CODE 1.9.0.60", 1).WPFObject("Border", "", 1).WPFObject("DockPanel", "", 1).WPFObject("Grid", "", 2).WPFObject("ContentPlaceholder").WPFObject("UserControl").WPFObject("LayoutRoot").WPFObject("Border", "", 1).WPFObject("Grid", "", 1).WPFObject("Border", "", 1).WPFObject("TabControl", "", 1).WPFObject("Grid", "", 1).WPFObject("JobContentPresenter").WPFObject("ResultAnalysisJobContent", "", 1).WPFObject("AddCollectionActionButton", "", 1).WPFObject("image")
-  CodeCollection.Click();
+
+    CodeCollection();
         
         
 // Chosse DataFormatting
@@ -63,8 +63,7 @@ function clickDataFortmating_Default()
         //lib_common.terminateUI();
         aqTestCase.End();
         Result_Click();
-
-var path =Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60").WPFObject("Shell", "DL.CODE 1.9.0.60", 1).WPFObject("Border", "", 1).WPFObject("DockPanel", "", 1).WPFObject("Grid", "", 2).WPFObject("ContentPlaceholder").WPFObject("UserControl").WPFObject("LayoutRoot").WPFObject("CentralBorder").WPFObject("Grid", "", 1).WPFObject("BottomBorder").WPFObject("BottomTabControl").WPFObject("StatisticResult", "", 1).WPFObject("Grid", "", 1).WPFObject("ScrollViewer", "", 1).WPFObject("StackPanel", "", 1).WPFObject("Expander", "Code Settings", 2).WPFObject("Border", "", 1).WPFObject("DataGrid", "", 1).WPFObject("DataGridRow", "", 1).WPFObject("DataGridCell", "", 3).WPFObject("ContentPresenter", "", 1).WPFObject("ItemsControl", "", 1);
+        //Get_CODE();
 
 var ReadCode = "";
 var ChildCount = path.ChildCount;
@@ -177,6 +176,39 @@ function Events_Click()
     }
 }
 
+function CodeCollection()
+{
+    var ProGrid = ["ClrFullClassName"];
+    var ValGrid = ["IVS_UI.Views.JobConfigurationMode.JobConfigurationModeView"];
+    var Grid = Sys.Process("DL.CODE").FindChild(ProGrid, ValGrid, 2000);
+    if (Grid.Exists)
+    {
+      //Log.Message(Grid.FullName)
+      var ProBorder = ["Name"];
+      var ValBorder = ["WPFObject\(\"Border\"\, \"\"\, 1)"];
+      var Border = Grid.FindChild(ProBorder, ValBorder, 2000);
+      if (Border.Exists)
+      {
+        //Log.Message(Border.FullName)
+        var ProResultAnalysisJobContent = ["ClrFullClassName"];
+        var ValResultAnalysisJobContent = ["MatrixMasterPlugin.JobContent.ResultAnalysisJobContent"];
+        var ResultAnalysisJobContent = Border.FindChild(ProResultAnalysisJobContent, ValResultAnalysisJobContent, 2000);
+        if (ResultAnalysisJobContent.Exists)
+        {
+          //Log.Message(ResultAnalysisJobContent.FullName)
+          var ProAddCollectionActionButton = ["ClrFullClassName"];
+          var ValAddCollectionActionButton = ["UIController.JobContent.ActionButtons.AddCollectionActionButton"];
+          var CodeCollection = ResultAnalysisJobContent.FindChild(ProAddCollectionActionButton, ValAddCollectionActionButton, 2000);
+          if (CodeCollection.Exists)
+          {
+            //Log.Message(CodeCollection.FullName)
+            CodeCollection.Click()
+          }
+        }
+      }
+    }
+
+}
 
 
 
@@ -457,40 +489,35 @@ var FieldJustification = Sys.Process("DL.CODE").FindChild(PropLeftRight, ValuesL
 //TextBlockCode.Click(); 
   if (FieldJustification.Exists== true)
     {
+      
      FieldJustification= FieldJustification.WPFControlText;
      FieldJustification = aqConvert.VarToStr(FieldJustification)
      Log.Message("FieldJustification " + FieldJustification)
      if (FieldJustification == FieldJustificationDefaul )
      {
-     var CustomStringTextBlockCode_1= Header+ CustomString + Pattern
-     CustomStringTextBlockCodeLength = aqString.GetLength(CustomStringTextBlockCode_1)
-     Log.Message("CustomStringTextBlockCode_1" + CustomStringTextBlockCode_1)
-     Log.Message("CustomStringTextBlockCodeLength_1" + CustomStringTextBlockCodeLength)
-     for(i=0; i<CustomStringTextBlockCodeLength;i++ )
-     {
-     if (CustomStringTextBlockCode_1[i] == TextBlockCode[i] )
-       Check = Check
+       var CustomStringTextBlockCode_1= Header+ CustomString + Pattern
+       CustomStringTextBlockCodeLength = aqString.GetLength(CustomStringTextBlockCode_1)
+       Log.Message("CustomStringTextBlockCode_1" + CustomStringTextBlockCode_1)
+       Log.Message("CustomStringTextBlockCodeLength_1" + CustomStringTextBlockCodeLength)
+     
+       for(i=0; i<CustomStringTextBlockCodeLength;i++ )
+       {
+       if (CustomStringTextBlockCode_1[i] == TextBlockCode[i] )
+         Check = Check;
        else 
-       Check = 1
+         Check = 1
+       }
+       
+      Log.Message("Check is " + Check)   
+      if ( Check ==0 )
+      Log.Message("Field Justification Left Correct")
+      else Log.Warning("Field Justification Was set Left but Show Right")
+      Check = 0;
+  
+
      }
-  Log.Message("Check is " + Check)   
-  if ( Check ==0 )
-  Log.Message("Field Justification Left Correct")
-
-  else 
-  
-  Log.Warning("Field Justification Was set Left but Show Right")
-  Check = 0;
-  
-
-   }
-    
-    
-    
-    }
-    
-  else
-  {
+     else
+     {
          PropLeftRight = new Array("ClrFullClassName","WPFControlText");
          ValuesLeftRight = new Array("System.Windows.Controls.TextBlock","Right Aligned");
          var FieldJustificationR = Sys.Process("DL.CODE").FindChild(PropLeftRight, ValuesLeftRight, 1000)
@@ -524,36 +551,378 @@ var FieldJustification = Sys.Process("DL.CODE").FindChild(PropLeftRight, ValuesL
 
            }
    
+         }
+    
+    }
+    
+  
+
+}
+
+
+var ReadCode;
+var Code_console;
+var ChildCount
+function Get_CODE()
+{
+    var ProBottomBorder = ["ClrFullClassName","WPFControlName"];
+    var ValBottomBorder = ["System.Windows.Controls.Grid","BottomBorder"];
+    var BottomBorder = Sys.Process("DL.CODE").FindChild(ProBottomBorder, ValBottomBorder, 2000);
+    if (BottomBorder.Exists)
+    {
+      //Log.Message(BottomBorder.FullName)
+      var ProTabControl = ["ClrFullClassName","WPFControlName"];
+      var ValTabControl = ["System.Windows.Controls.TabControl","BottomTabControl"];
+      var TabControl = BottomBorder.FindChild(ProTabControl, ValTabControl, 2000);
+      if (TabControl.Exists)
+      {
+        //Log.Message(TabControl.FullName)
+        var ProExpanderCodeSetting = ["ClrFullClassName","WPFControlText"];
+        var ValExpanderCodeSetting = ["System.Windows.Controls.Expander","Code Settings"];
+        var ExpanderCodeSetting = TabControl.FindChild(ProExpanderCodeSetting, ValExpanderCodeSetting, 2000);
+        if (ExpanderCodeSetting.Exists)
+        {
+          //Log.Message(ExpanderCodeSetting.FullName)
+          var ProDataGrid = ["ClrFullClassName"];
+          var ValDataGrid = ["System.Windows.Controls.DataGrid"];
+          var DataGrid = ExpanderCodeSetting.FindChild(ProDataGrid, ValDataGrid, 2000);
+          if (DataGrid.Exists)
+          {
+            //Log.Message(DataGrid.FullName)
+            var ProDataGridRow = ["ClrFullClassName"];
+            var ValDataGridRow = ["System.Windows.Controls.DataGridRow"];
+            var DataGridRow = DataGrid.FindChild(ProDataGridRow, ValDataGridRow, 2000);
+            if (DataGridRow.Exists)
+            {
+              //Log.Message(DataGridRow.FullName)
+              var ProItemsControl = ["ClrFullClassName"];
+              var ValItemsControl = ["System.Windows.Controls.ItemsControl"];
+              var ItemsControl = DataGridRow.FindChild(ProItemsControl, ValItemsControl, 2000);
+              if (ItemsControl.Exists)
+              {
+                //Log.Message(ItemsControl.FullName)
+                //Log.Message(ItemsControl.ChildCount)
+                var ChildCount = ItemsControl.ChildCount
+                ChildCount2 = ChildCount +1
+                ReadCode="";
+                var i=1
+                for(i=1;i < ChildCount2; i++)
+                {
+                  var ProContentPresenter = ["ClrFullClassName","WPFControlOrdinalNo"];
+                  var ValContentPresenter = ["System.Windows.Controls.ContentPresenter", i];
+                  var ContentPresenter = ItemsControl.FindChild(ProContentPresenter, ValContentPresenter, 2000);
+                  if (ContentPresenter.Exists)
+                  {
+                    ReadCode =ReadCode+ContentPresenter.DataContext ;
+                  }
+                }
+                Log.Message("Code Result: " +ReadCode);
+                
+      
+              } 
+      
+      
+            } 
+      
+          }     
+        }
+      
+      }
+    }
+}
+
+
+function Get_Console_Result()
+{
+    var arrPro = ["ClrFullClassName" , "WPFControlText"];
+    var arrVal = ["System.Windows.Controls.TabItem", "Console"];
+    var consoleTab  = Sys.Process("DL.CODE").FindChild(arrPro, arrVal, 2000) ;  
+    if (consoleTab.Exists)
+      {
+        if (consoleTab.IsSelected == false)
+             Click_Console();
+        if (consoleTab.IsSelected == true)
+        {
+             var itemControlPro = ["ClrFullClassName"];  
+             var itemControlVal = ["System.Windows.Controls.ItemsControl"];
+             var itemControlObj = consoleTab.Parent.FindChild(itemControlPro, itemControlVal, 2000);
+             //Log.Message(itemControlObj.FullName);
+             if (itemControlObj.Exists)
+               { 
+                 ChildCount = itemControlObj.childCount;
+                 ChildCount = aqConvert.VarToStr(ChildCount)
+                // Log.Message("ChildCount is "+ ChildCount);
+    //                       var ProContentPresenter = ["Name"];
+    //                       var ValContentPresenter = ["WPFObject(\"ContentPresenter\", \"\","+ChildCount+")"];
+                 var ProContentPresenter = ["ClrFullClassName","WPFControlOrdinalNo"];
+                 var ValContentPresenter = ["System.Windows.Controls.ContentPresenter",ChildCount];
+                 var ContentPresenter = itemControlObj.FindChild(ProContentPresenter, ValContentPresenter, 2000);
+                 if (ContentPresenter.Exists)
+                  {
+                     //ShowCode = ShowCode.Text
+                     //Log.Message(ContentPresenter.FullName)
+                     var ProTextBlockCode = ["ClrFullClassName","WPFControlOrdinalNo"];
+                     var ValTextBlockCode = ["System.Windows.Controls.TextBlock",2];
+                     var TextBlockCode = ContentPresenter.FindChild(ProTextBlockCode, ValTextBlockCode, 2000);
+                     if (TextBlockCode.Exists)
+                     {
+                      // Log.Message(TextBlockCode.FullName)
+                         Code_console = TextBlockCode.Text;
+                        Code_console =aqConvert.VarToStr(Code_console);
+                        var codeconsloellength = aqString.GetLength(Code_console);
+                       Log.Message("code consloe: " + Code_console)
+                       Log.Message("code console length: " + codeconsloellength)
+                     }
+                  }
+              } 
+        }       
+    }
+}
+
+
+function Click_AdvancedSetup()
+{
+    var ProContentExpander = ["ClrFullClassName","WPFControlName"];
+    var ValContentExpander = ["IVSControls.Controls.CustomExpander.ContentExpander","CollapsedExpander"];
+    var ContentExpander = Sys.Process("DL.CODE").FindChild(ProContentExpander, ValContentExpander, 2000);
+    if (ContentExpander.Exists)
+    {
+      //Log.Message(ContentExpander.FullName)
+      var ProScrollViewer = ["ClrFullClassName","WPFControlName"];
+      var ValScrollViewer = ["System.Windows.Controls.ScrollViewer","StepsPanelScrollViewer"];
+      var ScrollViewer = ContentExpander.FindChild(ProScrollViewer, ValScrollViewer, 2000);
+      if (ScrollViewer.Exists)
+      {
+        //Log.Message(ScrollViewer.FullName)
+        var Proborder = ["ClrFullClassName","WPFControlName"];
+        var Valborder = ["System.Windows.Controls.Border","border"];
+        var border = ScrollViewer.FindChild(Proborder, Valborder, 2000);
+        if (border.Exists)
+        {
+          //Log.Message(border.FullName)
+          var ProAdvanced = ["ClrFullClassName","WPFControlOrdinalNo"];
+          var ValAdvanced = ["System.Windows.Controls.ContentPresenter","2"];
+          var Advanced = border.FindChild(ProAdvanced, ValAdvanced, 2000);
+          if (Advanced.Exists)
+          {
+            //Log.Message(Advanced.FullName)
+            Advanced.Click();
+            Result_Click();
+            Get_CODE();
+            //Click Formatting
+            arrPro = ["ClrFullClassName", "WPFControlText"];
+            arrVal = ["System.Windows.Documents.Run", "Data Formatting"];
+            FormattingObj = Sys.Process("DL.CODE").FindChild(arrPro, arrVal, 1000);
+            FormattingObj = FormattingObj.Parent;
+            FormattingObj.Click();
+            Initization_DLcode();
+ 
+          }
+          
+          }
+      }
+    }
+}
+
+//*******************************************************************************************************************************
+
+function Compare_Cutting_PatternType(mode,stt){ // mode: Str_KeepAfter  Str_KeepBefore
+//  var result = "937400028"; //get from result
+//  var act_result = "<STX>0028******" //  get from console
+//  var act_result = "<STX>******0028"
+  var Code_length = aqConvert.StrToInt(length_Str.slice(4)); // cut out [BS] and covert to int
+  var key = "";
+  var start =FillingPattern_Str.slice(4);                           //"*"
+//  var test = "40";
+//  test_length = aqString.GetLength(test);
+  ReadCode = aqConvert.VarToStr(ReadCode);
+  var result_length = aqString.GetLength(ReadCode);
+  Log.Message("result LENGTH: "+result_length);
+  
+  // get pattern string
+  var patternString = PatternString_Str.slice(4); // string "p"
+  var patternString_length = aqString.GetLength(patternString); 
+  //Log.Message("patternString_length: " + patternString_length);
+  
+  //get act_result from Console
+  var act_result = Code_console.slice(5); // 0028****** or  ******0028
+  act_result = aqConvert.VarToStr(act_result);
+  var act_result_length = aqString.GetLength(act_result);
+  Log.Message("act result: "+act_result);
+  Log.Message("act result LENGTH: "+ act_result_length);
+
+  
+  // Get Pos of patternString on CodeResult  
+//  var cutting_pos = ReadCode.indexOf(patternString);  // num: 4 lastIndexOf
+//    Log.Message("cutting_pos: " + cutting_pos);
+  // KEEP AFTER
+  if(mode ==  Str_KeepAfter){   
+    var cutting_pos = ReadCode.lastIndexOf(patternString);  // num: 4 lastIndexOf
+    Log.Message("cutting_pos: " + cutting_pos);
+    var last_result = ReadCode.slice(cutting_pos+patternString_length); // 0028
+    Log.Message("last_result " + last_result);
+    var last_result_length = aqString.GetLength(last_result);
+    //Log.Message("Keep after");
+//    Log.Message("last_result_after " + last_result_after);
+//    //left align
+//    las_index = act_result.indexOf(last_result); // pos = 6 => right 
+//    Log.Message("last Index: " +(las_index));    // pos = 0 => left align
+//    // compare wwith Justification
+    }
+
+   // KEEP BEFORE 
+  if(mode ==  Str_KeepBefore){  
+    var cutting_pos = ReadCode.indexOf(patternString);  // num: 4 lastIndexOf
+    Log.Message("cutting_pos: " + cutting_pos);
+    var last_result = ReadCode.slice(0,cutting_pos);
+    //Log.Message("last_result_before " + last_result);
+    var last_result_length = aqString.GetLength(last_result);
+    //Log.Message("Keep Before");
+  }
+  
+  // create *
+    for(i=0;i<(Code_length-last_result_length);i++){   // Code_length = 20; last_result_length= after code was cut
+       key = key +start;
+    }
+  // create code depend on Left or Right
+    if(stt == Str_LeftAligned) {
+      var last_total_result = last_result + key;
+      last_total_result=  aqConvert.VarToStr(last_total_result);
+      Log.Message("last_total_result: "+last_total_result);
+       }
+    if(stt == Str_RightAligned) {
+      var last_total_result = key + last_result ;
+      Log.Message("last_total_result: " + last_total_result);
+       }
+    var last_total_result_length = aqString.GetLength(last_total_result);
+    Log.Message("last_total_result_length: " + last_total_result_length);
+       
+     
+  // compare total code
+//     if(last_total_result == act_result) Log.Message("yeahh");
+//     else Log.Error("nooo"); 
+     var out= 0;
+     for( y=0; y < last_total_result_length ; y++){
+         if(last_total_result[y] != act_result[y]) {Log.Message("erro"); out =1;}
+         Log.Message(last_total_result[y]+" - "+act_result[y]);
+     }
+     if(out == 0) Log.Message("CODE FORMATTING IS ***CORRECT***");
+     else Log.Error("CODE FORMATTING IS *** NOT CORRECT***");
+
+}
+
+
+function Compare_Cutting_GenericType(stt){
+  var Code_length_Setup = aqConvert.StrToInt(length_Str.slice(4)); // cut out [BS] and covert to int
+  var key ="";
+  var start =FillingPattern_Str.slice(4); 
+  //Get Code_result tab
+  ReadCode = aqConvert.VarToStr(ReadCode);
+  var ReadCode_length = aqString.GetLength(ReadCode);
+  Log.Message("result LENGTH: "+ReadCode_length);
+  
+  //get act_result from Console
+  var act_result = Code_console.slice(5); // 0028****** or  ******0028
+  act_result = aqConvert.VarToStr(act_result);
+  var act_result_length = aqString.GetLength(act_result);
+  Log.Message("act result: "+act_result);
+  Log.Message("act result LENGTH: "+ act_result_length);
+  
+  if(ReadCode_length <= Code_length_Setup){
+    //Create expect code
+    for(i=0;i<(Code_length_Setup-ReadCode_length);i++){   // Code_length = 20; last_result_length= after code was cut
+       key = key +start;}
+    if(stt == Str_LeftAligned){
+      var last_total_result = ReadCode + key;
+      last_total_result=  aqConvert.VarToStr(last_total_result);
+      Log.Message("last_total_result : "+last_total_result);
+      
+    }
+  }
+}
+
+function Compare_Cutting_SimpleType()
+{
+  //Get_Console_Result();
+  //Click_AdvancedSetup();
+  CuttingType();
+  ReadCodeCutting = Code_console.slice(5,(Code_console.length-1)) //from code
+  CodeShow = aqConvert.VarToStr(CodeShow);
+  ReadCodeCutting = aqConvert.VarToStr(ReadCodeCutting);
+  Log.Warning(CodeShow)
+  Log.Warning(ReadCodeCutting)
+  var str1 = CodeShow;
+  var str2 = ReadCodeCutting;
+  var strFormat;
+
+  switch (aqString.Compare(str1, str2, false))
+  {
+    case -1 : strFormat = "\"%s\" is less than \"%s\".";    break;
+    case 0  : strFormat = "\"%s\" and \"%s\" are equal.";   break;
+    case 1  : strFormat = "\"%s\" is greater than \"%s\"."; break;
   }
 
+  Log.Warning(aqString.Format(strFormat, str1, str2));
+  
+}
+
+function CuttingType()
+{
+  
+  //ReadCode = "31666249588376" // from codde
+  //ChildCount = 14
+  var Leading = Leading_Str.slice(4);
+  var Trailing =Trailing_Str.slice(4);
+  var FillingPattern_Cut =FillingPattern_Str.slice(4);
+  var FillingFull = "";
+  var ReadCode_length = aqString.GetLength(ReadCode); 
+  Trailing = ReadCode_length - Trailing;
+  Code_Cutting = ReadCode.slice(Leading,Trailing);
+  Code_Cutting_length = Code_Cutting.length;
+  WordsFill= Length_default - Code_Cutting_length;
+  Log.Warning("Length_default " + Length_default);
+  Log.Warning("Code_Cutting " + Code_Cutting);
+  Log.Warning("WordsFill " + WordsFill);
+  Log.Warning("ReadCode " +ReadCode);
+  Log.Warning("Code_Cutting "+ Code_Cutting);
+  Log.Warning("FillingPattern_Cut "+ FillingPattern_Cut);
+  var V =0
+  for(V=0 ; V < WordsFill; V++)  
+    {
+     FillingFull = FillingFull + FillingPattern_Cut
+     
+    }
+  if (Justification_default== "Left Aligned")
+  {
+    
+    
+    CodeShow = Code_Cutting + FillingFull
+    Log.Warning("CodeShow " + CodeShow)
+    Log.Warning("FillingFull " + FillingFull)
+    
+  }
+  else 
+  {
+   CodeShow = FillingFull + Code_Cutting
+   Log.Warning("CodeShow " + CodeShow)
+   Log.Warning("FillingFull " + FillingFull)
+  }
+  
 }
 
 
-
-function Compare_Cutting_PatternType(){
-  var result = "937400028";
-  var test = "37";
-  test_length = aqString.GetLength(test);
-  var result_length = aqString.GetLength(result);
-  var length = aqString.GetLength(PatternString_Str)
-  
-  var patternString = PatternString_Str.slice(4,4+length); // string "p"
-  var patternString_length = aqString.GetLength(patternString);
-  
-//  if(mode ==  Str_KeepAfter){
-//    for(i=0; i<result_length; i++){
-//      //for(y=0; y < patternString_length; y++ )
-//      if
-//      
-//    }
-      var a = result.indexOf(test);
-      Log.Message(a);
-      var last_result = result.slice(a+test_length,result_length)
-      Log.Message("last_result: " + last_result);
+function a(){
+  var a = "0123456";
+  var b= "23";
+  var lengtha =  aqString.GetLength(a);
+   var lengthb =  aqString.GetLength(b);
+  Log.Message("lengtha: " + lengtha);
+   Log.Message("lengthb: " + lengthb);
+  var index = a.indexOf(b);
+  Log.Message("index " + index);
+  var slice = a.slice(2,3);
+  Log.Message("slice " + slice);
 }
-
-
-
 
 
 

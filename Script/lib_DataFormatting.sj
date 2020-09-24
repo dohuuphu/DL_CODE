@@ -238,7 +238,7 @@ function Edit_FillingPattern_GlobalStatistic(pos,Str){
 }
 
 //************ Edit Field Justification *********
-function Edit_FieldJustification_GlobalStatistic(stt){  
+function Edit_FieldJustification_GlobalStatistic(pos){  
   initializated_EditToolField_arr();
   var GlobalStatistic = EditToolField_arr[pos];
  // var GlobalStatistic = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 2)",2000); 
@@ -379,6 +379,52 @@ function Edit_Pattern_String(pos,str){
   }
   else Log.Error("Can't find Code Related ");
   
+}
+
+
+
+function Edit_Cutting_Mode(pos,stt){
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+  //var CodeRelated = CodeRelated.FindChild("Name","WPFObject(\"ContentControl\", \"\", 2)",200); 
+  if(CodeRelated.Exists == true){
+     if(stt == Str_CuttingMode_Cut){
+       var PatternCuttingMode = CodeRelated.FindChild("Name","WPFObject(\ParamControl\", \"\", 5)",200); 
+      var PatternCuttingMode_box = PatternCuttingMode.FindChild("Name","WPFObject(\"ContentControl\", \"\", 1)",200); 
+      var PatternCuttingMode_val = PatternCuttingMode_box.FindChild("ClrFullClassName","System.Windows.Controls.ComboBox",200);
+      PatternCuttingMode_val.ClickItem(1);
+     }         
+  }
+  else Log.Error("Can't find Code Related ");
+}
+
+function Edit_CustomString_CodeRelated(pos, str){
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+  //var CodeRelated = CodeRelated.FindChild("Name","WPFObject(\"ContentControl\", \"\", 2)",200); 
+  if(CodeRelated.Exists == true){
+    //  STRING (GENERIC)
+      var PatternString = CodeRelated.FindChild("Name","WPFObject(\ParamControl\", \"\", 6)",200); 
+      var PatternString_val = PatternString.FindChild("Name","WPFObject(\"RangeTextBox\", \"\", 1)",200); 
+      PatternString_val.DblClick();
+      PatternString_val.Keys(str);
+  }
+  else Log.Error("Can't find Code Related ");
+}
+
+
+function Edit_Length_CodeRelated(pos,str){
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+  //var CodeRelated = CodeRelated.FindChild("Name","WPFObject(\"ContentControl\", \"\", 2)",200); 
+  if(CodeRelated.Exists == true){
+    var FillingMode_Expand = CodeRelated.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",2);
+    var Length_box = FillingMode_Expand.FindChild("ClrFullClassName","Microsoft.Windows.Controls.WatermarkTextBox",200);
+    Length_box.DblClick();
+    Length_box.Keys(str);
+  }
+   else Log.Error("Can't find Code Related ");
+    
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////
 var count = 0;

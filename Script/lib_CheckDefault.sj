@@ -250,7 +250,7 @@ function Check_Default_CuttingPatternType_CodeRelated_Expand(pos,str){
       var PatternCuttingMode = CodeRelated.FindChild("Name","WPFObject(\ParamControl\", \"\", 5)",200); 
       var PatternCuttingMode_box = PatternCuttingMode.FindChild("Name","WPFObject(\"ContentControl\", \"\", 1)",200); 
       var PatternCuttingMode_val = PatternCuttingMode_box.FindChild("ClrFullClassName","System.Windows.Controls.TextBlock",200);
-      aqObject.CheckProperty(PatternCuttingMode_val,"WPFControlText", cmpEqual, CuttingMode_default);
+      aqObject.CheckProperty(PatternCuttingMode_val,"Text", cmpEqual, CuttingMode_default);
       // CHECK  STRING (GENERIC) DEFAULT VALUE
       var PatternString = CodeRelated.FindChild("Name","WPFObject(\ParamControl\", \"\", 6)",200); 
       var PatternString_val = PatternString.FindChild("Name","WPFObject(\"RangeTextBox\", \"\", 1)",200); 

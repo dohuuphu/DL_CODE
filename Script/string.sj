@@ -28,20 +28,24 @@ var  Str_LocalNoRead="Local No Read";
 var  Str_KeepBefore = "KeepBefore";
 var  Str_KeepAfter = "KeepAfter";
 var  Str_KeepMiddle = "KeepMiddle";
+var  Str_CuttingMode_Cut = "Cut";
+var  Str_CuttingMode_NotCut = "NotCut";
 
 // input box text
 var  Separato_Str = "[BS]hello";
 var  Code_Str = "[BS]Code: ";
 var  NoRead_Str = "[BS]NoRead";
 var  End_Str = "[BS]End";
-var  FillingPattern_Str ="[BS]_";
+var  FillingPattern_Str ="[BS]*";
 var  FillingPattern_dot_Str ="[BS].";
 var  Space_Str = "[BS] ";
 var  No_Str = "[BS]No";
 var  Read_Str = "[BS]Read";
 var  Leading_Str = "[BS]1";
 var  Trailing_Str = "[BS]2";
-var  PatternString_Str = "[BS]P"
+var  PatternString_Str = "[BS]9";
+var  length_Str = "[BS]4";
+var  CustomString_Str = "abc";
 
 
 // String default value
