@@ -44,8 +44,8 @@ var  Read_Str = "[BS]Read";
 var  Leading_Str = "[BS]1";
 var  Trailing_Str = "[BS]2";
 var  PatternString_Str = "[BS]9";
-var  length_Str = "[BS]4";
-var  CustomString_Str = "abc";
+var  length_Str = "[BS]3";
+var  CustomString_Str = "[BS]a";
 
 
 // String default value

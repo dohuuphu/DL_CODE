@@ -122,11 +122,11 @@ function Cutting_Pattern_TC(){
   // Message 1
   Click_AdvancedSetup();
   Sellect_Mode((Mess1_tool));
-//  clickEdittool(1);
-//  Check_Default_CustomField(1); 
-//  Edit_FillingMode_CustomField(1);
-//  Check_Default_FillingMode_Custom_Expand(1);
-//  Edit_FillingPattern_CustomField(1,FillingPattern_dot_Str);
+  clickEdittool(1);
+  Check_Default_CustomField(1); 
+  Edit_FillingMode_CustomField(1);
+  Check_Default_FillingMode_Custom_Expand(1);
+  Edit_FillingPattern_CustomField(1,FillingPattern_dot_Str);
   
   clickEdittool(1);
   Check_Default_CodeRelated_Field(1,Str_CollectionMode)     //          Str_CollectionMode or Str_CombinationMode
@@ -166,28 +166,29 @@ function Cutting_Pattern_TC(){
 
 //***************************** CUTTING GENERIC TEST_CASE *****************************************
 function Cutting_Generic_TC(){
-  var Mess1_tool=[Str_CustomFieldTool,Str_CodeRelatedTool];
+  var Mess1_tool=[Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool];
   
   // Message 1
   Click_AdvancedSetup();
-//  Sellect_Mode((Mess1_tool));
+  Sellect_Mode((Mess1_tool));
+ 
 //  clickEdittool(1);
 //  Check_Default_CustomField(1); 
 //  Edit_FillingMode_CustomField(1);
 //  Check_Default_FillingMode_Custom_Expand(1);
 //  Edit_FillingPattern_CustomField(1,FillingPattern_dot_Str);
-//  
-//  clickEdittool(2);
-//  Check_Default_CodeRelated_Field(2,Str_CollectionMode)     //          Str_CollectionMode or Str_CombinationMode
-//  Edit_FillingMode_CodeRelated(2);
-//  Check_Default_FillingMode_CodeRelated_Expand(2);
-//  Edit_Length_CodeRelated(2,length_Str);
-//  Edit_FillingPattern_CodeRelated(2,FillingPattern_Str);
-//  Change_CuttingPattern(2,Cutting_Generic);                                    // Cutting_Simple; Cutting_Pattern ; Cutting_Generic 
-//  Check_Default_CuttingPatternType_CodeRelated_Expand(2,Cutting_Generic);        // Cutting_Simple; Cutting_Pattern; Cutting_Generic 
-//  Edit_Cutting_Mode(2,Str_CuttingMode_NotCut); 
-//  Edit_CustomString_CodeRelated(2,CustomString_Str);                                        // Str_CuttingMode_Cut; Str_CuttingMode_NotCut
+  
+  clickEdittool(1);
+  Check_Default_CodeRelated_Field(1,Str_CollectionMode)     //          Str_CollectionMode or Str_CombinationMode
+  Edit_FillingMode_CodeRelated(1);
+  Check_Default_FillingMode_CodeRelated_Expand(1);
+  Edit_Length_CodeRelated(1,length_Str);
+  Edit_FillingPattern_CodeRelated(1,FillingPattern_Str);
+  Change_CuttingPattern(1,Cutting_Generic);                                    // Cutting_Simple; Cutting_Pattern ; Cutting_Generic 
+  Check_Default_CuttingPatternType_CodeRelated_Expand(1,Cutting_Generic);        // Cutting_Simple; Cutting_Pattern; Cutting_Generic 
+  Edit_Cutting_Mode(1,Str_CuttingMode_NotCut); 
+  Edit_CustomString_CodeRelated(1,CustomString_Str);                                        // Str_CuttingMode_Cut; Str_CuttingMode_NotCut
 //  
 //                             
 //                                                           
@@ -203,7 +204,13 @@ function Cutting_Generic_TC(){
   Click_Console();
   Click_Play_Pause();
   Get_Console_Result();
-  Compare_Cutting_GenericType(Str_LeftAligned);
+  Compare_NotCutting_GenericType(Str_LeftAligned);
+  
+  Edit_Cutting_Mode(1,Str_CuttingMode_Cut); 
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Cutting_GenericType();
 }
 
 function test(){
