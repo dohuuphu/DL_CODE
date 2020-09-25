@@ -88,6 +88,16 @@ var ChildCount = path.ChildCount;
   Initization_DLcode();
 
 }
+
+function Click_Formatting(){
+  arrPro = ["ClrFullClassName", "WPFControlText"];
+  arrVal = ["System.Windows.Documents.Run", "Data Formatting"];
+  FormattingObj = Sys.Process("DL.CODE").FindChild(arrPro, arrVal, 1000);
+  FormattingObj = FormattingObj.Parent;
+  FormattingObj.Click();
+  Initization_DLcode();
+}
+
 function Click_Play_Pause(){
   playBtn = Sys.Process("DL.CODE").FindChild("ToolTip.Text", "Play", 1000);
   pauseBtn = Sys.Process("DL.CODE").FindChild("ToolTip.Text", "Pause", 1000);
@@ -730,11 +740,10 @@ function Compare_Cutting_PatternType(mode,stt){ // mode: Str_KeepAfter  Str_Keep
 //  var result = "937400028"; //get from result
 //  var act_result = "<STX>0028******" //  get from console
 //  var act_result = "<STX>******0028"
-  var Code_length = aqConvert.StrToInt(length_Str.slice(4)); // cut out [BS] and covert to int
+  var Fixed_length = aqConvert.StrToInt(length_Str.slice(4)); // cut out [BS] and covert to int
   var key = "";
   var start =FillingPattern_Str.slice(4);                           //"*"
-//  var test = "40";
-//  test_length = aqString.GetLength(test);
+
   ReadCode = aqConvert.VarToStr(ReadCode);
   var result_length = aqString.GetLength(ReadCode);
   Log.Message("result LENGTH: "+result_length);
@@ -750,70 +759,83 @@ function Compare_Cutting_PatternType(mode,stt){ // mode: Str_KeepAfter  Str_Keep
   var act_result_length = aqString.GetLength(act_result);
   Log.Message("act result: "+act_result);
   Log.Message("act result LENGTH: "+ act_result_length);
-
   
-  // Get Pos of patternString on CodeResult  
-//  var cutting_pos = ReadCode.indexOf(patternString);  // num: 4 lastIndexOf
-//    Log.Message("cutting_pos: " + cutting_pos);
-  // KEEP AFTER
-  if(mode ==  Str_KeepAfter){   
-    var cutting_pos = ReadCode.lastIndexOf(patternString);  // num: 4 lastIndexOf
-    Log.Message("cutting_pos: " + cutting_pos);
-    var last_result = ReadCode.slice(cutting_pos+patternString_length); // 0028
-    Log.Message("last_result " + last_result);
-    var last_result_length = aqString.GetLength(last_result);
-    //Log.Message("Keep after");
-//    Log.Message("last_result_after " + last_result_after);
-//    //left align
-//    las_index = act_result.indexOf(last_result); // pos = 6 => right 
-//    Log.Message("last Index: " +(las_index));    // pos = 0 => left align
-//    // compare wwith Justification
-    }
-
-   // KEEP BEFORE 
-  if(mode ==  Str_KeepBefore){  
-    var cutting_pos = ReadCode.indexOf(patternString);  // num: 4 lastIndexOf
-    Log.Message("cutting_pos: " + cutting_pos);
-    var last_result = ReadCode.slice(0,cutting_pos);
-    //Log.Message("last_result_before " + last_result);
-    var last_result_length = aqString.GetLength(last_result);
-    //Log.Message("Keep Before");
-  }
   
-  // create *
-    for(i=0;i<(Code_length-last_result_length);i++){   // Code_length = 20; last_result_length= after code was cut
-       key = key +start;
+    // KEEP AFTER
+    if(mode ==  Str_KeepAfter){   
+      var cutting_pos = ReadCode.lastIndexOf(patternString);  // num: 4 lastIndexOf
+      Log.Message("cutting_pos: " + cutting_pos);
+      if(cutting_pos != -1){
+        var last_result = ReadCode.slice(cutting_pos+patternString_length); // 0028
+        Log.Message("last_result " + last_result);
+        //var last_result_length = aqString.GetLength(last_result);
+      }
+      else {
+        Log.Warning("Code_Result  doesn't contain Pattern_String");
+        last_result = "";  
+      }
+      
+      }
+
+     // KEEP BEFORE 
+    if(mode ==  Str_KeepBefore){  
+      var cutting_pos = ReadCode.indexOf(patternString);  // num: 4 lastIndexOf
+      Log.Message("cutting_pos: " + cutting_pos);
+      if(cutting_pos != -1){
+        var last_result = ReadCode.slice(0,cutting_pos);
+      //Log.Message("last_result_before " + last_result);
+      //var last_result_length = aqString.GetLength(last_result);
+      //Log.Message("Keep Before");
+      }
+      else{
+        Log.Warning("Code_Result  doesn't contain Pattern_String");
+        last_result = ReadCode;
+      }
     }
-  // create code depend on Left or Right
-    if(stt == Str_LeftAligned) {
-      var last_total_result = last_result + key;
-      last_total_result=  aqConvert.VarToStr(last_total_result);
-      Log.Message("last_total_result: "+last_total_result);
-       }
-    if(stt == Str_RightAligned) {
-      var last_total_result = key + last_result ;
-      Log.Message("last_total_result: " + last_total_result);
-       }
-    var last_total_result_length = aqString.GetLength(last_total_result);
-    Log.Message("last_total_result_length: " + last_total_result_length);
+  
+    // create *
+     var last_result_length = aqString.GetLength(last_result);
+     //Check Fixed_length vs fixed length
+     if(last_result_length > Fixed_length){
+        if(stt == Str_LeftAligned) last_result = last_result.slice(0,Fixed_length);
+        if(stt == Str_RightAligned) last_result = last_result.slice(last_result_length - Fixed_length);
+     }
+      for(i=0;i<(Fixed_length-last_result_length);i++){   // Fixed_length = 20; last_result_length= after code was cut
+         key = key +start;
+      }
+    // create code depend on Left or Right
+      if(stt == Str_LeftAligned) {
+        var last_total_result = last_result + key;
+        last_total_result=  aqConvert.VarToStr(last_total_result);
+        Log.Message("last_total_result: "+last_total_result);
+         }
+      if(stt == Str_RightAligned) {
+        var last_total_result = key + last_result ;
+        Log.Message("last_total_result: " + last_total_result);
+         }
+      var last_total_result_length = aqString.GetLength(last_total_result);
+      Log.Message("last_total_result_length: " + last_total_result_length);
        
      
-  // compare total code
-     if(last_total_result == act_result) Log.Message("yeahh");
-     else Log.Error("nooo"); 
-     var out= 0;
-     for( y=0; y < last_total_result_length ; y++){
-         if(last_total_result[y] != act_result[y]) {Log.Message("erro"); out =1;}
-         Log.Message(last_total_result[y]+" - "+act_result[y]);
-     }
-     if(out == 0) Log.Message("CODE FORMATTING IS ***CORRECT***");
-     else Log.Error("CODE FORMATTING IS *** NOT CORRECT***");
+    // compare total code
+  //     if(last_total_result == act_result) Log.Message("yeahh");
+  //     else Log.Error("nooo"); 
+       var out= 0;
+       for( y=0; y < last_total_result_length ; y++){
+           if(last_total_result[y] != act_result[y]) {Log.Message("error"); out =1;}
+           Log.Message(last_total_result[y]+" - "+act_result[y]);
+       }
+       if(out == 0) Log.Message("CODE FORMATTING IS ***CORRECT***");
+       else Log.Error("CODE FORMATTING IS *** NOT CORRECT***");
+//  }
+//  else Log.Warning("Code_Result  doesn't contain Pattern_String");
+  
 
 }
 
 
 function Compare_NotCutting_GenericType(stt){
-  var Code_length_Setup = aqConvert.StrToInt(length_Str.slice(4)); // cut out [BS] and covert to int
+  var Fixed_length_Setup = aqConvert.StrToInt(length_Str.slice(4)); // cut out [BS] and covert to int
   var key ="";
   var Code_edit;
   var start =FillingPattern_Str.slice(4); 
@@ -829,13 +851,12 @@ function Compare_NotCutting_GenericType(stt){
   Log.Message("act result: "+act_result);
   Log.Message("act result LENGTH: "+ act_result_length);
   
-  if(ReadCode_length <= Code_length_Setup){
+  if(ReadCode_length <= Fixed_length_Setup){
     //Create expect code
-    for(i=0; i < (Code_length_Setup - ReadCode_length); i++){   // Code_length = 20; 
+    for(i=0; i < (Fixed_length_Setup - ReadCode_length); i++){   // Code_length = 20; 
        key = key + start;
     }
     Code_edit = ReadCode;
-    Log.Message("1");
 //    if(stt == Str_LeftAligned){
 //      var last_total_result = ReadCode + key;
 //      last_total_result=  aqConvert.VarToStr(last_total_result);
@@ -849,19 +870,17 @@ function Compare_NotCutting_GenericType(stt){
   else {
     var CustomString = CustomString_Str.slice(4);            //get customString
     var CustomString_length = aqString.GetLength(CustomString);
-    if(CustomString_length <= Code_length_Setup ){
-       for(y=0; y < (Code_length_Setup - CustomString_length); y++){   // Code_length = 20
+    if(CustomString_length <= Fixed_length_Setup ){
+       for(y=0; y < (Fixed_length_Setup - CustomString_length); y++){   // Fixed_length = 20
        key = key +start;
        }
         Code_edit = CustomString;
-        Log.Message("2");
     }
     else {
-      if(stt == Str_LeftAligned) Code_edit = CustomString.slice(0,Code_length_Setup);
-      if(stt == Str_RightAligned) Code_edit = CustomString.slice(CustomString_length - Code_length_Setup);
+      if(stt == Str_LeftAligned) Code_edit = CustomString.slice(0,Fixed_length_Setup);
+      if(stt == Str_RightAligned) Code_edit = CustomString.slice(CustomString_length - Fixed_length_Setup);
    }
     }
-  Log.Message("asd: "+ key);
   if(stt == Str_LeftAligned){
       var last_total_result = Code_edit + key;
       last_total_result=  aqConvert.VarToStr(last_total_result);
@@ -1015,7 +1034,7 @@ function a(){
    Log.Message("lengthb: " + lengthb);
   var index = a.indexOf(b);
   Log.Message("index " + index);
-  var slice = a.slice(2,3);
+  var slice = a.slice(0,-1);
   Log.Message("slice " + slice);
 }
 

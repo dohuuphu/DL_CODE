@@ -43,8 +43,8 @@ var  No_Str = "[BS]No";
 var  Read_Str = "[BS]Read";
 var  Leading_Str = "[BS]1";
 var  Trailing_Str = "[BS]2";
-var  PatternString_Str = "[BS]9";
-var  length_Str = "[BS]3";
+var  PatternString_Str = "[BS]0";
+var  length_Str = "[BS]2";
 var  CustomString_Str = "[BS]a";
 
 
@@ -70,3 +70,10 @@ var LocalMultipleRead_default = "?";
 var PatternCuttingMode_default = "Keep Before";
 var PatternString_default = "<CAN>";
 var CustomString_CodeRelated_default = ";"
+
+
+
+
+var longerlength_Str
+var shorterlength_Str
+var maxlength_Str = "[BS]100000";

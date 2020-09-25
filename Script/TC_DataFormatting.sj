@@ -3,10 +3,19 @@
 //USEUNIT lib_Auto_Setup
 
 
+function FillingMode_TC(){
+  Filling_default_TC1();
+  FillingMode_TC2();
+  FillingMode_TC3();
+  FillingMode_TC4();
+}
+
+
 //***************************** FILLING TEST_CASE 1 *****************************************
-function Filling_TC1(){
-  var Mess1_tool=[Str_CustomFieldTool,Str_CodeRelatedTool];
-  var Mess2_tool=[Str_CustomFieldTool,Str_CustomFieldTool,Str_CustomFieldTool];
+
+function Filling_default_TC1(){
+  var Mess1_tool=[Str_CodeRelatedTool];
+  var Mess2_tool=[Str_CustomFieldTool];
   // clickDataFortmating_Collection();
   // Message 1
   clickDataFortmating_Default();
@@ -14,10 +23,100 @@ function Filling_TC1(){
   Sellect_Mode(Mess1_tool);
   
   clickEdittool(1);
+  Check_Default_CodeRelated_Field(1,Str_CombinationMode);     //          Str_CollectionMode or Str_CombinationMode
+
+  
+  // Message 2
+  Click_Mess2();
+  Sellect_Mode(Mess2_tool);
+  clickEdittool(1);
+  Edit_CustomString(1,Str_Noread);
+
+}
+
+
+function FillingMode_TC2(){
+  var Mess1_tool=[Str_CodeRelatedTool];
+  var Mess2_tool=[Str_CustomFieldTool];
+
+  // Message 1
+ // Click_AdvancedSetup();
+  Click_Mess1();
+  
+  Sellect_Mode(Mess1_tool);
+  Check_Default_CodeRelated_Field(1,Str_CombinationMode);    //          Str_CollectionMode or Str_CombinationMode
+  Edit_FillingMode_CustomField(1);
+  Check_Default_FillingMode_Custom_Expand(1);  
+}
+
+
+function FillingMode_TC3(){
+  var Mess1_tool=[Str_CodeRelatedTool];
+  var Mess2_tool=[Str_CustomFieldTool];
+
+  // Message 1
+  // Click_AdvancedSetup();
+  Click_Mess1();
+  
+  Sellect_Mode(Mess1_tool);
+  Check_Default_CodeRelated_Field(1,Str_CombinationMode);    //          Str_CollectionMode or Str_CombinationMode
+  Edit_FillingMode_CodeRelated(1);
+  Check_Default_FillingMode_CodeRelated_Expand(1);  
+  Edit_Length_CodeRelated(1,longerlength_Str);               // longerlength_Str need to be declare
+  
+}
+
+function FillingMode_TC4(){
+  var Mess1_tool=[Str_CodeRelatedTool];
+  var Mess2_tool=[Str_CustomFieldTool];
+
+  // Message 1
+  // Click_AdvancedSetup();
+  Click_Mess1();
+  
+//  Sellect_Mode(Mess1_tool);
+//  Check_Default_CodeRelated_Field(1,Str_CombinationMode);    //          Str_CollectionMode or Str_CombinationMode
+//  Edit_FillingMode_CodeRelated(1);
+//  Check_Default_FillingMode_CodeRelated_Expand(1);  
+  Edit_Length_CodeRelated(1,shorterlength_Str);               // shorterlength_Str need to be declare 
+  
+}
+  
+function FillingMode_TC5(){
+  var Mess1_tool=[Str_CodeRelatedTool];
+  var Mess2_tool=[Str_CustomFieldTool];
+
+  // Message 1
+  // Click_AdvancedSetup();
+  Click_Mess1();
+  
+//  Sellect_Mode(Mess1_tool);
+//  Check_Default_CodeRelated_Field(1,Str_CombinationMode);    //          Str_CollectionMode or Str_CombinationMode
+//  Edit_FillingMode_CodeRelated(1);
+//  Check_Default_FillingMode_CodeRelated_Expand(1);  
+  Edit_Length_CodeRelated(1,maxlength_Str);               // maxlength_Str need to be declare 10000
+  
+}  
+
+
+
+
+
+//***************************** Demo *****************************************
+function Filling_TC1(){
+  var Mess1_tool=[Str_CustomFieldTool,Str_CodeRelatedTool];
+  var Mess2_tool=[Str_CustomFieldTool,Str_CustomFieldTool,Str_CustomFieldTool];
+
+  // Message 1
+  Click_Mess1()
+  Sellect_Mode(Mess1_tool);
+  
+  clickEdittool(1);
   Check_Default_CustomField(1);          // POSSITION :1
   Edit_CustomString(1,Str_Code);
   clickEdittool(2);
   Check_Default_CodeRelated_Field(2,Str_CombinationMode);    //          Str_CollectionMode or Str_CombinationMode
+
   
   // Message 2
   Click_Mess2();
@@ -30,8 +129,6 @@ function Filling_TC1(){
   Edit_CustomString(3,Str_Read);
 }
 
-
-//***************************** FILLING TEST_CASE 2 *****************************************
 function Filling_TC2(){
   var Mess1_tool=[Str_CustomFieldTool,Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool,Str_GlobalStatisticsTool,Str_CustomFieldTool];
@@ -74,6 +171,7 @@ function Filling_TC2(){
   Click_Play_Pause();
   Compare_Code();                                          // Check Left Aligned
 }
+
 
 
 //***************************** CUTTING SIMPLE TEST_CASE *****************************************
@@ -122,6 +220,7 @@ function Cutting_Pattern_TC(){
   // Message 1
   Click_AdvancedSetup();
   Sellect_Mode((Mess1_tool));
+  
   clickEdittool(1);
   Check_Default_CustomField(1); 
   Edit_FillingMode_CustomField(1);
@@ -149,18 +248,18 @@ function Cutting_Pattern_TC(){
   Click_Play_Pause();
   
   Get_Console_Result();
-  Compare_Cutting_PatternType(Str_KeepBefore,Str_LeftAligned);  //Str_KeepAfter, Str_KeepBefore, Str_LeftAligned, Str_RightAligned
-  
-  //// 
-  Click_Mess1();
-  clickEdittool(1);
-  Edit_FieldJustification_GlobalStatistic(1);           // right align
-  Change_CuttingPattern_Mode(1,Str_KeepAfter)
-  Click_Console();
-  Click_Play_Pause();
-  Get_Console_Result();
   Compare_Cutting_PatternType(Str_KeepAfter,Str_RightAligned);  //Str_KeepAfter, Str_KeepBefore, Str_LeftAligned, Str_RightAligned
   
+  //// 
+//  Click_Mess1();
+//  clickEdittool(1);
+//  Edit_FieldJustification_GlobalStatistic(1);           // right align
+//  Change_CuttingPattern_Mode(1,Str_KeepAfter)
+//  Click_Console();
+//  Click_Play_Pause();
+//  Get_Console_Result();
+//  Compare_Cutting_PatternType(Str_KeepAfter,Str_RightAligned);  //Str_KeepAfter, Str_KeepBefore, Str_LeftAligned, Str_RightAligned
+//  
   
 }
 
@@ -189,10 +288,10 @@ function Cutting_Generic_TC(){
   Check_Default_CuttingPatternType_CodeRelated_Expand(1,Cutting_Generic);        // Cutting_Simple; Cutting_Pattern; Cutting_Generic 
   Edit_Cutting_Mode(1,Str_CuttingMode_NotCut); 
   Edit_CustomString_CodeRelated(1,CustomString_Str);                                        // Str_CuttingMode_Cut; Str_CuttingMode_NotCut
-//  
-//                             
-//                                                           
-//
+  
+                             
+                                                           
+
 //  // Message 2
 //  Click_Mess2();
 ////  Check_Value_HeaderTerminator();
@@ -213,7 +312,3 @@ function Cutting_Generic_TC(){
   Compare_Cutting_GenericType();
 }
 
-function test(){
-  Compare_Cutting_PatternType(Str_KeepBefore,Str_RightAligned);                //Str_KeepAfter, Str_KeepBefore, Str_LeftAligned, Str_RightAligned
-  
-}
