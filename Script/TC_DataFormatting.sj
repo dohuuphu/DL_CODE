@@ -320,7 +320,6 @@ function Cutting_Generic_TC2(){
   //Sellect_Mode(Mess1_tool);
   
   clickEdittool(1);
-  Check_Default_CodeRelated_Field(1,Str_CombinationMode);     //          Str_CollectionMode or Str_CombinationMode
   //Edit_FillingMode_CodeRelated(1);
   //Check_Default_FillingMode_CodeRelated_Expand(1);
   Edit_Length_CodeRelated(1,Shorter_length());               // shorter length
@@ -368,6 +367,7 @@ function Cutting_Generic_TC4(){
   Check_Default_FillingMode_CodeRelated_Expand(1);
   Get_Length_CodeRelated(1);
   Edit_FillingPattern_CodeRelated(1,FillingPattern_Str);
+  Change_CuttingPattern(1,Cutting_Generic);     // Cutting_Simple; Cutting_Pattern; Cutting_Generic
   Edit_Cutting_Mode(1,Str_CuttingMode_Cut);                       // Str_CuttingMode_Cut, Str_CuttingMode_NotCut
 
   // Message 2
@@ -409,9 +409,8 @@ function Cutting_Generic_TC6(){
   //Sellect_Mode(Mess1_tool);
   
   clickEdittool(1);
-  Check_Default_CodeRelated_Field(1,Str_CombinationMode);     //          Str_CollectionMode or Str_CombinationMode
-  Edit_FillingMode_CodeRelated(1);
-  Check_Default_FillingMode_CodeRelated_Expand(1);
+//  Edit_FillingMode_CodeRelated(1);
+//  Check_Default_FillingMode_CodeRelated_Expand(1);
   Edit_Length_CodeRelated(1,Shorter_length());               //  length deflault
   Get_Length_CodeRelated(1);
   Edit_Justification_CodeRelated(1,Str_RightAligned);                        //Str_RightAligned, Str_LeftAligned
