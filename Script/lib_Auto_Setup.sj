@@ -740,7 +740,7 @@ function Compare_Cutting_PatternType(mode,stt){ // mode: Str_KeepAfter  Str_Keep
 //  var result = "937400028"; //get from result
 //  var act_result = "<STX>0028******" //  get from console
 //  var act_result = "<STX>******0028"
-  var Fixed_length = aqConvert.StrToInt(length_Str.slice(4)); // cut out [BS] and covert to int
+  var Fixed_length = aqConvert.StrToInt(length_Str); // cut out [BS] and covert to int .slice(4)
   var key = "";
   var start =FillingPattern_Str.slice(4);                           //"*"
 
@@ -835,7 +835,7 @@ function Compare_Cutting_PatternType(mode,stt){ // mode: Str_KeepAfter  Str_Keep
 
 
 function Compare_NotCutting_GenericType(stt){
-  var Fixed_length_Setup = aqConvert.StrToInt(length_Str.slice(4)); // cut out [BS] and covert to int
+  var Fixed_length_Setup = aqConvert.StrToInt(length_Str); // cut out [BS] and covert to int .slice(4)
   var key ="";
   var Code_edit;
   var start =FillingPattern_Str.slice(4); 
@@ -1039,5 +1039,61 @@ function a(){
 }
 
 
+///////////////////////////////////// RANDOM /////////////////////////////////////////////////
+function ReadCode_length(){
+   var ReadCode_length = aqString.GetLength(ReadCode);
+   return ReadCode_length;
+}
+
+function getRandom() {
+  var ReadCode_length = aqString.GetLength(ReadCode); 
+  var random = Math.floor(Math.random() * (ReadCode_length - 0 + 1)) + 0;
+  //Log.Message("ReadCode_length " +ReadCode_length);
+  //Log.Message("random  " +random);
+  return random;
+}
+
+function Longer_length(){
+  var ReadCode_length = aqString.GetLength(ReadCode); 
+  var random = getRandom();
+  var length = ReadCode_length + random;
+  return length;
+}
+
+function Shorter_length(){
+  var ReadCode_length = aqString.GetLength(ReadCode); 
+  var random = getRandom();
+  var length = ReadCode_length - random;
+  if(length == 0) length = 1;
+  return length;
+}
+
+function Remove_Random(){     
+  var Remove = Math.floor(getRandom()/2);     // Leading, Trailing are alway smaller than Code_length/2
+  if(Remove == 0) Remove = 1;
+  return Remove;
+}
+
+function PatternString(){ // 1/3 Code result
+  //var ReadCode ="123";
+  var ReadCode_length = aqString.GetLength(ReadCode); 
+  if(ReadCode_length > 1){
+    var PatternStirng_length =  Math.floor(ReadCode_length/3);
+    if(PatternStirng_length == 0) PatternStirng_length = 1;
+    var max = ReadCode_length - PatternStirng_length
+    var random_pos = Math.floor(Math.random() * (max - 0 + 1)) + 0;
+  }
+  else random_pos =0;
+  var PatternString = ReadCode.substr(random_pos,PatternStirng_length);
+  Log.Message("PatternString: " + PatternString);
+ // Log.Message("random  " + random);
+  return PatternString;
+}
 
 
+function test(){
+  a= "123"
+  b = Math.floor(2/3);
+  c = a.substr(1,1);
+  Log.Message(c);
+}

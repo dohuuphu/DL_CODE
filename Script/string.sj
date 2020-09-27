@@ -44,7 +44,7 @@ var  Read_Str = "[BS]Read";
 var  Leading_Str = "[BS]1";
 var  Trailing_Str = "[BS]2";
 var  PatternString_Str = "[BS]0";
-var  length_Str = "[BS]2";
+var  length_Str = "[BS]20";
 var  CustomString_Str = "[BS]a";
 
 
@@ -74,6 +74,6 @@ var CustomString_CodeRelated_default = ";"
 
 
 
-var longerlength_Str
-var shorterlength_Str
+//var longerlength_Str = "[BS]10";
+//var shorterlength_Str = "[BS]25";
 var maxlength_Str = "[BS]100000";

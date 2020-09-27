@@ -290,13 +290,13 @@ function Edit_FillingPattern_CodeRelated(pos,Str){
 //    if(stt == 1 ){                                //Cutting_Pattern mode
 //      Change_CuttingPattern(pos,stt);
 //          
-//    }
+//    }//
     }
   else
     Log.Error("Can't find Code Related ");
 }
 
-function Remove_Lead_Trail(pos){
+function Remove_Lead_Trail(pos, leading,trailing){
   initializated_EditToolField_arr();
   var CodeRelated = EditToolField_arr[pos];
   //var CodeRelated = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000); 
@@ -309,17 +309,17 @@ function Remove_Lead_Trail(pos){
 
   
   Leading_box.DblClick();
-  Leading_box.Keys(Leading_Str);
+  Leading_box.Keys(leading);
    ////Check input value
-  var lenght = aqString.GetLength(Leading_Str);
-  var Input_val = Leading_Str.slice(4,4+lenght);
+  var lenght = aqString.GetLength(leading);
+  var Input_val = leading//.slice(4,4+lenght);
   aqObject.CheckProperty(Leading_box,"Text", cmpEqual, Input_val);
   
   Trailing_box.DblClick();
-  Trailing_box.Keys(Trailing_Str);
+  Trailing_box.Keys(trailing);
   ////Check input value
-  lenght = aqString.GetLength(Trailing_Str);
-  Input_val = Trailing_Str.slice(4,4+lenght);
+  lenght = aqString.GetLength(trailing);
+  Input_val = trailing//.slice(4,4+lenght);
   aqObject.CheckProperty(Trailing_box,"Text", cmpEqual, Input_val);
 }
 
@@ -367,7 +367,7 @@ function Edit_Pattern_String(pos,str){
   var PatternString = CodeRelated.FindChild("Name","WPFObject(\ParamControl\", \"\", 4)",200); 
   var PatternString_box = PatternString.FindChild("Name","WPFObject(\"rtbText\")",200); 
   
-
+  str = "[BS]" + str;
   if(CodeRelated.Exists){
    PatternString_box.DblClick();
    PatternString_box.Keys(str);
@@ -425,6 +425,34 @@ function Edit_Length_CodeRelated(pos,str){
   }
    else Log.Error("Can't find Code Related ");
     
+}
+
+function Get_Length_CodeRelated(pos){
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+  //var CodeRelated = CodeRelated.FindChild("Name","WPFObject(\"ContentControl\", \"\", 2)",200); 
+  if(CodeRelated.Exists == true){
+    var FillingMode_Expand = CodeRelated.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",2);
+    var Length_box = FillingMode_Expand.FindChild("ClrFullClassName","Microsoft.Windows.Controls.WatermarkTextBox",200);
+    length_Str =Length_box.Text ;
+    Log.Message("length_Str  " + length_Str);
+  }
+   else Log.Error("Can't find Code Related ");
+    
+}
+
+function Edit_Justification_CodeRelated(pos,stt){  
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+ // var CustomField = Dataformat.WPFObject("ItemsControl", "", 1).FindChild("Name","WPFObject(\"ContentPresenter\", \"\", 1)",2000);  
+  if(CodeRelated.Exists == true){   
+    //Log.Message("Field Justificationbox is changing to Right Aligned");
+    var FieldJustification = CodeRelated.FindChild("Name","WPFObject(\"ParamControl\", \"\", 4)",200);
+    var FieldJustificationbox = FieldJustification.FindChild("Name","WPFObject(\"ComboBox\", \"\", 1)",200);
+    if(stt == "Right") FieldJustificationbox.ClickItem(1); // change to Right Aligned
+    if(stt == "Left") FieldJustificationbox.ClickItem(0); // change to Right Aligned
+    }
+    else Log.Error("Can't find Code Related");
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////
 var count = 0;
