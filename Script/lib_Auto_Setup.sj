@@ -63,21 +63,21 @@ function clickDataFortmating_Default()
         //lib_common.terminateUI();
         aqTestCase.End();
         Result_Click();
-        //Get_CODE();
+        Get_CODE();
 
-var ReadCode = "";
-var ChildCount = path.ChildCount;
+//var ReadCode = "";
+//var ChildCount = path.ChildCount;
 
-                Log.Message(ChildCount);
+                //Log.Message(ChildCount);
 
-                for (i=1; i<= ChildCount; i++)
-                {
-                  
-                  var txt = path.WPFObject("ContentPresenter", "", i).WPFObject("TextBlock", "*", 1).WPFControlText;  
-                  ReadCode = ReadCode + txt;
+//                for (i=1; i<= ChildCount; i++)
+//                {
+//                  
+//                  var txt = path.WPFObject("ContentPresenter", "", i).WPFObject("TextBlock", "*", 1).WPFControlText;  
+//                  ReadCode = ReadCode + txt;
                   //Log.Message("ReadCode :" + ReadCode);
                   //Log.Message(txt);
-                  }
+//                  }
 
   //Click Formatting
   arrPro = ["ClrFullClassName", "WPFControlText"];
@@ -103,7 +103,7 @@ function Click_Play_Pause(){
   pauseBtn = Sys.Process("DL.CODE").FindChild("ToolTip.Text", "Pause", 1000);
   if(playBtn.Exists) playBtn.Click();   
   else Log.Message("Can't find Play button");
-  delay(5000);
+  delay(2000);
   if(pauseBtn.Exists) pauseBtn.Click(); 
   else Log.Message("Can't find Play button");
 }
@@ -220,6 +220,77 @@ function CodeCollection()
 
 }
 
+
+function Get_code_From_AdvancedSetup_Result_Only()
+{
+    var ProBottomBorder = ["ClrFullClassName","WPFControlName"];
+    var ValBottomBorder = ["System.Windows.Controls.Grid","BottomBorder"];
+    var BottomBorder = Sys.Process("DL.CODE").FindChild(ProBottomBorder, ValBottomBorder, 2000);
+    if (BottomBorder.Exists)
+    {
+      Log.Message(BottomBorder.FullName)
+      var ProTabControl = ["ClrFullClassName","WPFControlName"];
+      var ValTabControl = ["System.Windows.Controls.TabControl","BottomTabControl"];
+      var TabControl = BottomBorder.FindChild(ProTabControl, ValTabControl, 2000);
+      if (TabControl.Exists)
+      {
+        Log.Message(TabControl.FullName)
+        var ProExpanderCodeSetting = ["ClrFullClassName","WPFControlText"];
+        var ValExpanderCodeSetting = ["System.Windows.Controls.Expander","Code Settings"];
+        var ExpanderCodeSetting = TabControl.FindChild(ProExpanderCodeSetting, ValExpanderCodeSetting, 2000);
+        if (ExpanderCodeSetting.Exists)
+        {
+          Log.Message(ExpanderCodeSetting.FullName)
+          var ProDataGrid = ["ClrFullClassName"];
+          var ValDataGrid = ["System.Windows.Controls.DataGrid"];
+          var DataGrid = ExpanderCodeSetting.FindChild(ProDataGrid, ValDataGrid, 2000);
+          if (DataGrid.Exists)
+          {
+            Log.Message(DataGrid.FullName)
+            var ProDataGridRow = ["ClrFullClassName"];
+            var ValDataGridRow = ["System.Windows.Controls.DataGridRow"];
+            var DataGridRow = DataGrid.FindChild(ProDataGridRow, ValDataGridRow, 2000);
+            if (DataGridRow.Exists)
+            {
+              Log.Message(DataGridRow.FullName)
+              var ProItemsControl = ["ClrFullClassName"];
+              var ValItemsControl = ["System.Windows.Controls.ItemsControl"];
+              var ItemsControl = DataGridRow.FindChild(ProItemsControl, ValItemsControl, 2000);
+              if (ItemsControl.Exists)
+              {
+                Log.Message(ItemsControl.FullName)
+                Log.Message(ItemsControl.ChildCount)
+                var ChildCount = ItemsControl.ChildCount
+                ChildCount2 = ChildCount +1
+                ReadCode="";
+                var i=1
+                for(i=1;i < ChildCount2; i++)
+                {
+                  var ProContentPresenter = ["ClrFullClassName","WPFControlOrdinalNo"];
+                  var ValContentPresenter = ["System.Windows.Controls.ContentPresenter", i];
+                  var ContentPresenter = ItemsControl.FindChild(ProContentPresenter, ValContentPresenter, 2000);
+                  if (ContentPresenter.Exists)
+                  {
+                    ReadCode = ReadCode + ContentPresenter.DataContext ;
+                    
+                  }
+                  
+                }
+                ReadCodeResult_length = ReadCode.length
+                Log.Message("ReadCode " +ReadCode)
+                Log.Message("ReadCodeResult_length " +ReadCodeResult_length)
+      
+              } 
+      
+      
+            } 
+      
+          }     
+        }
+      
+      }
+    }
+}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -680,8 +751,8 @@ function Get_Console_Result()
                          Code_console = TextBlockCode.Text;
                         Code_console =aqConvert.VarToStr(Code_console);
                         var codeconsloellength = aqString.GetLength(Code_console);
-                       Log.Message("code consloe: " + Code_console)
-                       Log.Message("code console length: " + codeconsloellength)
+                       Log.Message("code console: " + Code_console)
+                       //Log.Message("code console length: " + codeconsloellength)
                      }
                   }
               } 
@@ -736,6 +807,72 @@ function Click_AdvancedSetup()
 
 //*******************************************************************************************************************************
 
+function Compare_Variable_default(){
+  ReadCode = aqConvert.VarToStr(ReadCode);
+  var length = aqString.GetLength(ReadCode);
+  var act_result = Code_console.slice(5); 
+  act_result = aqConvert.VarToStr(act_result);
+  var out =0;
+  for( y=0; y < length ; y++){
+     if(ReadCode[y] != act_result[y]) {Log.Message("error"); out = 1;}
+     Log.Message(ReadCode[y]+" - "+act_result[y]);
+  }
+  if(out == 0) Log.Message("CODE FORMATTING IS ***CORRECT***");
+  else Log.Error("CODE FORMATTING IS *** NOT CORRECT***");
+  
+}
+
+function Compare_FixedLength(stt){
+  var Fixed_length_Setup = aqConvert.StrToInt(length_Str); // cut out [BS] and covert to int .slice(4)
+  var key ="";
+  var Code_edit;
+  var start =FillingPattern; 
+  //Get Code_result tab
+  ReadCode = aqConvert.VarToStr(ReadCode);
+  var ReadCode_length = aqString.GetLength(ReadCode);
+  Log.Message("ReadCode LENGTH: "+ReadCode_length);
+  
+  //get act_result from Console
+  var act_result = Code_console.slice(5); // 0028****** or  ******0028
+  act_result = aqConvert.VarToStr(act_result);
+  var act_result_length = aqString.GetLength(act_result);
+  Log.Message("act result: "+act_result);
+  Log.Message("act result LENGTH: "+ act_result_length);
+  if(ReadCode != 0){
+    if(ReadCode_length <= Fixed_length_Setup){
+       //Create expect code
+       for(i=0; i < (Fixed_length_Setup - ReadCode_length); i++){   // Code_length = 20; 
+          key = key + start;
+    }
+    Code_edit = ReadCode;
+    }
+    else {
+        if(stt == Str_LeftAligned) Code_edit = ReadCode.slice(0,Fixed_length_Setup);
+        if(stt == Str_RightAligned) Code_edit = ReadCode.slice(ReadCode_length - Fixed_length_Setup);
+
+    }
+    if(stt == Str_LeftAligned){
+      var last_total_result = Code_edit + key;
+      last_total_result=  aqConvert.VarToStr(last_total_result);
+      Log.Message("last_total_result : "+last_total_result);  
+    }
+    if(stt == Str_RightAligned) {
+      var last_total_result = key + Code_edit ;
+      Log.Message("last_total_result: " + last_total_result);
+    }
+  }
+  else Log.Error("Can't Read code");
+  var last_total_result_length = aqString.GetLength(last_total_result);
+  var out= 0;
+  for( y=0; y < last_total_result_length ; y++){
+     if(last_total_result[y] != act_result[y]) {Log.Message("error"); out =1;}
+     Log.Message(last_total_result[y]+" - "+act_result[y]);
+  }
+  if(out == 0) Log.Message("CODE FORMATTING IS ***CORRECT***");
+  else Log.Error("CODE FORMATTING IS *** NOT CORRECT***");
+  
+}
+
 function Compare_Cutting_PatternType(mode,stt){ // mode: Str_KeepAfter  Str_KeepBefore
 //  var result = "937400028"; //get from result
 //  var act_result = "<STX>0028******" //  get from console
@@ -749,7 +886,7 @@ function Compare_Cutting_PatternType(mode,stt){ // mode: Str_KeepAfter  Str_Keep
   Log.Message("result LENGTH: "+result_length);
   
   // get pattern string
-  var patternString = PatternString_Str.slice(4); // string "p"
+  var patternString = PatternString//.slice(4); // string "p"
   var patternString_length = aqString.GetLength(patternString); 
   //Log.Message("patternString_length: " + patternString_length);
   
@@ -838,7 +975,7 @@ function Compare_NotCutting_GenericType(stt){
   var Fixed_length_Setup = aqConvert.StrToInt(length_Str); // cut out [BS] and covert to int .slice(4)
   var key ="";
   var Code_edit;
-  var start =FillingPattern_Str.slice(4); 
+  var start =FillingPattern//.slice(4); 
   //Get Code_result tab
   ReadCode = aqConvert.VarToStr(ReadCode);
   var ReadCode_length = aqString.GetLength(ReadCode);
@@ -868,76 +1005,152 @@ function Compare_NotCutting_GenericType(stt){
 //    }
   }
   else {
-    var CustomString = CustomString_Str.slice(4);            //get customString
-    var CustomString_length = aqString.GetLength(CustomString);
+    var CustomString_val = CustomString//.slice(4);            //get customString
+    var CustomString_length = aqString.GetLength(CustomString_val);
     if(CustomString_length <= Fixed_length_Setup ){
        for(y=0; y < (Fixed_length_Setup - CustomString_length); y++){   // Fixed_length = 20
        key = key +start;
        }
-        Code_edit = CustomString;
+        Code_edit = CustomString_val;
     }
     else {
-      if(stt == Str_LeftAligned) Code_edit = CustomString.slice(0,Fixed_length_Setup);
-      if(stt == Str_RightAligned) Code_edit = CustomString.slice(CustomString_length - Fixed_length_Setup);
+      if(stt == Str_LeftAligned) Code_edit = CustomString_val.slice(0,Fixed_length_Setup);
+      if(stt == Str_RightAligned) Code_edit = CustomString_val.slice(CustomString_length - Fixed_length_Setup);
    }
     }
   if(stt == Str_LeftAligned){
       var last_total_result = Code_edit + key;
       last_total_result=  aqConvert.VarToStr(last_total_result);
       Log.Message("last_total_result : "+last_total_result);  
-    }
-    if(stt == Str_RightAligned) {
+  }
+  if(stt == Str_RightAligned){
       var last_total_result = key + Code_edit ;
       Log.Message("last_total_result: " + last_total_result);
-    }
-    //key= "";
+  }
+  var last_total_result_length = aqString.GetLength(last_total_result);
+  var out= 0;
+  for( y=0; y < last_total_result_length ; y++){
+     if(last_total_result[y] != act_result[y]) {Log.Message("error"); out =1;}
+     Log.Message(last_total_result[y]+" - "+act_result[y]);
+  }
+  if(out == 0) Log.Message("CODE FORMATTING IS ***CORRECT***");
+  else Log.Error("CODE FORMATTING IS *** NOT CORRECT***");
 }
 
-function Compare_Cutting_GenericType()
-{
-  
-//  ReadCode = "31666249588376" // from codde
-//  ChildCount = 14
-//  var Leading = Leading_Str.slice(4);
-//  var Trailing =Trailing_Str.slice(4);
-//  var FillingPattern_Cut =FillingPattern_Str.slice(4);
+//function Compare_Cutting_GenericType()
+//{
+//  
+////  ReadCode = "31666249588376" // from codde
+////  ChildCount = 14
+////  var Leading = Leading_Str.slice(4);
+////  var Trailing =Trailing_Str.slice(4);
+////  var FillingPattern_Cut =FillingPattern_Str.slice(4);
+//
+////  Trailing = ChildCount - Trailing;
+////  Code_Cutting = ReadCode.slice(Leading,Trailing);
+////  Code_Cutting_length = Code_Cutting.length;
+//
+////  Log.Warning("Length_default " + Length_default);
+////  Log.Warning("Code_Cutting " + Code_Cutting);
+//
+////  Log.Warning("ReadCode " +ReadCode);
+////  Log.Warning("Code_Cutting "+ Code_Cutting);
+////  Log.Warning("FillingPattern_Cut "+ FillingPattern_Cut);
+//  CuttingType();
+//  ReadCode = aqConvert.VarToStr(ReadCode);
+//  var ReadCode_length = aqString.GetLength(ReadCode);
+//  var FillingFull = "";
+//  if(Length_default >=  ReadCode_length )
+//  {
+//      WordsFill = Length_default - ReadCode_length;
+//      Log.Warning("WordsFill " + WordsFill);
+//      for( V=0 ; V < WordsFill; V++)  
+//      {
+//       FillingFull = FillingFull + FillingPattern_Str.slice(4);
+//      }
+//      ReadCode_Generic_CutString = ReadCode + FillingFull;
+//  }
+//  else
+//  {
+//    if (Length_default < ReadCode_length)
+//    {
+//      ReadCode_Generic_CutString = ReadCode.slice(0,Length_default)
+//    }
+//  }
+//  CodeShow = aqConvert.VarToStr(CodeShow);
+//  ReadCode_Generic_CutString = aqConvert.VarToStr(ReadCode_Generic_CutString);
+//  Log.Warning(CodeShow)
+//  Log.Warning(ReadCode_Generic_CutString)
+//  var str1 = CodeShow;
+//  var str2 = ReadCode_Generic_CutString;
+//  var strFormat;
+//
+//  switch (aqString.Compare(str1, str2, false))
+//  {
+//    case -1 : strFormat = "\"%s\" is less than \"%s\".";    break;
+//    case 0  : strFormat = "\"%s\" and \"%s\" are equal.";   break;
+//    case 1  : strFormat = "\"%s\" is greater than \"%s\"."; break;
+//  }
+//
+//  Log.Warning(aqString.Format(strFormat, str1, str2));
+//  
+//
+//  
+//}
 
-//  Trailing = ChildCount - Trailing;
-//  Code_Cutting = ReadCode.slice(Leading,Trailing);
-//  Code_Cutting_length = Code_Cutting.length;
-
-//  Log.Warning("Length_default " + Length_default);
-//  Log.Warning("Code_Cutting " + Code_Cutting);
-
-//  Log.Warning("ReadCode " +ReadCode);
-//  Log.Warning("Code_Cutting "+ Code_Cutting);
-//  Log.Warning("FillingPattern_Cut "+ FillingPattern_Cut);
-  CuttingType();
+function Compare_Cutting_GenericType(stt) // Str_LeftAligned, Str_RightAligned
+{    
+ Get_Console_Result();// tesst
+//     length_Str = "[BS]10"; // test
+ Get_code_From_AdvancedSetup_Result_Only();
   ReadCode = aqConvert.VarToStr(ReadCode);
   var ReadCode_length = aqString.GetLength(ReadCode);
+  var ReadCode_Generic_CutString
   var FillingFull = "";
-  if(Length_default >=  ReadCode_length )
+  FillingPattern_Str = FillingPattern//.slice(4);
+  length_Str = length_Str//.slice(4);
+  length_Str =aqConvert.VarToInt(length_Str)
+  ReadCode_length =aqConvert.VarToInt(ReadCode_length)
+ if (stt == Str_LeftAligned )
+ {
+//    ReadCode = "31666249588376"// tesst
+  
+  var WordsFill = length_Str - ReadCode_length;
+  
+  if(length_Str >=ReadCode_length )
   {
-      WordsFill = Length_default - ReadCode_length;
-      Log.Warning("WordsFill " + WordsFill);
-      for( V=0 ; V < WordsFill; V++)  
+      
+      Log.Message("WordsFill " + WordsFill);
+      for( i=0 ; i < WordsFill; i++)  
       {
-       FillingFull = FillingFull + FillingPattern_Str.slice(4);
+       FillingFull = FillingFull + FillingPattern_Str
       }
       ReadCode_Generic_CutString = ReadCode + FillingFull;
   }
   else
   {
-    if (Length_default < ReadCode_length)
+    if (length_Str < ReadCode_length)
     {
-      ReadCode_Generic_CutString = ReadCode.slice(0,Length_default)
+      ReadCode_Generic_CutString = ReadCode.slice(0,length_Str)
     }
   }
-  CodeShow = aqConvert.VarToStr(CodeShow);
+  
   ReadCode_Generic_CutString = aqConvert.VarToStr(ReadCode_Generic_CutString);
-  Log.Warning(CodeShow)
-  Log.Warning(ReadCode_Generic_CutString)
-  var str1 = CodeShow;
+  Log.Message("ReadCode_Generic_CutString " +ReadCode_Generic_CutString)
+  Log.Message("ReadCode " + ReadCode)
+  Log.Message("FillingPattern_Str " + FillingPattern_Str)
+  Log.Message(" WordsFill " + WordsFill)
+  Log.Message("FillingFull " + FillingFull)
+  Log.Message(length_Str )
+  Log.Message(ReadCode_length )
+////  Get_Console_Result()
+//    Get_Console_Result;
+    STX = aqString.GetLength(STX);
+    Code_console = Code_console.slice(5,(Code_console.length-1));
+    //Code_console= Code_console.slice(STX)
+  Code_console = aqConvert.VarToStr(Code_console);
+  Log.Message(Code_console) 
+  var str1 = Code_console;
   var str2 = ReadCode_Generic_CutString;
   var strFormat;
 
@@ -951,6 +1164,71 @@ function Compare_Cutting_GenericType()
   Log.Warning(aqString.Format(strFormat, str1, str2));
   
 
+ }
+ else 
+ {
+//    Get_Console_Result();// tesst
+//ReadCode = "31666249588376"// tesst
+//  Get_code_From_AdvancedSetup_Result_Only()
+//  ReadCode = aqConvert.VarToStr(ReadCode);
+//  var ReadCode_length = aqString.GetLength(ReadCode);
+//  var ReadCode_Generic_CutString
+//  var FillingFull = "";
+//  FillingPattern_Str = FillingPattern_Str.slice(4);
+//  length_Str = length_Str.slice(4);
+//  length_Str =aqConvert.VarToInt(length_Str)
+//  ReadCode_length =aqConvert.VarToInt(ReadCode_length)
+  var WordsFill = length_Str - ReadCode_length;
+  if(length_Str >=ReadCode_length )
+  {
+      
+      Log.Message("WordsFill " + WordsFill);
+      for( i=0 ; i < WordsFill; i++)  
+      {
+       FillingFull = FillingFull + FillingPattern_Str
+      }
+      ReadCode_Generic_CutString = FillingFull + ReadCode ;
+  }
+  else
+  {
+    if (length_Str < ReadCode_length)
+    { 
+      var R = ReadCode_length - length_Str;
+      ReadCode_Generic_CutString = ReadCode.slice(R,ReadCode_length)
+    }
+  }
+  
+  ReadCode_Generic_CutString = aqConvert.VarToStr(ReadCode_Generic_CutString);
+  Log.Message("ReadCode_Generic_CutString " +ReadCode_Generic_CutString)
+  Log.Message("ReadCode " + ReadCode)
+  Log.Message("FillingPattern_Str " + FillingPattern_Str)
+  Log.Message(" WordsFill " + WordsFill)
+  Log.Message("FillingFull " + FillingFull)
+  Log.Message(length_Str )
+  Log.Message(ReadCode_length )
+////  Get_Console_Result()
+//    Get_Console_Result;
+    STX = aqString.GetLength(STX);
+    Code_console = Code_console.slice(5,(Code_console.length-1));
+    //Code_console= Code_console.slice(STX)
+  Code_console = aqConvert.VarToStr(Code_console);
+  Log.Message(Code_console) 
+  var str1 = Code_console;
+  var str2 = ReadCode_Generic_CutString;
+  var strFormat;
+
+  switch (aqString.Compare(str1, str2, false))
+  {
+    case -1 : strFormat = "\"%s\" is less than \"%s\".";    break;
+    case 0  : strFormat = "\"%s\" and \"%s\" are equal.";   break;
+    case 1  : strFormat = "\"%s\" is greater than \"%s\"."; break;
+  }
+
+  Log.Warning(aqString.Format(strFormat, str1, str2));
+  
+
+ }
+
   
 }
 
@@ -963,8 +1241,8 @@ function Compare_Cutting_SimpleType()
   ReadCodeCutting = Code_console.slice(5,(Code_console.length-1)) //from code
   CodeShow = aqConvert.VarToStr(CodeShow);
   ReadCodeCutting = aqConvert.VarToStr(ReadCodeCutting);
-  Log.Warning(CodeShow)
-  Log.Warning(ReadCodeCutting)
+ // Log.Warning(CodeShow)
+  //Log.Warning(ReadCodeCutting)
   var str1 = CodeShow;
   var str2 = ReadCodeCutting;
   var strFormat;
@@ -985,21 +1263,21 @@ function CuttingType()
   
   //ReadCode = "31666249588376" // from codde
   //ChildCount = 14
-  var Leading = Leading_Str.slice(4);
-  var Trailing =Trailing_Str.slice(4);
-  var FillingPattern_Cut =FillingPattern_Str.slice(4);
+  var Leading = Leading_Str//.slice(4);
+  var Trailing =Trailing_Str//.slice(4);
+  var FillingPattern_Cut =FillingPattern//.slice(4);
   var FillingFull = "";
   var ReadCode_length = aqString.GetLength(ReadCode); 
   Trailing = ReadCode_length - Trailing;
   Code_Cutting = ReadCode.slice(Leading,Trailing);
   Code_Cutting_length = Code_Cutting.length;
   WordsFill= Length_default - Code_Cutting_length;
-  Log.Warning("Length_default " + Length_default);
-  Log.Warning("Code_Cutting " + Code_Cutting);
-  Log.Warning("WordsFill " + WordsFill);
-  Log.Warning("ReadCode " +ReadCode);
-  Log.Warning("Code_Cutting "+ Code_Cutting);
-  Log.Warning("FillingPattern_Cut "+ FillingPattern_Cut);
+//  Log.Warning("Length_default " + Length_default);
+//  Log.Warning("Code_Cutting " + Code_Cutting);
+//  Log.Warning("WordsFill " + WordsFill);
+//  Log.Warning("ReadCode " +ReadCode);
+//  Log.Warning("Code_Cutting "+ Code_Cutting);
+//  Log.Warning("FillingPattern_Cut "+ FillingPattern_Cut);
   var V =0
   for(V=0 ; V < WordsFill; V++)  
     {
@@ -1011,8 +1289,8 @@ function CuttingType()
     
     
     CodeShow = Code_Cutting + FillingFull
-    Log.Warning("CodeShow " + CodeShow)
-    Log.Warning("FillingFull " + FillingFull)
+   // Log.Warning("CodeShow " + CodeShow)
+   // Log.Warning("FillingFull " + FillingFull)
     
   }
   else 
@@ -1056,6 +1334,7 @@ function getRandom() {
 function Longer_length(){
   var ReadCode_length = aqString.GetLength(ReadCode); 
   var random = getRandom();
+  if(random == 0) random =1;
   var length = ReadCode_length + random;
   return length;
 }
@@ -1070,12 +1349,12 @@ function Shorter_length(){
 
 function Remove_Random(){     
   var Remove = Math.floor(getRandom()/2);     // Leading, Trailing are alway smaller than Code_length/2
-  if(Remove == 0) Remove = 1;
+  //if(Remove == 0) Remove = 1;
   return Remove;
 }
 
-function PatternString(){ // 1/3 Code result
-  //var ReadCode ="123";
+function PatternString_val(){ // 1/3 Code result
+  //var ReadCode ="5782";
   var ReadCode_length = aqString.GetLength(ReadCode); 
   if(ReadCode_length > 1){
     var PatternStirng_length =  Math.floor(ReadCode_length/3);

@@ -1,19 +1,12 @@
 ﻿function Test6()
 {
-  var DLCode = Sys.Process("DL.CODE").WPFObject("HwndSource: Shell", "DL.CODE 1.9.0.60");
- //var dataformat = Sys.Process("DL.CODE").FindChild("ClrFullClassName", "System.Windows.Controls.DockPanel", 2000);  
- //var dataformat = dataformat.FindChild("Name", "WPFObject(\"Grid\", \"\", 2)", 2000);
- //var dataformat = dataformat.FindChild("Name", "WPFObject(\"Border\", \"\", 3)", 2000);
- //var dataformat = dataformat.FindChild("Name", "WPFObject(\"TabControl\", \"\", 1)", 2000);
- var a = ["Name","ClrFullClassName" ];
- var b = ["WPFObject(\"UserControl\")", "IVS_UI.Views.PropertyViews.OutputMessagePropertiesView"];
-  dataformat =DLCode.FindChild(a, b, 2000);
- 
- Log.Message(dataformat.FullName);
- var a="";
- var b="+";
-for(var i=0; i<3;i++){
-    a=a+b;
-    Log.Message(a);
-    }
+  //Checks whether the 'WPFControlText' property of the Aliases.DL_CODE2.HwndSource_Shell.Shell.DockPanel.Grid.Border.TabControl.TextblockStx object equals '<STX>'.
+  aqObject.CheckProperty(Aliases.DL_CODE2.HwndSource_Shell.Shell.DockPanel.Grid.Border.TabControl.TextblockStx, "WPFControlText", cmpEqual, "<STX>");
+  //Activates the 'HwndSource_Shell' window.
+  Aliases.DL_CODE2.HwndSource_Shell.Activate();
+  OCR.Recognize(Aliases.DL_CODE2.HwndSource_Shell.Shell.DockPanel.Grid.Border.TabControl.StackPanel.Grid.StackPanel.ItemsControl.TextBox).BlockByText("100").DblClick();
+  OCR.Recognize(Aliases.DL_CODE2.HwndSource_Shell.Shell.DockPanel.Grid.Border.TabControl.StackPanel.Grid.StackPanel.ItemsControl.TextBox).BlockByText("100").Click();
+  OCR.Recognize(Aliases.DL_CODE2.HwndSource_Shell.Shell.DockPanel.Grid.Border.TabControl.StackPanel.Grid.StackPanel.ItemsControl.TextBox).BlockByText("100").DblClick();
+  //Enters '100000[Enter]' in the 'TextBox' object.
+  Aliases.DL_CODE2.HwndSource_Shell.Shell.DockPanel.Grid.Border.TabControl.StackPanel.Grid.StackPanel.ItemsControl.TextBox.Keys("100000[Enter]");
 }

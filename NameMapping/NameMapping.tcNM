@@ -24310,6 +24310,58 @@
 																					</Property>
 																				</Properties>
 																			</Child>
+																			<Child Name="StackPanel" Key="{980ECFE3-86FE-4809-B9A2-5A495EE19FA1}" ExtendedFind="True" ParallelWalk="True">
+																				<Image FileName="-1750389163" Left="1389" Top="95" Right="1903" Bottom="961" />
+																				<Properties>
+																					<Property Name="ClrFullClassName">
+																						<Value PropertyType="0" Value="System.Windows.Controls.StackPanel" Type="5" />
+																					</Property>
+																				</Properties>
+																				<Children>
+																					<Child Name="Grid" Key="{81C0D36C-9D9A-4F83-A226-FDA6C2FA09EE}" ParallelWalk="True">
+																						<Image FileName="-1750389163" Left="1389" Top="95" Right="1903" Bottom="726" />
+																						<Properties>
+																							<Property Name="ClrFullClassName">
+																								<Value PropertyType="0" Value="System.Windows.Controls.Grid" Type="5" />
+																							</Property>
+																							<Property Name="WPFControlOrdinalNo">
+																								<Value PropertyType="0" Value="1" Type="0" />
+																							</Property>
+																						</Properties>
+																						<Children>
+																							<Child Name="StackPanel" Key="{D373804D-7877-4D57-8FFB-8C9649482E23}" ExtendedFind="True" ParallelWalk="True">
+																								<Image FileName="-1750389163" Left="1389" Top="129" Right="1903" Bottom="726" />
+																								<Properties>
+																									<Property Name="ClrFullClassName">
+																										<Value PropertyType="0" Value="System.Windows.Controls.StackPanel" Type="5" />
+																									</Property>
+																								</Properties>
+																								<Children>
+																									<Child Name="ItemsControl" Key="{F02F35FD-5328-4D08-9ABB-6CCBD086320A}" ParallelWalk="True">
+																										<Image FileName="-1750389163" Left="1389" Top="327" Right="1903" Bottom="726" />
+																										<Properties>
+																											<Property Name="ClrFullClassName">
+																												<Value PropertyType="0" Value="System.Windows.Controls.ItemsControl" Type="5" />
+																											</Property>
+																										</Properties>
+																										<Children>
+																											<Child Name="TextBox" Key="{434ADD83-79EE-421C-9590-BBB8476E9E8F}" ExtendedFind="True" ParallelWalk="True">
+																												<Image FileName="-1750389163" Left="1597" Top="490" Right="1880" Bottom="512" />
+																												<TypeInfo Item0="{C262E83A-FCF5-43FE-8E95-0E9A365125B3}" />
+																												<Properties>
+																													<Property Name="WPFControlName">
+																														<Value PropertyType="0" Value="TextBox" Type="5" />
+																													</Property>
+																												</Properties>
+																											</Child>
+																										</Children>
+																									</Child>
+																								</Children>
+																							</Child>
+																						</Children>
+																					</Child>
+																				</Children>
+																			</Child>
 																		</Children>
 																	</Child>
 																</Children>
@@ -28245,6 +28297,15 @@
 							<Child Name="Border" Owner="{CD687441-BC74-46D9-B0E0-7A41904145DC}">
 								<Child Name="TabControl" Owner="{F170FBB1-E75E-403E-BEEA-362C14275B04}">
 									<Child Name="TextblockStx" Owner="{697221C8-7A3F-47A9-BC1E-7CBDEEC55844}" />
+									<Child Name="StackPanel" Owner="{980ECFE3-86FE-4809-B9A2-5A495EE19FA1}">
+										<Child Name="Grid" Owner="{81C0D36C-9D9A-4F83-A226-FDA6C2FA09EE}">
+											<Child Name="StackPanel" Owner="{D373804D-7877-4D57-8FFB-8C9649482E23}">
+												<Child Name="ItemsControl" Owner="{F02F35FD-5328-4D08-9ABB-6CCBD086320A}">
+													<Child Name="TextBox" Owner="{434ADD83-79EE-421C-9590-BBB8476E9E8F}" />
+												</Child>
+											</Child>
+										</Child>
+									</Child>
 								</Child>
 							</Child>
 						</Child>
@@ -28973,6 +29034,73 @@
 					</Child>
 					<Child Name="wTabCount" Doc="Returns the total number of tabs in the tab control." IsBasic="True" Data="ZI4L2L4S4U3ZN">
 						<ReturnValue Param0="3" />
+					</Child>
+				</FunctionDescriptions>
+			</Data>
+		</Child>
+		<Child Hash="2057028006" Key="{C262E83A-FCF5-43FE-8E95-0E9A365125B3}">
+			<Data Properties="E26B6B1A212DD84C9135FCBCFBFA7A44UFFFFFFFFFFFFFFFFV4LBZZY">
+				<FunctionDescriptions>
+					<Child Name="Visible" Doc="Specifies whether an onscreen object is visible to users." IsBasic="True" Data="ZI4L2L4ZOBZN">
+						<ReturnValue Param0="11" />
+					</Child>
+					<Child Name="Width" Doc="The object&apos;s width in pixels." IsBasic="True" Data="ZI4L2L4ZO3ZN">
+						<ReturnValue Param0="3" />
+					</Child>
+					<Child Name="Height" Doc="The object&apos;s height in pixels." IsBasic="True" Data="ZI4L2L4ZO3ZN">
+						<ReturnValue Param0="3" />
+					</Child>
+					<Child Name="Enabled" Doc="Specifies whether the object is enabled or disabled." IsBasic="True" Data="ZI4L2L4ZOBZN">
+						<ReturnValue Param0="11" />
+					</Child>
+					<Child Name="Visible" IsBasic="True" Data="ZI4L2L4ZOBZN">
+						<ReturnValue Param0="11" />
+					</Child>
+					<Child Name="Width" IsBasic="True" Data="ZI4L2L4ZN13ZN">
+						<ReturnValue Param0="19" />
+					</Child>
+					<Child Name="Height" IsBasic="True" Data="ZI4L2L4ZN13ZN">
+						<ReturnValue Param0="19" />
+					</Child>
+					<Child Name="Enabled" IsBasic="True" Data="ZI4L2L4ZOBZN">
+						<ReturnValue Param0="11" />
+					</Child>
+					<Child Name="Click" Doc="Simulates a left-button single click in a window or control as specified (relative position, shift keys)." IsBasic="True" Param0="ClientX" Param1="ClientY" Param2="Shift" Data="ZI4L1L4L3Z018ZN">
+						<Param0>
+							<TypeDesc Param0="3" />
+							<ParamDesc Flags="49" Value="-1" Type="0" />
+						</Param0>
+						<Param1>
+							<TypeDesc Param0="3" />
+							<ParamDesc Flags="49" Value="-1" Type="0" />
+						</Param1>
+						<Param2>
+							<TypeDesc Param0="29" Type0="TShiftKey" />
+							<ParamDesc Flags="49" Value="0" Type="0" />
+						</Param2>
+						<ReturnValue Param0="24" />
+					</Child>
+					<Child Name="ClickR" Doc="Simulates a right-button single click in a window or control as specified (relative position, shift keys)." IsBasic="True" Param0="ClientX" Param1="ClientY" Param2="Shift" Data="ZI4L1L4L3Z018ZN">
+						<Param0>
+							<TypeDesc Param0="3" />
+							<ParamDesc Flags="49" Value="-1" Type="0" />
+						</Param0>
+						<Param1>
+							<TypeDesc Param0="3" />
+							<ParamDesc Flags="49" Value="-1" Type="0" />
+						</Param1>
+						<Param2>
+							<TypeDesc Param0="29" Type0="TShiftKey" />
+							<ParamDesc Flags="49" Value="0" Type="0" />
+						</Param2>
+						<ReturnValue Param0="24" />
+					</Child>
+					<Child Name="Keys" Doc="Simulates one or several keypresses." IsBasic="True" Param0="Keys" Data="ZI4L1L4L1Z018ZN">
+						<Param0>
+							<TypeDesc Param0="8" />
+							<ParamDesc Flags="1" />
+						</Param0>
+						<ReturnValue Param0="24" />
 					</Child>
 				</FunctionDescriptions>
 			</Data>

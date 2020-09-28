@@ -5,30 +5,32 @@
 
 function FillingMode_TC(){
   Click_AdvancedSetup();
-//  Filling_default_TC1();
-//  FillingMode_TC2();
-//  FillingMode_TC3();
-//  FillingMode_TC4();
+  Filling_default_TC1();
+  FillingMode_TC2();
+  FillingMode_TC3();
+  FillingMode_TC4();
 //  FillingMode_TC5();
 //  FillingMode_TC6();
-//  FillingMode_TC7();
-//  FillingMode_TC8();
-//  FillingMode_TC9();
-//  FillingMode_TC10();
-//  FillingMode_TC11();
-//  FillingMode_TC12();
-//  FillingMode_TC13();
-//  FillingMode_TC14();
-//  FillingMode_TC15();
-//  FillingMode_TC16();
-//  FillingMode_TC17();
-  Cutting_Generic_TC1();
-  Cutting_Generic_TC2();
-  Cutting_Generic_TC3();
-  Cutting_Generic_TC4();
-  Cutting_Generic_TC5();
-  Cutting_Generic_TC6();
-  
+//  Cutting_Simple_TC1();   
+//  Cutting_Simple_TC2();
+//  Cutting_Pattern_TC1();
+//  Cutting_Pattern_TC2();
+//  Cutting_Pattern_TC3();
+//  Cutting_Pattern_TC4();
+//  Cutting_Pattern_TC5();
+//  Cutting_Pattern_TC6();
+//  Cutting_Pattern_TC7();
+//  Cutting_Pattern_TC8();
+//  Cutting_Pattern_TC9();
+//  Cutting_Generic_TC1();
+//  Cutting_Generic_TC2();
+//  Cutting_Generic_TC3();
+//  Cutting_Generic_TC4();
+//  Cutting_Generic_TC5();
+//  Cutting_Generic_TC6();
+//  Cutting_Generic_TC7();
+//  Cutting_Generic_TC8();
+//  
   
 }
 
@@ -40,7 +42,7 @@ function Filling_default_TC1(){
   var Mess2_tool=[Str_CustomFieldTool];
   // clickDataFortmating_Collection();
   // Message 1
- // clickDataFortmating_Default();
+  //clickDataFortmating_Default();
   Check_Value_HeaderTerminator();
   Sellect_Mode(Mess1_tool);
   
@@ -54,6 +56,11 @@ function Filling_default_TC1(){
   clickEdittool(1);
   Edit_CustomString(1,Str_Noread);
 
+  //Compare Code
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Variable_default();
 }
 
 function FillingMode_TC2(){
@@ -65,7 +72,15 @@ function FillingMode_TC2(){
   Click_Mess1();
   Edit_FillingMode_CodeRelated(1);
   Check_Default_FillingMode_Custom_Expand(1);  
+  Edit_Length_CodeRelated(1,Length_default);
   Get_Length_CodeRelated(1);
+  Get_FillingPattern_CodeRelated(1);
+  
+  //Compare Code
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_FixedLength(Str_LeftAligned)           //stt: Str_LeftAligned,Str_RightAligned;    pattern:
 }
 
 function FillingMode_TC3(){
@@ -73,11 +88,18 @@ function FillingMode_TC3(){
   var Mess2_tool=[Str_CustomFieldTool];
 
   // Message 1
-   Click_AdvancedSetup();
+   //Click_AdvancedSetup();
   Click_Mess1();
   Edit_FillingPattern_CodeRelated(1,FillingPattern_Str)
   Edit_Length_CodeRelated(1,Longer_length());               // longerlength_Str need to be declare
   Get_Length_CodeRelated(1);
+  Get_FillingPattern_CodeRelated(1);
+  
+  //Compare Code
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_FixedLength(Str_LeftAligned)           //stt: Str_LeftAligned,Str_RightAligned;    pattern:
   
 }
 
@@ -90,6 +112,13 @@ function FillingMode_TC4(){
   Click_Mess1();
   Edit_Length_CodeRelated(1, Shorter_length());               // shorterlength_Str need to be declare 
   Get_Length_CodeRelated(1);
+  Get_FillingPattern_CodeRelated(1);
+  
+  //Compare Code
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_FixedLength(Str_LeftAligned)           //stt: Str_LeftAligned,Str_RightAligned;    pattern:
   
 }
   
@@ -102,6 +131,13 @@ function FillingMode_TC5(){
   Click_Mess1();
   Edit_Length_CodeRelated(1,maxlength_Str);               // maxlength_Str need to be declare 10000
   Get_Length_CodeRelated(1);
+  Get_FillingPattern_CodeRelated(1);
+  
+  //Compare Code
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_FixedLength(Str_LeftAligned);           //stt: Str_LeftAligned,Str_RightAligned;    pattern:
   
 }  
 
@@ -114,26 +150,49 @@ function FillingMode_TC6(){
   Click_Mess1();
   Edit_Length_CodeRelated(1,getRandom());               // 
   Get_Length_CodeRelated(1);
+  Get_FillingPattern_CodeRelated(1);
   Edit_Justification_CodeRelated(1,Str_RightAligned)  // Str_RightAligned, Str_LeftAligned
   
+  //Compare Code
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_FixedLength(Str_RightAligned);           //stt: Str_LeftAligned,Str_RightAligned;    pattern:
 } 
 
-function FillingMode_TC7(){
+function Cutting_Simple_TC1(){
   var Mess1_tool=[Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool];
 
   // Message 1
-  Click_AdvancedSetup();
+  clickDataFortmating_Default();
+  //Click_AdvancedSetup();
+  Check_Value_HeaderTerminator();
   Click_Mess1();
   Sellect_Mode(Mess1_tool);
   Edit_FillingMode_CodeRelated(1);
   Edit_Length_CodeRelated(1,length_Str);               // Length random or 20
   Get_Length_CodeRelated(1);
-  Edit_Justification_CodeRelated(1,Str_LeftAligned)  // Str_RightAligned, Str_LeftAligned
+  //Edit_Justification_CodeRelated(1,Str_LeftAligned)  // Str_RightAligned, Str_LeftAligned
   Remove_Lead_Trail(1,Remove_Random(),Remove_Random());  // Leading, Trailing are alway smaller than Code_length/2
+  Get_Trailling(1);
+  Get_Leading(1);
+  Get_FillingPattern_CodeRelated(1);
+  
+  // Message 2
+  Click_Mess2();
+  Sellect_Mode(Mess2_tool);
+  clickEdittool(1);
+  Edit_CustomString(1,Str_Noread);
+  
+  //compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Cutting_SimpleType();
 } 
 
-function FillingMode_TC8(){
+function Cutting_Simple_TC2(){
   var Mess1_tool=[Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool];
 
@@ -142,23 +201,49 @@ function FillingMode_TC8(){
   Click_Mess1();
   Get_Length_CodeRelated(1);
   Remove_Lead_Trail(1,ReadCode_length(),ReadCode_length());      // Leading, Trailing are equal to Code_length
+  Get_Trailling(1);
+  Get_Leading(1);
+  Get_FillingPattern_CodeRelated(1);
+  
+  
+  //compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Cutting_SimpleType();
 } 
 
-function FillingMode_TC9(){
+function Cutting_Pattern_TC1(){
   var Mess1_tool=[Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool];
 
   // Message 1
+  // clickDataFortmating_Default();
   //Click_AdvancedSetup();
-  Click_Mess1();
-//  Sellect_Mode((Mess1_tool));
-  Edit_Length_CodeRelated(1,Length_default);               // lenght_default = 20
+  Check_Value_HeaderTerminator();
+  Sellect_Mode((Mess1_tool));
+  Edit_FillingMode_CodeRelated(1);
   Get_Length_CodeRelated(1);
+  Edit_FillingPattern_CodeRelated(1,FillingPattern_Str);
+  Get_FillingPattern_CodeRelated(1);
   Change_CuttingPattern(1,Cutting_Pattern);     // Cutting_Simple; Cutting_Pattern; Cutting_Generic
+  Get_PatternString_CodeRelated(1);
+  
+  // Message 2
+  Click_Mess2();
+  Sellect_Mode(Mess2_tool);
+  clickEdittool(1);
+  Edit_CustomString(1,Str_Noread);
+  
+  //compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Cutting_PatternType(Str_KeepBefore,Str_LeftAligned);  //Str_KeepAfter, Str_KeepBefore, Str_LeftAligned, Str_RightAligned
 
 }
 
-function FillingMode_TC10(){
+function Cutting_Pattern_TC2(){
   var Mess1_tool=[Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool];
 
@@ -168,11 +253,19 @@ function FillingMode_TC10(){
   //Sellect_Mode((Mess1_tool));
   Edit_Length_CodeRelated(1,Longer_length());               // longer length
   Get_Length_CodeRelated(1);
-  Edit_Pattern_String(1,PatternString());  
+  Get_FillingPattern_CodeRelated(1);
+  Edit_Pattern_String(1,PatternString_val());  
+  Get_PatternString_CodeRelated(1);
+  
+  //compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Cutting_PatternType(Str_KeepBefore,Str_LeftAligned);  //Str_KeepAfter, Str_KeepBefore, Str_LeftAligned, Str_RightAligned
 
 }
 
-function FillingMode_TC11(){
+function Cutting_Pattern_TC3(){
   var Mess1_tool=[Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool];
 
@@ -183,11 +276,18 @@ function FillingMode_TC11(){
   Edit_Length_CodeRelated(1,Longer_length());               // longer length
   Get_Length_CodeRelated(1);
   Edit_Justification_CodeRelated(1,Str_RightAligned);                        //Str_RightAligned, Str_LeftAligned
-  Edit_Pattern_String(1,PatternString());  
+  Edit_Pattern_String(1,PatternString_val());  
+  Get_PatternString_CodeRelated(1);
+  
+  //compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Cutting_PatternType(Str_KeepBefore,Str_RightAligned);  //Str_KeepAfter, Str_KeepBefore, Str_LeftAligned, Str_RightAligned
 
 }
 
-function FillingMode_TC12(){
+function Cutting_Pattern_TC4(){
   var Mess1_tool=[Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool];
 
@@ -199,11 +299,17 @@ function FillingMode_TC12(){
   Get_Length_CodeRelated(1);
   //Edit_Justification_CodeRelated(1,Str_RightAligned);                        //Str_RightAligned, Str_LeftAligned
   Change_CuttingPattern_Mode(1,Str_KeepAfter)                                  //Str_KeepBefore; Str_KeepAfter
-  Edit_Pattern_String(1,PatternString());  
+  Edit_Pattern_String(1,PatternString_val());  
+  Get_PatternString_CodeRelated(1);
 
+  //compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Cutting_PatternType(Str_KeepAfter,Str_RightAligned);  //Str_KeepAfter, Str_KeepBefore, Str_LeftAligned, Str_RightAligned
 }
 
-function FillingMode_TC13(){
+function Cutting_Pattern_TC5(){
   var Mess1_tool=[Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool];
 
@@ -215,11 +321,17 @@ function FillingMode_TC13(){
   Get_Length_CodeRelated(1);
   Edit_Justification_CodeRelated(1,Str_LeftAligned);                        //Str_RightAligned, Str_LeftAligned
   Change_CuttingPattern_Mode(1,Str_KeepAfter)                                  //Str_KeepBefore; Str_KeepAfter
-  Edit_Pattern_String(1,PatternString());  
+  Edit_Pattern_String(1,PatternString_val());  
+  Get_PatternString_CodeRelated(1);
 
+  //compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Cutting_PatternType(Str_KeepAfter,Str_LeftAligned);  //Str_KeepAfter, Str_KeepBefore, Str_LeftAligned, Str_RightAligned
 }
 
-function FillingMode_TC14(){
+function Cutting_Pattern_TC6(){
   var Mess1_tool=[Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool];
 
@@ -231,11 +343,17 @@ function FillingMode_TC14(){
   Get_Length_CodeRelated(1);
   Edit_Justification_CodeRelated(1,Str_LeftAligned);                        //Str_RightAligned, Str_LeftAligned
   Change_CuttingPattern_Mode(1,Str_KeepBefore)                                  //Str_KeepBefore; Str_KeepAfter
-  Edit_Pattern_String(1,PatternString());  
+  Edit_Pattern_String(1,PatternString_val());  
+  Get_PatternString_CodeRelated(1);
 
+  //compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Cutting_PatternType(Str_KeepBefore,Str_LeftAligned);  //Str_KeepAfter, Str_KeepBefore, Str_LeftAligned, Str_RightAligned
 }
 
-function FillingMode_TC15(){
+function Cutting_Pattern_TC7(){
   var Mess1_tool=[Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool];
 
@@ -247,11 +365,17 @@ function FillingMode_TC15(){
   Get_Length_CodeRelated(1);
   Edit_Justification_CodeRelated(1,Str_RightAligned);                        //Str_RightAligned, Str_LeftAligned
   //Change_CuttingPattern_Mode(1,Str_KeepBefore)                                  //Str_KeepBefore; Str_KeepAfter
-  Edit_Pattern_String(1,PatternString());  
+  Edit_Pattern_String(1,PatternString_val());  
+  Get_PatternString_CodeRelated(1);
 
+  //compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Cutting_PatternType(Str_KeepBefore,Str_RightAligned);  //Str_KeepAfter, Str_KeepBefore, Str_LeftAligned, Str_RightAligned
 }
 
-function FillingMode_TC16(){
+function Cutting_Pattern_TC8(){
   var Mess1_tool=[Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool];
 
@@ -263,11 +387,17 @@ function FillingMode_TC16(){
   Get_Length_CodeRelated(1);
   //Edit_Justification_CodeRelated(1,Str_RightAligned);                        //Str_RightAligned, Str_LeftAligned
   Change_CuttingPattern_Mode(1,Str_KeepAfter)                                  //Str_KeepBefore; Str_KeepAfter
-  Edit_Pattern_String(1,PatternString());  
+  Edit_Pattern_String(1,PatternString_val());  
+  Get_PatternString_CodeRelated(1);
 
+  //compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Cutting_PatternType(Str_KeepAfter,Str_RightAligned);  //Str_KeepAfter, Str_KeepBefore, Str_LeftAligned, Str_RightAligned
 }
 
-function FillingMode_TC17(){
+function Cutting_Pattern_TC9(){
   var Mess1_tool=[Str_CodeRelatedTool];
   var Mess2_tool=[Str_CustomFieldTool];
 
@@ -279,8 +409,14 @@ function FillingMode_TC17(){
   Get_Length_CodeRelated(1);
   Edit_Justification_CodeRelated(1,Str_LeftAligned);                        //Str_RightAligned, Str_LeftAligned
   //Change_CuttingPattern_Mode(1,Str_KeepAfter)                                  //Str_KeepBefore; Str_KeepAfter
-  Edit_Pattern_String(1,PatternString());  
+  Edit_Pattern_String(1,PatternString_val());  
+  Get_PatternString_CodeRelated(1);
 
+  //compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Cutting_PatternType(Str_KeepAfter,Str_LeftAligned);  //Str_KeepAfter, Str_KeepBefore, Str_LeftAligned, Str_RightAligned
 }
 
 function Cutting_Generic_TC1(){
@@ -288,7 +424,7 @@ function Cutting_Generic_TC1(){
   var Mess2_tool=[Str_CustomFieldTool];
   // clickDataFortmating_Collection();
   // Message 1
- // clickDataFortmating_Default();
+  clickDataFortmating_Default();
   Check_Value_HeaderTerminator();
   Sellect_Mode(Mess1_tool);
   
@@ -296,9 +432,12 @@ function Cutting_Generic_TC1(){
   Check_Default_CodeRelated_Field(1,Str_CombinationMode);     //          Str_CollectionMode or Str_CombinationMode
   Edit_FillingMode_CodeRelated(1);
   Check_Default_FillingMode_CodeRelated_Expand(1);
+  Edit_Length_CodeRelated(1,Shorter_length());               // shorter length
   Get_Length_CodeRelated(1);
   Edit_FillingPattern_CodeRelated(1,FillingPattern_Str);
+  Get_FillingPattern_CodeRelated(1);
   Change_CuttingPattern(1,Cutting_Generic);     // Cutting_Simple; Cutting_Pattern; Cutting_Generic
+  Get_CustomString_CodeRelated(1);
 
   
   // Message 2
@@ -306,6 +445,12 @@ function Cutting_Generic_TC1(){
   Sellect_Mode(Mess2_tool);
   clickEdittool(1);
   Edit_CustomString(1,Str_Noread);
+  
+  //Compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_NotCutting_GenericType(Str_LeftAligned);
 
 }
 
@@ -324,8 +469,16 @@ function Cutting_Generic_TC2(){
   //Check_Default_FillingMode_CodeRelated_Expand(1);
   Edit_Length_CodeRelated(1,Shorter_length());               // shorter length
   Get_Length_CodeRelated(1);
-  Edit_Cutting_Mode(1,Str_CuttingMode_NotCut); 
-  Edit_CustomString_CodeRelated(1,CustomString_Str);            // Str_CuttingMode_Cut, Str_CuttingMode_NotCut
+  Get_FillingPattern_CodeRelated(1);
+ // Edit_Cutting_Mode(1,Str_CuttingMode_NotCut); 
+  Edit_CustomString_CodeRelated(1,CustomString_Str1);            // Str_CuttingMode_Cut, Str_CuttingMode_NotCut
+  Get_CustomString_CodeRelated(1);
+  
+  //Compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_NotCutting_GenericType(Str_LeftAligned);
 
 }
 
@@ -336,18 +489,20 @@ function Cutting_Generic_TC3(){
   // Message 1
   //Click_AdvancedSetup();
   Click_Mess1();
-  //Check_Value_HeaderTerminator();
-  //Sellect_Mode(Mess1_tool);
-  
   clickEdittool(1);
-  //Check_Default_CodeRelated_Field(1,Str_CombinationMode);     // Str_CollectionMode or Str_CombinationMode
-  //Edit_FillingMode_CodeRelated(1);
-  //Check_Default_FillingMode_CodeRelated_Expand(1);
   Edit_Length_CodeRelated(1,Shorter_length());               // shorter length
   Get_Length_CodeRelated(1);
+  Get_FillingPattern_CodeRelated(1);
   Edit_Justification_CodeRelated(1,Str_RightAligned);                        //Str_RightAligned, Str_LeftAligned
-  Edit_Cutting_Mode(1,Str_CuttingMode_NotCut); 
-  Edit_CustomString_CodeRelated(1,CustomString_Str);            // Str_CuttingMode_Cut, Str_CuttingMode_NotCut
+  //Edit_Cutting_Mode(1,Str_CuttingMode_NotCut); 
+  Edit_CustomString_CodeRelated(1,CustomString_Str1);            // Str_CuttingMode_Cut, Str_CuttingMode_NotCut
+  Get_CustomString_CodeRelated(1);
+  
+  //Compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_NotCutting_GenericType(Str_RightAligned);
 
 }
 
@@ -358,23 +513,21 @@ function Cutting_Generic_TC4(){
   // Message 1
   //Click_AdvancedSetup();
   Click_Mess1();
-  Check_Value_HeaderTerminator();
-  Sellect_Mode(Mess1_tool);
-  
   clickEdittool(1);
-  Check_Default_CodeRelated_Field(1,Str_CombinationMode);     //          Str_CollectionMode or Str_CombinationMode
-  Edit_FillingMode_CodeRelated(1);
-  Check_Default_FillingMode_CodeRelated_Expand(1);
+  Edit_Length_CodeRelated(1,Shorter_length());               // shorter length
   Get_Length_CodeRelated(1);
-  Edit_FillingPattern_CodeRelated(1,FillingPattern_Str);
-  Change_CuttingPattern(1,Cutting_Generic);     // Cutting_Simple; Cutting_Pattern; Cutting_Generic
-  Edit_Cutting_Mode(1,Str_CuttingMode_Cut);                       // Str_CuttingMode_Cut, Str_CuttingMode_NotCut
+  Get_FillingPattern_CodeRelated(1);
+  //Edit_Justification_CodeRelated(1,Str_RightAligned);                        //Str_RightAligned, Str_LeftAligned
+  //Edit_Cutting_Mode(1,Str_CuttingMode_NotCut); 
+  Edit_CustomString_CodeRelated(1,CustomString_Str2);            // Str_CuttingMode_Cut, Str_CuttingMode_NotCut
+  Get_CustomString_CodeRelated(1);
+  
+  //Compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_NotCutting_GenericType(Str_RightAligned);
 
-  // Message 2
-  Click_Mess2();
-  Sellect_Mode(Mess2_tool);
-  clickEdittool(1);
-  Edit_CustomString(1,Str_Noread);
 }
 
 function Cutting_Generic_TC5(){
@@ -384,17 +537,20 @@ function Cutting_Generic_TC5(){
   // Message 1
   //Click_AdvancedSetup();
   Click_Mess1();
-  //Check_Value_HeaderTerminator();
-  //Sellect_Mode(Mess1_tool);
-  
   clickEdittool(1);
-  //Check_Default_CodeRelated_Field(1,Str_CombinationMode);     //  Str_CollectionMode or Str_CombinationMode
-  //Edit_FillingMode_CodeRelated(1);
-  //Check_Default_FillingMode_CodeRelated_Expand(1);
-  Edit_Length_CodeRelated(1,Shorter_length());               //  length deflault
+  Edit_Length_CodeRelated(1,Shorter_length());               // shorter length
   Get_Length_CodeRelated(1);
-  //Edit_Justification_CodeRelated(1,Str_RightAligned);                        //Str_RightAligned, Str_LeftAligned
-
+  Get_FillingPattern_CodeRelated(1);
+  Edit_Justification_CodeRelated(1,Str_LeftAligned);                        //Str_RightAligned, Str_LeftAligned
+  //Edit_Cutting_Mode(1,Str_CuttingMode_NotCut); 
+  Edit_CustomString_CodeRelated(1,CustomString_Str2);            // Str_CuttingMode_Cut, Str_CuttingMode_NotCut
+  Get_CustomString_CodeRelated(1);
+  
+  //Compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_NotCutting_GenericType(Str_LeftAligned);
 
 }
 
@@ -405,16 +561,74 @@ function Cutting_Generic_TC6(){
   // Message 1
   //Click_AdvancedSetup();
   Click_Mess1();
-  //Check_Value_HeaderTerminator();
-  //Sellect_Mode(Mess1_tool);
+  Sellect_Mode(Mess1_tool);
   
   clickEdittool(1);
-//  Edit_FillingMode_CodeRelated(1);
-//  Check_Default_FillingMode_CodeRelated_Expand(1);
+  Check_Default_CodeRelated_Field(1,Str_CombinationMode);     //          Str_CollectionMode or Str_CombinationMode
+  Edit_FillingMode_CodeRelated(1);
+  Check_Default_FillingMode_CodeRelated_Expand(1);
+  
+  Get_Length_CodeRelated(1);
+  Edit_FillingPattern_CodeRelated(1,FillingPattern_Str);
+  Get_FillingPattern_CodeRelated(1);
+  Change_CuttingPattern(1,Cutting_Generic);     // Cutting_Simple; Cutting_Pattern; Cutting_Generic
+  Edit_Cutting_Mode(1,Str_CuttingMode_Cut);                       // Str_CuttingMode_Cut, Str_CuttingMode_NotCut
+
+  // Message 2
+  Click_Mess2();
+  Sellect_Mode(Mess2_tool);
+  clickEdittool(1);
+  Edit_CustomString(1,Str_Noread);
+  
+  //Compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Cutting_GenericType(Str_LeftAligned); // Str_LeftAligned, Str_RightAligned
+  
+  
+}
+
+function Cutting_Generic_TC7(){
+  var Mess1_tool=[Str_CodeRelatedTool];
+  var Mess2_tool=[Str_CustomFieldTool];
+
+  // Message 1
+  //Click_AdvancedSetup();
+  Click_Mess1();
+  clickEdittool(1);
+  //Check_Default_CodeRelated_Field(1,Str_CombinationMode);     //  Str_CollectionMode or Str_CombinationMode
+  //Edit_FillingMode_CodeRelated(1);
+  //Check_Default_FillingMode_CodeRelated_Expand(1);
+  Edit_Length_CodeRelated(1,Shorter_length());               //  length deflault
+  Get_Length_CodeRelated(1);
+  //Edit_Justification_CodeRelated(1,Str_RightAligned);                        //Str_RightAligned, Str_LeftAligned
+
+  //Compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Cutting_GenericType(Str_LeftAligned); // Str_LeftAligned, Str_RightAligned
+
+}
+
+function Cutting_Generic_TC8(){
+  var Mess1_tool=[Str_CodeRelatedTool];
+  var Mess2_tool=[Str_CustomFieldTool];
+
+  // Message 1
+  //Click_AdvancedSetup();
+  Click_Mess1();
+  clickEdittool(1);
   Edit_Length_CodeRelated(1,Shorter_length());               //  length deflault
   Get_Length_CodeRelated(1);
   Edit_Justification_CodeRelated(1,Str_RightAligned);                        //Str_RightAligned, Str_LeftAligned
 
+  //Compare
+  Click_Console();
+  Click_Play_Pause();
+  Get_Console_Result();
+  Compare_Cutting_GenericType(Str_RightAligned); // Str_LeftAligned, Str_RightAligned
 }
 
 //***************************** Demo *****************************************
@@ -602,7 +816,7 @@ function Cutting_Generic_TC(){
   Change_CuttingPattern(1,Cutting_Generic);                                    // Cutting_Simple; Cutting_Pattern ; Cutting_Generic 
   Check_Default_CuttingPatternType_CodeRelated_Expand(1,Cutting_Generic);        // Cutting_Simple; Cutting_Pattern; Cutting_Generic 
   Edit_Cutting_Mode(1,Str_CuttingMode_NotCut); 
-  Edit_CustomString_CodeRelated(1,CustomString_Str);                                        // Str_CuttingMode_Cut; Str_CuttingMode_NotCut
+  Edit_CustomString_CodeRelated(1,CustomString_Str1);                                        // Str_CuttingMode_Cut; Str_CuttingMode_NotCut
   
                              
                                                            

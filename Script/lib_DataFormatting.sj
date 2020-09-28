@@ -323,6 +323,36 @@ function Remove_Lead_Trail(pos, leading,trailing){
   aqObject.CheckProperty(Trailing_box,"Text", cmpEqual, Input_val);
 }
 
+function Get_Trailling(pos){
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+   if(CodeRelated.Exists == true){
+     var CuttingPattern_Field = CodeRelated.WPFObject("ContentExpander", "", 1).WPFObject("test").WPFObject("ContentControl", "", 2);
+     var Remove_Trailing = CuttingPattern_Field.FindChild("Name","WPFObject(\ParamControl\", \"\", 2)",200); 
+     var Trailing_box = Remove_Trailing.FindChild("WPFControlName","TextBox",200); 
+     Trailing_Str = aqConvert.VarToStr(Trailing_box.Text);
+     Log.Message("Trailing: "+ Trailing_Str);
+   }
+    else
+    Log.Error("Can't find Code Related ")
+  
+}
+
+function Get_Leading(pos){
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+   if(CodeRelated.Exists == true){
+     var CuttingPattern_Field = CodeRelated.WPFObject("ContentExpander", "", 1).WPFObject("test").WPFObject("ContentControl", "", 2);
+     var Remove_Leading = CuttingPattern_Field.FindChild("Name","WPFObject(\ParamControl\", \"\", 1)",200); 
+     var Leading_box = Remove_Leading.FindChild("WPFControlName","TextBox",200); 
+     Leading_Str = aqConvert.VarToStr(Leading_box.Text);
+     Log.Message("Leading: "+ Leading_Str);
+   }
+    else
+    Log.Error("Can't find Code Related ")
+  
+}
+
 function Change_CuttingPattern(pos,numb){ //numb
   initializated_EditToolField_arr();
   var CodeRelated = EditToolField_arr[pos];
@@ -371,6 +401,7 @@ function Edit_Pattern_String(pos,str){
   if(CodeRelated.Exists){
    PatternString_box.DblClick();
    PatternString_box.Keys(str);
+   PatternString_box.Keys("[Enter]");
    ////Check input value
    var PatternString_val = PatternString.FindChild("ClrFullClassName","System.Windows.Documents.Paragraph",200); 
    var lenght = aqString.GetLength(str);
@@ -381,7 +412,17 @@ function Edit_Pattern_String(pos,str){
   
 }
 
-
+function Get_PatternString_CodeRelated(pos){
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+  if(CodeRelated.Exists){
+    var CodeRelated = CodeRelated.FindChild("Name","WPFObject(\"ContentControl\", \"\", 2)",200); 
+    var PatternString_box = CodeRelated.FindChild("Name","WPFObject(\ParamControl\", \"\", 4)",200); 
+    var PatternString_val = PatternString_box.FindChild("ClrFullClassName","System.Windows.Documents.Paragraph",200); 
+    PatternString = PatternString_val.WPFControlText;
+  }
+  
+}
 
 function Edit_Cutting_Mode(pos,stt){
   initializated_EditToolField_arr();
@@ -403,15 +444,32 @@ function Edit_CustomString_CodeRelated(pos, str){
   var CodeRelated = EditToolField_arr[pos];
   //var CodeRelated = CodeRelated.FindChild("Name","WPFObject(\"ContentControl\", \"\", 2)",200); 
   if(CodeRelated.Exists == true){
-    //  STRING (GENERIC)
-      var PatternString = CodeRelated.FindChild("Name","WPFObject(\ParamControl\", \"\", 6)",200); 
-      var PatternString_val = PatternString.FindChild("Name","WPFObject(\"RangeTextBox\", \"\", 1)",200); 
-      PatternString_val.DblClick();
-      PatternString_val.Keys(str);
+      var CustomString = CodeRelated.FindChild("Name","WPFObject(\ParamControl\", \"\", 6)",200); 
+      var CustomString_val = CustomString.FindChild("Name","WPFObject(\"RangeTextBox\", \"\", 1)",200); 
+      CustomString_val.DblClick();
+      CustomString_val.Keys(str);
+      CustomString_val.Keys("[Enter]");
+      ////Check input value
+      var CustomString_val = CustomString.FindChild("Name","WPFObject(\"RangeTextBox\", \"\", 1)",200); 
+      var lenght = aqString.GetLength(str);
+      var Input_val = str.slice(4,(4+lenght));
+      aqObject.CheckProperty(CustomString_val,"Text", cmpEqual, Input_val);
   }
   else Log.Error("Can't find Code Related ");
 }
 
+function Get_CustomString_CodeRelated(pos){
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+  //var CodeRelated = CodeRelated.FindChild("Name","WPFObject(\"ContentControl\", \"\", 2)",200); 
+  if(CodeRelated.Exists == true){
+    var CustomStringbox = CodeRelated.FindChild("Name","WPFObject(\ParamControl\", \"\", 6)",200); 
+    var CustomString_val = CustomStringbox.FindChild("Name","WPFObject(\"RangeTextBox\", \"\", 1)",200); 
+    CustomString = aqConvert.VarToStr(CustomString_val.Text);
+    Log.Message("customstring: " + CustomString)
+  }
+  else Log.Error("Can't find Code Related ");
+}
 
 function Edit_Length_CodeRelated(pos,str){
   initializated_EditToolField_arr();
@@ -422,6 +480,12 @@ function Edit_Length_CodeRelated(pos,str){
     var Length_box = FillingMode_Expand.FindChild("ClrFullClassName","Microsoft.Windows.Controls.WatermarkTextBox",200);
     Length_box.DblClick();
     Length_box.Keys(str);
+    Length_box.Keys("[Enter]");
+    
+    
+    ////Check input value
+   var Length_box = FillingMode_Expand.FindChild("ClrFullClassName","Microsoft.Windows.Controls.WatermarkTextBox",200);
+   aqObject.CheckProperty(Length_box,"Text", cmpEqual, str);
   }
    else Log.Error("Can't find Code Related ");
     
@@ -440,6 +504,17 @@ function Get_Length_CodeRelated(pos){
    else Log.Error("Can't find Code Related ");
     
 }
+
+function Get_FillingPattern_CodeRelated(pos){
+  initializated_EditToolField_arr();
+  var CodeRelated = EditToolField_arr[pos];
+  if(CodeRelated.Exists == true){
+    var FillingMode_Expand = CodeRelated.FindChild("Name","WPFObject(\"StackPanel\", \"\", 1)",2);
+    var FillingPatternbox = FillingMode_Expand.FindChild("Name", "WPFObject(\"Paragraph\", \"\", 1)", 2000);
+    FillingPattern = FillingPatternbox.WPFControlText;
+  }
+}
+
 
 function Edit_Justification_CodeRelated(pos,stt){  
   initializated_EditToolField_arr();
