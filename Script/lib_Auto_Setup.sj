@@ -730,6 +730,7 @@ function Get_Console_Result()
              //Log.Message(itemControlObj.FullName);
              if (itemControlObj.Exists)
                { 
+                 Sys.Process("DL.CODE").Refresh();
                  ChildCount = itemControlObj.childCount;
                  ChildCount = aqConvert.VarToStr(ChildCount)
                 // Log.Message("ChildCount is "+ ChildCount);
